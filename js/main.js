@@ -67,6 +67,7 @@ $("#map_link").click(function() {
     $('nav').removeClass('fixed');
     $('nav li.active').removeClass('active');
     $('nav a#map_link').parent().addClass('active');
+    showMap();
 });
 function loadFAQ() {
     $("#home").hide();
