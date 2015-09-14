@@ -2,14 +2,18 @@ body {
     padding-top: 50px;
 }
 
-#content {
+.content_wrapper {
     padding: 15px 15px 15px 15px;
 }
 
-#map_container { height: 100%; }
+#map_container { height: 100%; padding-top: 10px; }
 #map { height: 100%; }
 
 #content, html, body, #map_container, #map {
     height: 100%;
     width: 100%;
+}
+
+.navbar-right {
+	margin-right: 0px;
 }

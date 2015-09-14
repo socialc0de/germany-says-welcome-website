@@ -43,32 +43,44 @@ function deauth() {
 function signedIn() {
     $("#signInButton").hide();
     $("#signOutButton").show();
+	jumpToPage();
 }
 
-$("#faq_link").click(function() {
-    $('nav').removeClass('fixed');
-    $('nav li.active').removeClass('active');
-    $('nav a#faq_link').parent().addClass('active');
-    loadFAQ();
+$(document).ready(function() {
+    $(window).bind( 'hashchange', function(e) {
+		jumpToPage()
+    });
 });
-$("#home_link").click(function() {
-    $('nav').removeClass('fixed');
-    $('nav li.active').removeClass('active');
-    $('nav a#home_link').parent().addClass('active');
-    showHome();
-});
-$("#sharing_link").click(function() {
-    $('nav').removeClass('fixed');
-    $('nav li.active').removeClass('active');
-    $('nav a#sharing_link').parent().addClass('active');
-    loadSharing();
-});
-$("#map_link").click(function() {
-    $('nav').removeClass('fixed');
-    $('nav li.active').removeClass('active');
-    $('nav a#map_link').parent().addClass('active');
-    showMap();
-});
+
+function jumpToPage() {
+	switch(window.location.hash) {
+		case "#home":
+			$('nav').removeClass('fixed');
+			$('nav li.active').removeClass('active');
+			$('nav a#home_link').parent().addClass('active');
+			showHome();
+		break;
+		case "#faq":
+			$('nav').removeClass('fixed');
+			$('nav li.active').removeClass('active');
+			$('nav a#faq_link').parent().addClass('active');
+			loadFAQ();
+		break;
+		case "#sharing":
+			$('nav').removeClass('fixed');
+			$('nav li.active').removeClass('active');
+			$('nav a#sharing_link').parent().addClass('active');
+			loadSharing();
+		break;
+		case "#map":
+			$('nav').removeClass('fixed');
+			$('nav li.active').removeClass('active');
+			$('nav a#map_link').parent().addClass('active');
+			showMap();
+		break;
+	}
+}
+
 function loadFAQ() {
     $("#home").hide();
     $("#sharing").hide();
@@ -166,3 +178,5 @@ function loadMapIfNeeded() {
     }
 }
 $("#map_container").hide();
+
+jumpToPage();
