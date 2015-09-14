@@ -17,3 +17,13 @@ body {
 .navbar-right {
 	margin-right: 0px;
 }
+
+.table_of_content {
+	margin-top: 10px;
+}
+
+.anchor {
+	padding-top: 65px;
+	margin-top: -65px;
+	display: inline-block;
+}
