@@ -124,10 +124,9 @@ function loadFAQ() {
 			html += "</div>";
 			
             cats.items.forEach(function generateHTML(cat, catindex, all) {
-                console.log(cat);
-                html += '<h2 class="anchor" id="faq_'+cat.name+'">'+cat.name+"</h2>";
                 items = items_by_cat[cat.id];
                 if (items != undefined) {
+					html += '<h2 class="anchor" id="faq_'+cat.name+'">'+cat.name+"</h2>";
                     html += "<div class=\"panel-group\" id=\"faq_"+catindex+"\" role=\"tablist\" aria-multiselectable=\"true\">";
                     items.forEach(function addQuestionToHTML(item, index, all) {
                         html += '<div class="panel panel-default"><div class="panel-heading" role="tab" id="cat'+catindex+'heading'+index+'"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="cat'+catindex+'" href="#cat'+catindex+'collapse'+index+'" aria-expanded="false" aria-controls="cat'+catindex+'collapse'+index+'">';
