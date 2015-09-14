@@ -1,0 +1,15 @@
+body {
+    padding-top: 50px;
+}
+
+#content {
+    padding: 15px 15px 15px 15px;
+}
+
+#map_container { height: 100%; }
+#map { height: 100%; }
+
+#content, html, body, #map_container, #map {
+    height: 100%;
+    width: 100%;
+}
