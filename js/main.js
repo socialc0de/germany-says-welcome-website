@@ -53,32 +53,37 @@ $(document).ready(function() {
 });
 
 function jumpToPage() {
-	switch(window.location.hash) {
-		case "#home":
-			$('nav').removeClass('fixed');
-			$('nav li.active').removeClass('active');
-			$('nav a#home_link').parent().addClass('active');
-			showHome();
-		break;
-		case "#faq":
-			$('nav').removeClass('fixed');
-			$('nav li.active').removeClass('active');
-			$('nav a#faq_link').parent().addClass('active');
-			loadFAQ();
-		break;
-		case "#sharing":
-			$('nav').removeClass('fixed');
-			$('nav li.active').removeClass('active');
-			$('nav a#sharing_link').parent().addClass('active');
-			loadSharing();
-		break;
-		case "#map":
-			$('nav').removeClass('fixed');
-			$('nav li.active').removeClass('active');
-			$('nav a#map_link').parent().addClass('active');
-			showMap();
-		break;
+
+	var location = window.location.hash;
+	if (location.match("^#home")) {
+		$('nav').removeClass('fixed');
+		$('nav li.active').removeClass('active');
+		$('nav a#home_link').parent().addClass('active');
+		showHome();
 	}
+
+	if (location.match("^#faq")) {
+		$('nav').removeClass('fixed');
+		$('nav li.active').removeClass('active');
+		$('nav a#faq_link').parent().addClass('active');
+		loadFAQ();
+	}
+	
+	if (location.match("^#sharing")) {
+		$('nav').removeClass('fixed');
+		$('nav li.active').removeClass('active');
+		$('nav a#sharing_link').parent().addClass('active');
+		loadSharing();
+	}
+
+	if (location.match("^#map")) {
+		$('nav').removeClass('fixed');
+		$('nav li.active').removeClass('active');
+		$('nav a#map_link').parent().addClass('active');
+		showMap();
+	}
+	
+
 }
 
 function loadFAQ() {
@@ -98,12 +103,31 @@ function loadFAQ() {
                     items_by_cat[item.category] = [item];
                 }
             })
+			
+			
+			html += "<div class=\"panel panel-default index table_of_content\">";
+			html += "<div class=\"panel-body\"><h4>Inhalt</h4>";
+			
+			cats.items.forEach(function generateHTML(cat, catindex, all) {
+			
+
+			
+			
+                 items = items_by_cat[cat.id];
+                if (items != undefined) {
+                    html += '<a href="#faq_'+cat.name+'">'+cat.name+"</a><br />";
+                }
+				               
+            })
+			
+			html += "</div>";
+			html += "</div>";
+			
             cats.items.forEach(function generateHTML(cat, catindex, all) {
-                console.log(cat);
-                html += "<h2>"+cat.name+"</h2>";
                 items = items_by_cat[cat.id];
                 if (items != undefined) {
-                    html += "<div class=\"panel-group\" id=\"cat"+catindex+"\" role=\"tablist\" aria-multiselectable=\"true\">";
+					html += '<h2 class="anchor" id="faq_'+cat.name+'">'+cat.name+"</h2>";
+                    html += "<div class=\"panel-group\" id=\"faq_"+catindex+"\" role=\"tablist\" aria-multiselectable=\"true\">";
                     items.forEach(function addQuestionToHTML(item, index, all) {
                         html += '<div class="panel panel-default"><div class="panel-heading" role="tab" id="cat'+catindex+'heading'+index+'"><h4 class="panel-title"><a role="button" data-toggle="collapse" data-parent="cat'+catindex+'" href="#cat'+catindex+'collapse'+index+'" aria-expanded="false" aria-controls="cat'+catindex+'collapse'+index+'">';
                         html += item.question;
