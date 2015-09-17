@@ -111,28 +111,33 @@ function showUnanswered() {
         NProgress.set(0.75)
         gapi.client.donate.faqitem.list({"answered":false}).execute(function(items) {
             var html = "";
-            items.items.forEach(function parseItems(item, index, all) {
-                html += '<div class="jumbotron col-md-4"><form><div class="form-group"><label for="question">Question</label>';
-                html += '<input type="text" class="form-control" id="question" placeholder="Question" value="'+item.question+'"></div>';
-                html += '<div class="form-group"><label for="answer">Answer</label>';
-                html += '<input type="text" class="form-control" id="answer" placeholder="Answer" value="'+item.answer+'"></div>';
-                html += '<div class="form-group"><label for="language">Language-Code</label>';
-                html += '<input type="text" class="form-control" id="language" placeholder="Language-Code" value="'+item.language+'"></div>';
-                html += '<div class="checkbox"><label><input id="answered" type="checkbox"';
-                if(item.answered)
-                    html += " checked";
-                html += '>Answered</label></div>';
-                html += '<input type="hidden" id="category" value="'+item.category+'"><input type="hidden" id="id" value="'+item.id+'">';
-                html += predrophtml;
-                if (item.category == undefined) {
-                    html += 'Choose Category<span class="caret"></span>';
-                } else {
-                    html += cats_by_id[item.category].name;
-                }
-                html += postdrophtml;
-                html += '<button class="btn btn-default" id="save">Save</button></form></div>';
-                id = "#save"+index
-            });
+            if (items.items != undefined) {
+                items.items.forEach(function parseItems(item, index, all) {
+                    html += '<div class="jumbotron col-md-4"><form><div class="form-group"><label for="question">Question</label>';
+                    html += '<input type="text" class="form-control" id="question" placeholder="Question" value="'+item.question+'"></div>';
+                    html += '<div class="form-group"><label for="answer">Answer</label>';
+                    html += '<input type="text" class="form-control" id="answer" placeholder="Answer" value="'+item.answer+'"></div>';
+                    html += '<div class="form-group"><label for="language">Language-Code</label>';
+                    html += '<input type="text" class="form-control" id="language" placeholder="Language-Code" value="'+item.language+'"></div>';
+                    html += '<div class="checkbox"><label><input id="answered" type="checkbox"';
+                    if(item.answered)
+                        html += " checked";
+                    html += '>Answered</label></div>';
+                    html += '<input type="hidden" id="category" value="'+item.category+'"><input type="hidden" id="id" value="'+item.id+'">';
+                    html += predrophtml;
+                    if (item.category == undefined) {
+                        html += 'Choose Category<span class="caret"></span>';
+                    } else {
+                        html += cats_by_id[item.category].name;
+                    }
+                    html += postdrophtml;
+                    html += '<button class="btn btn-default" id="save">Save</button></form></div>';
+                    id = "#save"+index
+                });
+            } else {
+                html = "Couldn't load FAQ Items";
+            }
+
             $("#unanswered").html(html);
             NProgress.done();
         });  
