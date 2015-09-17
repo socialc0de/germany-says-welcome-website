@@ -72,18 +72,20 @@ function jumpToPage() {
 function showUnanswered() {
     $("#home").hide();
     $("#unanswered").show();
-    gapi.client.donate.faqitem.list(answered=false).execute(function(items) {
+    gapi.client.donate.faqitem.list({"answered":false}).execute(function(items) {
         var html = "";
         items.items.forEach(function parseItems(item, index, all) {
             console.log(item);
             html += '<div class="jumbotron col-md-4"><form><div class="form-group"><label for="question">Question</label>';
-            html += '<input type="text" class="form-control" id="question" placeholder="Question" value="'+item.question+'">';
-            html += '</div><div class="form-group"><label for="answer">Answer</label>';
-            html += '<input type="text" class="form-control" id="answer" placeholder="Answer" value="'+item.answer+'">';
-            html += '</div><div class="checkbox"><label><input type="checkbox"';
+            html += '<input type="text" class="form-control" id="question" placeholder="Question" value="'+item.question+'"></div>';
+            html += '<div class="form-group"><label for="answer">Answer</label>';
+            html += '<input type="text" class="form-control" id="answer" placeholder="Answer" value="'+item.answer+'"></div>';
+            html += '<div class="form-group"><label for="language">Language-Code</label>';
+            html += '<input type="text" class="form-control" id="language" placeholder="Language-Code" value="'+item.language+'"></div>';
+            html += '<div class="checkbox"><label><input id="answered" type="checkbox"';
             if(item.answered)
                 html += " checked";
-            html += '>Answered</label></div>';
+            html += '>Answered</label></div><input type="hidden" id="id" value="'+item.id+'">';
             html += '<button class="btn btn-default" id="save'+index+'">Save</button></form></div>';
             id = "#save"+index
 
@@ -91,12 +93,17 @@ function showUnanswered() {
         $("#unanswered").html(html);
         $("#unanswered").on('click','button',function(e) {
             //console.log(e);
-            console.log($(e.target).parent());
-            /*NProgress.start();
-            gapi.client.donate.faqitem_update.list(question=$("#question"+index).value, answer=$("#answer"+index).value, answered=$("#answered"+index).value).execute(function(items) {
+            var form = $(e.target).parent();
+            NProgress.start();
+            var question = form.find("#question")[0].value;
+            var answer = form.find("#answer")[0].value;
+            var language = form.find("#language")[0].value;
+            var id = form.find("#id")[0].value;
+            var answered = form.find("#answered")[0].checked;
+            gapi.client.donate.faqitem.update({"id":id,"question":question, "answer":answer, "answered":answered, "language":language}).execute(function(items) {
                 console.log(items);
                 NProgress.done();
-            });*/
+            });
         });
     });  
 
