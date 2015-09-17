@@ -10,7 +10,7 @@ function init() {
     $("#signInButton").text("Signing in ...");
     apisToLoad = 2;
     apiRoot = 'https://donate-backend.appspot.com/_ah/api';
-    apiRoot = 'http://192.168.42.46:8080/_ah/api';
+    //apiRoot = 'http://192.168.42.46:8080/_ah/api';
     gapi.client.load('donate', 'v1', loadCallback, apiRoot);
     gapi.client.load('oauth2', 'v2', loadCallback);
 }
@@ -56,9 +56,17 @@ $(document).ready(function() {
         var id = form.find("#id")[0].value;
         var answered = form.find("#answered")[0].checked;
         var category = form.find("#category")[0].value;
-        gapi.client.donate.faqitem.update({"id":id,"question":question, "answer":answer, "answered":answered, "language":language, "category":category}).execute(function(items) {
+        gapi.client.donate.faqitem.update({"id":id,"question":question, "answer":answer, "answered":answered, "language":language, "category":category}).execute(function(resp) {
             NProgress.set(0.5);
-            showUnanswered();
+            if (!resp.code) {
+                showUnanswered();
+            } else {
+                console.log(resp);
+                $('#errorModalText').append(resp.message);
+                $('#errorModalLabel').append(resp.code);
+                $('#errorModal').modal();
+            }
+            
         });
     });
     $("#unanswered").on('click','.cat',function(e) {
