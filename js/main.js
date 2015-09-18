@@ -176,7 +176,7 @@ function insertJSON() {
       popup += entry.fax ? '<i class="glyphicon glyphicon-print"></i> ' + entry.fax + '<br />' : '';
       popup += entry.offnungszeiten ? '<i class="glyphicon glyphicon glyphicon-time"></i> ' + entry.offnungszeiten + '<br />' : '';
       popup += entry.website ? '<i class="glyphicon glyphicon-info-sign"></i> <a href="http://' + entry.website + '">' + entry.website + '</a><br />' : '';
-      popup += 'Data from www.amt-de.com';
+      popup += 'Data from <a href="http://www.amt-de.com">www.amt-de.com';
 
       L.marker([entry.location.lat, entry.location.lng]).addTo(map)
         .bindPopup(popup);
