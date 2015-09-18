@@ -6,7 +6,7 @@ function init() {
             signin(true, userAuthed);
         }
     };
-    $("#signInButton").text("Signing in ...");
+    $("#signInButton").text("Sign in");
     apisToLoad = 2;
     apiRoot = 'https://donate-backend.appspot.com/_ah/api';
     //apiRoot = 'http://192.168.42.46:8080/_ah/api';
