@@ -75,6 +75,12 @@ $(document).ready(function() {
         p.find("#dropdownMenuTitle").text(e.target.textContent);
     });
 });
+
+function showHome() {
+    $("#home").show();
+    $("#unanswered").hide();
+}
+
 function jumpToPage() {
     var location = window.location.hash;
     if (location.match("^#unanswered")) {
@@ -83,6 +89,13 @@ function jumpToPage() {
         $('nav a#unanswered_link').parent().addClass('active');
         showUnanswered();
     }
+    
+    if (location.match("^#home")) {
+        $('nav').removeClass('fixed');
+        $('nav li.active').removeClass('active');
+        $('nav a#home_link').parent().addClass('active');
+        showHome();
+	}
 }
 /*function loadSharing() {
     $("#home").hide();
