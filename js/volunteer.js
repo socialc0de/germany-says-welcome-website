@@ -75,6 +75,12 @@ $(document).ready(function() {
         p.find("#dropdownMenuTitle").text(e.target.textContent);
     });
 });
+
+function showHome() {
+    $("#home").show();
+    $("#unanswered").hide();
+}
+
 function jumpToPage() {
     
     if (location.match("^#home")) {
@@ -94,6 +100,13 @@ function jumpToPage() {
         document.title = "Unanswered Questions";
         showUnanswered();
     }
+    
+    if (location.match("^#home")) {
+        $('nav').removeClass('fixed');
+        $('nav li.active').removeClass('active');
+        $('nav a#home_link').parent().addClass('active');
+        showHome();
+	}
 }
 /*function loadSharing() {
     $("#home").hide();
