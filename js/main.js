@@ -6,7 +6,7 @@ function init() {
             signin(true, userAuthed);
         }
     };
-    $("#signInButton").text("Signing in ...");
+    $("#signInButton").text("Sign in");
     apisToLoad = 2;
     apiRoot = 'https://donate-backend.appspot.com/_ah/api';
     //apiRoot = 'http://192.168.42.46:8080/_ah/api';
@@ -59,6 +59,7 @@ function jumpToPage() {
 		$('nav').removeClass('fixed');
 		$('nav li.active').removeClass('active');
 		$('nav a#home_link').parent().addClass('active');
+        document.title = "Home";
 		showHome();
 	}
 
@@ -66,6 +67,7 @@ function jumpToPage() {
 		$('nav').removeClass('fixed');
 		$('nav li.active').removeClass('active');
 		$('nav a#faq_link').parent().addClass('active');
+        document.title = "FAQ";
 		loadFAQ();
 	}
 	
@@ -73,6 +75,7 @@ function jumpToPage() {
 		$('nav').removeClass('fixed');
 		$('nav li.active').removeClass('active');
 		$('nav a#sharing_link').parent().addClass('active');
+        document.title = "Sharing";
 		loadSharing();
 	}
 
@@ -80,6 +83,7 @@ function jumpToPage() {
 		$('nav').removeClass('fixed');
 		$('nav li.active').removeClass('active');
 		$('nav a#map_link').parent().addClass('active');
+        document.title = "Authority Map";
 		showMap();
 	}
 	
