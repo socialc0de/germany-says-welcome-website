@@ -59,6 +59,7 @@ function jumpToPage() {
 		$('nav').removeClass('fixed');
 		$('nav li.active').removeClass('active');
 		$('nav a#home_link').parent().addClass('active');
+        document.title = "Home";
 		showHome();
 	}
 
@@ -66,6 +67,7 @@ function jumpToPage() {
 		$('nav').removeClass('fixed');
 		$('nav li.active').removeClass('active');
 		$('nav a#faq_link').parent().addClass('active');
+        document.title = "FAQ";
 		loadFAQ();
 	}
 	
@@ -73,6 +75,7 @@ function jumpToPage() {
 		$('nav').removeClass('fixed');
 		$('nav li.active').removeClass('active');
 		$('nav a#sharing_link').parent().addClass('active');
+        document.title = "Sharing";
 		loadSharing();
 	}
 
@@ -80,6 +83,7 @@ function jumpToPage() {
 		$('nav').removeClass('fixed');
 		$('nav li.active').removeClass('active');
 		$('nav a#map_link').parent().addClass('active');
+        document.title = "Authority Map";
 		showMap();
 	}
 	

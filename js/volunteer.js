@@ -76,11 +76,22 @@ $(document).ready(function() {
     });
 });
 function jumpToPage() {
+    
+    if (location.match("^#home")) {
+		$('nav').removeClass('fixed');
+		$('nav li.active').removeClass('active');
+		$('nav a#home_link').parent().addClass('active');
+        document.title = "Home";
+		showHome();
+	}
+    
+    
     var location = window.location.hash;
     if (location.match("^#unanswered")) {
         $('nav').removeClass('fixed');
         $('nav li.active').removeClass('active');
         $('nav a#unanswered_link').parent().addClass('active');
+        document.title = "Unanswered Questions";
         showUnanswered();
     }
 }
