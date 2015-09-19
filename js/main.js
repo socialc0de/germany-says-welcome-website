@@ -147,8 +147,11 @@ function loadFAQ() {
 }
 
 function newquestion() {
-    gapi.client.donate.faqitem.create({"category":category,"question":question,"answer":answer}).execute(function(resp){
-         console.log(resp);
+    gapi.client.donate.faqitem.create({"category":category,"question":question,"answer":answer}).execute(function(resp){ 
+        category = "test";
+        question = "test2";
+        answer = "test3";
+        console.log(resp);
     });
 }
 
