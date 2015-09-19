@@ -139,11 +139,19 @@ function loadFAQ() {
                 }
                 
             })
+            html += '<button onclick="newquestion()" id="senden">Das ist ein Button</button>';
             $("#faq").html(html);
         });  
     });  
 
 }
+
+function newquestion() {
+    gapi.client.donate.faqitem.create({"category":category,"question":question,"answer":answer}).execute(function(resp){
+         console.log(resp);
+    });
+}
+
 function loadSharing() {
     $("#home").hide();
     $("#sharing").show();
