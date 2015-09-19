@@ -7,7 +7,7 @@ function init() {
             signin(true, userAuthed);
         }
     };
-    $("#signInButton").text("Signing in ...");
+    $("#signInButton").text("Signin in ...");
     apisToLoad = 2;
     apiRoot = 'https://donate-backend.appspot.com/_ah/api';
     //apiRoot = 'http://192.168.42.46:8080/_ah/api';
@@ -83,12 +83,6 @@ function showHome() {
 
 function jumpToPage() {
     var location = window.location.hash;
-    if (location.match("^#unanswered")) {
-        $('nav').removeClass('fixed');
-        $('nav li.active').removeClass('active');
-        $('nav a#unanswered_link').parent().addClass('active');
-        showUnanswered();
-    }
     
     if (location.match("^#home")) {
         $('nav').removeClass('fixed');
@@ -96,6 +90,13 @@ function jumpToPage() {
         $('nav a#home_link').parent().addClass('active');
         showHome();
 	}
+    
+    if (location.match("^#unanswered")) {
+        $('nav').removeClass('fixed');
+        $('nav li.active').removeClass('active');
+        $('nav a#unanswered_link').parent().addClass('active');
+        showUnanswered();
+    }
 }
 /*function loadSharing() {
     $("#home").hide();
@@ -103,6 +104,12 @@ function jumpToPage() {
     $("#faq").hide();
     $("#map_container").hide();
 }*/
+
+function showHome() {
+    $("#home").show();
+    $("#unanswered").hide();
+}
+
 function showUnanswered() {
     if (NProgress.status == null) {
         NProgress.start();
