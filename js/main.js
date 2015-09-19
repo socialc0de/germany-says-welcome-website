@@ -9,7 +9,7 @@ function init() {
     $("#signInButton").text("Signing in ...");
     apisToLoad = 2;
     apiRoot = 'https://donate-backend.appspot.com/_ah/api';
-    //apiRoot = 'http://192.168.42.46:8080/_ah/api';
+    apiRoot = 'http://192.168.42.46:8080/_ah/api';
     gapi.client.load('donate', 'v1', loadCallback, apiRoot);
     gapi.client.load('oauth2', 'v2', loadCallback);
 }
@@ -49,6 +49,35 @@ function signedIn() {
 $(document).ready(function() {
     $(window).bind( 'hashchange', function(e) {
 		jumpToPage()
+    });
+    $("#newQuestionModal").on('click','#save',function(e) {
+        console.log(e);
+        //$("#unanswered").html("");
+        //
+        var form = $(e.target).parent().parent();
+        NProgress.start();
+        var question = form.find("#question_text")[0].value;
+        var answer = form.find("#answer_text")[0].value;
+        var language = form.find("#language_code")[0].value;
+        var category = form.find("#category")[0].value;
+        $("#newQuestionModal").modal('hide');
+        gapi.client.donate.faqitem.create({"question":question, "answer":answer, "language":language, "category":category}).execute(function(resp) {
+
+            NProgress.done();
+            if (resp.code) {
+                console.log(resp);
+                $('#errorModalText').append(resp.message);
+                $('#errorModalLabel').append(resp.code);
+                $('#errorModal').modal();
+            }
+        });
+    });
+    $("#newQuestionModal").on('click','.cat',function(e) {
+        var p = $(e.target).parent().parent().parent();
+        console.log(p);
+        console.log(p);
+        p.find("#category").prop('value', e.target.id); 
+        p.find("#dropdownMenuTitle").text(e.target.textContent);
     });
 });
 
@@ -92,9 +121,10 @@ function loadFAQ() {
     $("#faq").show();
     $("#map_container").hide();
     gapi.client.donate.faqcat.list().execute(function(cats) {
-        gapi.client.donate.faqitem.list().execute(function(items) {
+        gapi.client.donate.faqitem.list({"answered":true}).execute(function(items) {
             var items_by_cat = {};
             var html = "";
+            var popup_html = '<div id="dropdown" class="dropdown"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuTitle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Choose Category</button><ul class="dropdown-menu" aria-labelledby="dropdownMenu1">';
             items.items.forEach(function parseItems(item, index, all) {
                 console.log(item);
                 if (item.category in items_by_cat) {
@@ -109,14 +139,11 @@ function loadFAQ() {
 			html += "<div class=\"panel-body\"><h4>Inhalt</h4>";
 			
 			cats.items.forEach(function generateHTML(cat, catindex, all) {
-			
-
-			
-			
-                 items = items_by_cat[cat.id];
+                items = items_by_cat[cat.id];
                 if (items != undefined) {
                     html += '<a href="#faq_'+cat.name+'">'+cat.name+"</a><br />";
                 }
+                popup_html += '<li class="cat" id="'+cat.id+'">'+cat.name+'</li>';
 				               
             })
 			
@@ -139,20 +166,12 @@ function loadFAQ() {
                 }
                 
             })
-            html += '<button onclick="newquestion()" id="senden">Das ist ein Button</button>';
+            html += '<h3>Didn\'t find what you need? <a class="btn btn-primary" data-toggle="modal" data-target="#newQuestionModal">Ask a question!</a></h3>';
             $("#faq").html(html);
+            $("#newQuestionModalText").append(popup_html);
         });  
     });  
 
-}
-
-function newquestion() {
-    gapi.client.donate.faqitem.create({"category":category,"question":question,"answer":answer}).execute(function(resp){ 
-        category = "test";
-        question = "test2";
-        answer = "test3";
-        console.log(resp);
-    });
 }
 
 function loadSharing() {

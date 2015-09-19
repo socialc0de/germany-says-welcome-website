@@ -10,7 +10,7 @@
   <meta name="keywords" lang="en-us" content="Refugees, #germanysayswelcome, Refugees Welcome">
   <meta name="keywords" lang="de" content="Flüchtlinge, Flüchtlingshilfe">
   <meta name="robots" content="noindex, nofollow">
-    
+
   <title>Volunteers</title>
 
   <!-- Bootstrap -->
@@ -23,64 +23,63 @@
 </head>
 
 <body>
-      <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#home">
-            <img style="max-width:35px; margin-top: -7px;" alt="Germany Says Welcome" src="image/logo.png">
-          </a>
-        </div>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#home">
+          <img style="max-width:35px; margin-top: -7px;" alt="Germany Says Welcome" src="image/logo.png">
+        </a>
+      </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li class="active"><a id="home_link" href="#home">Home</a></li>
-            <li><a id="unanswered_link" href="#unanswered">Unanswered Questions</a></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton">Sign in</button>
-            <button type="button" style="display: none" onclick="deauth();" class="btn btn-default navbar-btn" id="signOutButton">Sign out</button>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
-    <div id="content">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a id="home_link" href="#home">Home</a></li>
+          <li><a id="unanswered_link" href="#unanswered">Unanswered Questions</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton">Sign in</button>
+          <button type="button" style="display: none" onclick="deauth();" class="btn btn-default navbar-btn" id="signOutButton">Sign out</button>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <div id="content">
     <!-- Page Content -->
-        <div class="content_wrapper" id="home">
-          Welcome to Germany Says Welcome Volunteer Area
-        </div>
-        <div class="content_wrapper" style="display:none" id="unanswered"></div>
-      <div class="modal fade" role="dialog" aria-labelledby="errorModalLabel" id="errorModal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="errorModalLabel">Error </h4>
-      </div>
-      <div class="modal-body" id="errorModalText">
-          There was an error processing your request: 
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+    <div class="content_wrapper" id="home">
+      Welcome to Germany Says Welcome Volunteer Area
+    </div>
+    <div class="content_wrapper" style="display:none" id="unanswered"></div>
+    <div class="modal fade" role="dialog" aria-labelledby="errorModalLabel" id="errorModal">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="errorModalLabel">Error </h4>
+          </div>
+          <div class="modal-body" id="errorModalText">
+            There was an error processing your request: 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
   </div>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-   <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+  <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
   <script src="js/volunteer.js"></script>
   <!-- Google APIs -->
   <script src="https://apis.google.com/js/platform.js" async defer></script>
