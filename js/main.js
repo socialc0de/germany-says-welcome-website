@@ -125,6 +125,12 @@ function loadFAQ() {
             var items_by_cat = {};
             var html = "";
             var popup_html = '<div id="dropdown" class="dropdown"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuTitle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Choose Category</button><ul class="dropdown-menu" aria-labelledby="dropdownMenu1">';
+            
+            if(items.items == undefined){
+                html += '<h3>Didn\'t find what you need? <a class="btn btn-primary" data-toggle="modal" data-target="#newQuestionModal">Ask a question!</a></h3>';
+                $("#faq").html(html);
+            }else{
+            
             items.items.forEach(function parseItems(item, index, all) {
                 console.log(item);
                 if (item.category in items_by_cat) {
@@ -133,7 +139,6 @@ function loadFAQ() {
                     items_by_cat[item.category] = [item];
                 }
             })
-			
 			
 			html += "<div class=\"panel panel-default index table_of_content\">";
 			html += "<div class=\"panel-body\"><h4>Inhalt</h4>";
@@ -169,10 +174,12 @@ function loadFAQ() {
             html += '<h3>Didn\'t find what you need? <a class="btn btn-primary" data-toggle="modal" data-target="#newQuestionModal">Ask a question!</a></h3>';
             $("#faq").html(html);
             $("#newQuestionModalText").append(popup_html);
+            }
         });  
     });  
 
 }
+
 
 function loadSharing() {
     $("#home").hide();
