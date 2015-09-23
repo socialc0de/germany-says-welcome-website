@@ -27,7 +27,7 @@ function userAuthed() {
                 if (!resp.code) {
                     signedIn();
                 }
-            }
+            });
         }
     });
 }
@@ -70,12 +70,12 @@ $(document).ready(function() {
                 $('#errorModalLabel').append(resp.code);
                 $('#errorModal').modal();
             }
-            
+
         });
     });
     $("#unanswered").on('click','.cat',function(e) {
         var p = $(e.target).parent().parent().parent();
-        p.find("#category").prop('value', e.target.id); 
+        p.find("#category").prop('value', e.target.id);
         p.find("#dropdownMenuTitle").text(e.target.textContent);
     });
 });
@@ -87,14 +87,14 @@ function showHome() {
 
 function jumpToPage() {
     var location = window.location.hash;
-    
+
     if (location.match("^#home")) {
         $('nav').removeClass('fixed');
         $('nav li.active').removeClass('active');
         $('nav a#home_link').parent().addClass('active');
         showHome();
 	}
-    
+
     if (location.match("^#unanswered")) {
         $('nav').removeClass('fixed');
         $('nav li.active').removeClass('active');
@@ -164,7 +164,7 @@ function showUnanswered() {
 
             $("#unanswered").html(html);
             NProgress.done();
-        });  
+        });
     });
 }
 jumpToPage();
