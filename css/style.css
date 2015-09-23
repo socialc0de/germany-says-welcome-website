@@ -6,8 +6,17 @@ body {
     padding: 15px 15px 15px 15px;
 }
 
-#map_container { height: 100%; padding-top: 10px; }
-#map { height: 100%; color: black;}
+#map_container {
+    height: 100%;
+    padding-top: 10px;
+    border: 0;
+    -webkit-appearance: none;
+}
+
+#map {
+    height: 100%;
+    color: black;
+}
 
 #content, html, body, #map_container, #map {
     height: 100%;
