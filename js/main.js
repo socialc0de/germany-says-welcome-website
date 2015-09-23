@@ -24,7 +24,11 @@ function userAuthed() {
     var request =
     gapi.client.oauth2.userinfo.get().execute(function(resp) {
         if (!resp.code) {
-            signedIn();
+            gapi.client.oauth2.user.create().execute(function(resp) {
+                if (!resp.code) {
+                    signedIn();
+                }
+            }
         }
     });
 }
