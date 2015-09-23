@@ -125,9 +125,10 @@ function loadFAQ() {
             var items_by_cat = {};
             var html = "";
             var popup_html = '<div id="dropdown" class="dropdown"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuTitle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Choose Category</button><ul class="dropdown-menu" aria-labelledby="dropdownMenu1">';
+            var askbutton = '<h3>Didn\'t find what you need? <a class="btn btn-primary" data-toggle="modal" data-target="#newQuestionModal">Ask a question!</a></h3>';
             
             if(items.items == undefined){
-                html += '<h3>Didn\'t find what you need? <a class="btn btn-primary" data-toggle="modal" data-target="#newQuestionModal">Ask a question!</a></h3>';
+                html += askbutton;
                 $("#faq").html(html);
             }else{
             
@@ -171,7 +172,7 @@ function loadFAQ() {
                 }
                 
             })
-            html += '<h3>Didn\'t find what you need? <a class="btn btn-primary" data-toggle="modal" data-target="#newQuestionModal">Ask a question!</a></h3>';
+            html += askbutton;
             $("#faq").html(html);
             $("#newQuestionModalText").append(popup_html);
             }
