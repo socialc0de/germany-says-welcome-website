@@ -214,8 +214,8 @@ function loadMapData() {
     //load authorities
   $.getJSON('https://raw.githubusercontent.com/germany-says-welcome/refugees-welcome-app/master/app/src/main/assets/authorities.json', function(data) {
     data.forEach(function (entry) {
-      var popup = entry.telefon ? entry.adresse + '<br />' : '';
-      popup += entry.telefon ? '<i class="glyphicon glyphicon-phone-alt"></i> ' + entry.telefon + '   ' : '';
+      var popup = '<a href="geo:' + entry.location.lat + ', ' + entry.location.lng + '">' + entry.adresse + ' </a> <br />';
+      popup += entry.telefon ? '<i class="glyphicon glyphicon-phone-alt"></i> <a href="tel:+49' + entry.telefon + '">' + entry.telefon + '</a>' + '   ' : '';
       popup += entry.fax ? '<i class="glyphicon glyphicon-print"></i> ' + entry.fax + '<br />' : '';
       popup += entry.offnungszeiten ? '<i class="glyphicon glyphicon glyphicon-time"></i> ' + entry.offnungszeiten + '<br />' : '';
       popup += entry.website ? '<i class="glyphicon glyphicon-info-sign"></i> <a href="http://' + entry.website + '">' + entry.website + '</a><br />' : '';
@@ -227,21 +227,28 @@ function loadMapData() {
     });
   });
 
-//load wifi hotspots
-  $.getJSON('https://raw.githubusercontent.com/germany-says-welcome/refugees-welcome-app/master/app/src/main/assets/wifihotspot.json', function(data) {
-    data.features.forEach(function (entry) {
-      var popup = entry.properties.desc;
-      var location = entry.geometry.coordinates;
+  //load wifi hotspots
+  $.ajax({
+    type: "GET",
+    url: "http://www.freifunk-karte.de/fetch.php?content=gpxfile",
+    dataType: "xml",
+    success: function (xml) {
+        $(xml).find("wpt").each(function() {
+            var longitude = $(this).attr("lon");
+            var latitude = $(this).attr("lat");
+            var name = $(this).find("name").first().text();
 
-      L.marker([location[0], location[1]]).addTo(wifi)
-        .bindPopup(popup);
-    });
+            var marker = L.marker([latitude, longitude]);
+            marker.bindPopup(name);
+            wifi.addLayer(marker);
+        });
+      }
   });
 }
 function loadMap() {
     //create layer groups in order to be accessible from loadMapData
     authorities = L.layerGroup();
-    wifi = L.layerGroup();
+    wifi = L.markerClusterGroup();
 
     //cologne as default location
     map = L.map('map', {
@@ -257,6 +264,7 @@ function loadMap() {
 	"Authorities": authorities,
 	"Wifi": wifi
     };
+
     L.control.layers(overlayMaps).addTo(map);
 
     mapLink =
