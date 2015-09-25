@@ -15,9 +15,46 @@
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <!--Map styles-->
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
+  <link rel="stylesheet" href="http://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="http://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.Default.css" />
+
   <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Icons -->
+
+  <!-- Apple Touch Icons -->
+      <!-- IPhone -->
+      <link rel="apple-touch-icon" href="image/Icons/apple-touch-icon.png">
+
+      <!-- IPad -->
+      <link rel="apple-touch-icon" sizes="76x76" href="image/Icons/apple-touch-icon-76x76.png">
+
+      <!-- IPhone Retina -->
+      <link rel="apple-touch-icon" sizes="120x120" href="image/Icons/apple-touch-icon-120x120.png">
+
+      <!-- IPad Retina -->
+      <link rel="apple-touch-icon" sizes="152x152" href="image/Icons/apple-touch-icon-152x152.png">
+
+      <!-- Ohne Glanz -->
+      <link rel="apple-touch-icon" href="image/Icons/apple-touch-icon-precomposed.png">
+
+  <!-- Android -->
+      <link rel="icon" sizes="192x192" href="image/Icons/nice-highres.png">
+      <link rel="icon" sizes="128x128" href="image/Icons/niceicon.png">
+      <link rel="apple-touch-icon" sizes="128x128" href="image/Icons/niceicon.png">
+      <link rel="apple-touch-icon-precomposed" sizes="128x128" href="image/Icons/niceicon.png">
+
+  <!-- Windows 8/10 -->
+        <meta name="application-name" content="Germany says Welcome">
+        <meta name="msapplication-TileImage" content="windows-icon.png">
+        <meta name="msapplication-TileColor" content="#fff">
+
+  <!-- Favicon -->
   <link rel="shortcut icon" type="image/png" href="image/logo_small.png">
+
   <meta name="google-signin-client_id" content="760560844994-04u6qkvpf481an26cnhkaauaf2dvjfk0.apps.googleusercontent.com">
   <script src='js/nprogress.js'></script>
   <link rel='stylesheet' href='css/nprogress.css'/>
@@ -45,7 +82,7 @@
           <li class="active"><a id="home_link" href="#home">Home</a></li>
           <li><a class="active" id="sharing_link" href="#sharing">Sharing</a></li>
           <li><a id="faq_link" href="#faq">FAQ</a></li>
-          <li><a id="map_link" href="#map">Authority Map</a></li>
+          <li><a id="map_link" href="#map">Map</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton">Sign in</button>
@@ -70,7 +107,7 @@
             <h4 class="modal-title" id="errorModalLabel">Error </h4>
           </div>
           <div class="modal-body" id="errorModalText">
-            There was an error processing your request: 
+            There was an error processing your request:
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -105,6 +142,7 @@
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+  <script src="http://leaflet.github.io/Leaflet.markercluster/dist/leaflet.markercluster.js"></script>
   <script src="js/main.js"></script>
   <!-- Google APIs -->
   <script src="https://apis.google.com/js/platform.js" async defer></script>

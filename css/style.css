@@ -6,8 +6,15 @@ body {
     padding: 15px 15px 15px 15px;
 }
 
-#map_container { height: 100%; padding-top: 10px; }
-#map { height: 100%; color: black;}
+#map_container {
+    height: 100%;
+    padding-top: 10px;
+}
+
+#map {
+    height: 100%;
+    color: black;
+}
 
 #content, html, body, #map_container, #map {
     height: 100%;
@@ -15,15 +22,15 @@ body {
 }
 
 .navbar-right {
-	margin-right: 0px;
+    margin-right: 0px;
 }
 
 .table_of_content {
-	margin-top: 10px;
+    margin-top: 10px;
 }
 
 .anchor {
-	padding-top: 65px;
-	margin-top: -65px;
-	display: inline-block;
+    padding-top: 65px;
+    margin-top: -65px;
+    display: inline-block;
 }
