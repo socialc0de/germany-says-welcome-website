@@ -10,7 +10,6 @@ function init() {
     $("#signInButton").text("Signing in ...");
     apisToLoad = 2;
     apiRoot = 'https://donate-backend.appspot.com/_ah/api';
-    //apiRoot = 'http://192.168.42.46:8080/_ah/api';
     gapi.client.load('donate', 'v1', loadCallback, apiRoot);
     gapi.client.load('oauth2', 'v2', loadCallback);
 }
@@ -62,6 +61,25 @@ $(document).ready(function() {
         var answered = form.find("#answered")[0].checked;
         var category = form.find("#category")[0].value;
         gapi.client.donate.faqitem.update({"id":id,"question":question, "answer":answer, "answered":answered, "language":language, "category":category}).execute(function(resp) {
+            NProgress.set(0.5);
+            if (!resp.code) {
+                showUnanswered();
+            } else {
+                console.log(resp);
+                $('#errorModalText').append(resp.message);
+                $('#errorModalLabel').append(resp.code);
+                $('#errorModal').modal();
+            }
+
+        });
+    });
+    $("#unanswered").on('click','#delete',function(e) {
+        $("#unanswered").html("");
+        //
+        var form = $(e.target).parent();
+        NProgress.start();
+        var id = form.find("#id")[0].value;
+        gapi.client.donate.faqitem.delete({"id":id}).execute(function(resp) {
             NProgress.set(0.5);
             if (!resp.code) {
                 showUnanswered();
@@ -156,8 +174,7 @@ function showUnanswered() {
                         html += cats_by_id[item.category].name;
                     }
                     html += postdrophtml;
-                    html += '<button class="btn btn-default" id="save">Save</button></form></div>';
-                    id = "#save"+index
+                    html += '<button class="btn btn-default" id="save">Save</button><button class="btn btn-default" id="delete">Delete</button></form></div>';
                 });
             } else {
                 html = "Couldn't load FAQ Items";

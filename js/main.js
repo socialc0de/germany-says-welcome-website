@@ -9,7 +9,6 @@ function init() {
     $("#signInButton").text("Signing in ...");
     apisToLoad = 2;
     apiRoot = 'https://donate-backend.appspot.com/_ah/api';
-    //apiRoot = 'http://192.168.42.46:8080/_ah/api';
     gapi.client.load('donate', 'v1', loadCallback, apiRoot);
     gapi.client.load('oauth2', 'v2', loadCallback);
 }
