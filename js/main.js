@@ -15,7 +15,7 @@ function init() {
 
 function signin(mode, authorizeCallback) {
     gapi.auth.authorize({client_id:"760560844994-04u6qkvpf481an26cnhkaauaf2dvjfk0.apps.googleusercontent.com",
-        scope: "profile", immediate: mode},
+        scope: ["https://www.googleapis.com/auth/plus.login", "https://www.googleapis.com/auth/userinfo.email"], immediate: mode},
         authorizeCallback);
 }
 
