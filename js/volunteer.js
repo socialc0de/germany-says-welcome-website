@@ -2,7 +2,9 @@ var cats;
 var items_by_cat = {};
 function init() {
     var apisToLoad;
+    NProgress.start();
     var loadCallback = function() {
+        
         if (--apisToLoad == 0) {
             signin(true, userAuthed);
         }
@@ -10,6 +12,7 @@ function init() {
     $("#signInButton").text("Signing in ...");
     apisToLoad = 2;
     apiRoot = 'https://donate-backend.appspot.com/_ah/api';
+    apiRoot = 'http://10.0.0.8:8080/_ah/api';
     gapi.client.load('donate', 'v1', loadCallback, apiRoot);
     gapi.client.load('oauth2', 'v2', loadCallback);
 }
@@ -19,13 +22,21 @@ function signin(mode, authorizeCallback) {
         authorizeCallback);
 }
 function userAuthed() {
+    NProgress.set(0.5);
     var request =
     gapi.client.oauth2.userinfo.get().execute(function(resp) {
         if (!resp.code) {
-
+            
             gapi.client.donate.user.create().execute(function(resp) {
                 if (!resp.code) {
-                    signedIn();
+                    console.log(resp)
+                    NProgress.set(1);
+                    if (resp.is_admin || resp.is_volunteer) {
+                        signedIn();
+                    } else {
+                        showUserNotVolunteerOrAdmin();
+                    }
+                    
                 }
             });
         }
@@ -185,4 +196,8 @@ function showUnanswered() {
         });
     });
 }
-jumpToPage();
+function showUserNotVolunteerOrAdmin() {
+    $('#errorModalText').text("Only admins und volunteers are allowed to change things in this area.");
+    $('#errorModalLabel').append("You are not allowed");
+    $('#errorModal').modal();
+}
