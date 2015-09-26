@@ -75,8 +75,8 @@ $(document).ready(function() {
                 showUnanswered();
             } else {
                 console.log(resp);
-                $('#errorModalText').append(resp.message);
-                $('#errorModalLabel').append(resp.code);
+                $('#errorModalText').text("Error: "+resp.message);
+                $('#errorModalLabel').append("Error Code "+resp.code);
                 $('#errorModal').modal();
             }
 
@@ -94,8 +94,8 @@ $(document).ready(function() {
                 showUnanswered();
             } else {
                 console.log(resp);
-                $('#errorModalText').append(resp.message);
-                $('#errorModalLabel').append(resp.code);
+                $('#errorModalText').text("Error: "+resp.message);
+                $('#errorModalLabel').append("Error Code "+resp.code);
                 $('#errorModal').modal();
             }
 
@@ -196,6 +196,6 @@ function showUnanswered() {
 }
 function showUserNotVolunteerOrAdmin() {
     $('#errorModalText').text("Only admins und volunteers are allowed to change things in this area.");
-    $('#errorModalLabel').append("You are not allowed");
+    $('#errorModalLabel').set("You are not allowed");
     $('#errorModal').modal();
 }

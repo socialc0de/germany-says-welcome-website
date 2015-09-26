@@ -69,8 +69,8 @@ $(document).ready(function() {
             NProgress.done();
             if (resp.code) {
                 console.log(resp);
-                $('#errorModalText').append(resp.message);
-                $('#errorModalLabel').append(resp.code);
+                $('#errorModalText').text("Error: "+resp.message);
+                $('#errorModalLabel').append("Error Code "+resp.code);
                 $('#errorModal').modal();
             }
         });
