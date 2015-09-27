@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html class="full" lang="en">
     <head>
@@ -9,21 +8,21 @@
         <meta name="description" content="The official Germany says Welcome Website">
         <meta name="keywords" lang="en-us" content="Refugees, #germanysayswelcome, Refugees Welcome">
         <meta name="keywords" lang="de" content="Flüchtlinge, Flüchtlingshilfe">
-        <meta name="robots" content="noindex, nofollow">
+        <meta name="google-signin-client_id" content="760560844994-04u6qkvpf481an26cnhkaauaf2dvjfk0.apps.googleusercontent.com">
 
         <title>Volunteers</title>
 
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
-        <link rel="stylesheet" href="css/style.css" />
-        <link rel="stylesheet" href="css/creative.css" />
-        <meta name="google-signin-client_id" content="760560844994-04u6qkvpf481an26cnhkaauaf2dvjfk0.apps.googleusercontent.com">
-        <script src='js/nprogress.js'></script>
-        <link rel='stylesheet' href='css/nprogress.css'/>
+        <link rel="stylesheet" href="third-party/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
+        <link rel="stylesheet" href="third-party/css/creative.css"/>
+
+        <script src='third-party/js/nprogress.js'></script>
+        <link rel='stylesheet' href='third-party/css/nprogress.css'/>
         <link rel="shortcut icon" type="image/png" href="image/logo_small.png">
         <!-- Plugin CSS -->
-        <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+        <link rel="stylesheet" href="third-party/css/animate.min.css" type="text/css">
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -56,11 +55,16 @@
                         <li><a id="unanswered_link" href="javascript:showUnanswered()">Unanswered Questions</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton">Sign in</button>
-                        <button type="button" style="display: none" onclick="deauth();" class="btn btn-default navbar-btn" id="signOutButton">Sign out</button>
+                        <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton">Sign in
+                        </button>
+                        <button type="button" style="display: none" onclick="deauth();" class="btn btn-default navbar-btn"
+                                id="signOutButton">Sign out
+                        </button>
                     </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
         </nav>
         <div id="content">
             <!-- Page Content -->
@@ -73,18 +77,27 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="errorModalLabel">Error </h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="errorModalLabel">
+                                Error
+                            </h4>
                         </div>
                         <div class="modal-body" id="errorModalText">
-                            There was an error processing your request: 
+                            There was an error processing your request:
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Close
+                            </button>
                         </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
         </div>
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -97,12 +110,11 @@
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src="https://apis.google.com/js/client.js?onload=init"></script>
         <!-- Plugin JavaScript -->
-        <script src="js/jquery.easing.min.js"></script>
-        <script src="js/jquery.fittext.js"></script>
-        <script src="js/wow.min.js"></script>
+        <script src="third-party/js/jquery.easing.min.js"></script>
+        <script src="third-party/js/jquery.fittext.js"></script>
+        <script src="third-party/js/wow.min.js"></script>
 
         <!-- Custom Theme JavaScript -->
-        <script src="js/creative.js"></script>
-
+        <script src="third-party/js/creative.js"></script>
     </body>
 </html>
