@@ -162,8 +162,8 @@ function loadMapData() {
   $.getJSON(authortiesUrl, function (data) {
     data.forEach(function (entry) {
       var popup = '<a href="geo:' + entry.location.lat + ', ' + entry.location.lng + '">' + entry.adresse + ' </a> <br />';
-      popup += entry.telefon ? '<i class="glyphicon glyphicon-phone-alt"></i> <a href="tel:+49' + entry.telefon + '">' + entry.telefon + '</a>' + '   ' : '';
-      popup += entry.fax ? '<i class="glyphicon glyphicon-print"></i> ' + entry.fax + '<br />' : '';
+      popup += entry.telefon ? '<i class="glyphicon glyphicon-phone-alt"></i><a href="tel:+49' + entry.telefon + '">' + entry.telefon + '</a>' + '   ' : '';
+      popup += entry.fax ? '<i class="glyphicon glyphicon-print"></i><a href="fax:+49' + entry.fax + '">' + entry.fax + '</a><br />' : '';
       popup += entry.offnungszeiten ? '<i class="glyphicon glyphicon glyphicon-time"></i> ' + entry.offnungszeiten + '<br />' : '';
       popup += entry.website ? '<i class="glyphicon glyphicon-info-sign"></i> <a href="http://' + entry.website + '">' + entry.website + '</a><br />' : '';
       popup += 'Data from <a href="http://www.amt-de.com">www.amt-de.com';
