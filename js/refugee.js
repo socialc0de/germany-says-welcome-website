@@ -50,45 +50,16 @@ function deauth() {
 function signedIn() {
   $("#signInButton").hide();
   $("#signOutButton").show();
-  jumpToPage();
 }
 
-function jumpToPage() {
-  var location = window.location.hash;
-  if (location.match("^#home")) {
-    $('nav').removeClass('fixed');
-    $('nav li.active').removeClass('active');
-    $('nav a#home_link').parent().addClass('active');
-    showHome();
-  }
-
-  if (location.match("^#faq")) {
-    $('nav').removeClass('fixed');
-    $('nav li.active').removeClass('active');
-    $('nav a#faq_link').parent().addClass('active');
-    loadFAQ();
-  }
-
-  if (location.match("^#sharing")) {
-    $('nav').removeClass('fixed');
-    $('nav li.active').removeClass('active');
-    $('nav a#sharing_link').parent().addClass('active');
-    loadSharing();
-  }
-
-  if (location.match("^#map")) {
-    $('nav').removeClass('fixed');
-    $('nav li.active').removeClass('active');
-    $('nav a#map_link').parent().addClass('active');
-    showMap();
-  }
-}
-
-function loadFAQ() {
+function showFAQ() {
   $("#home").hide();
   $("#sharing").hide();
   $("#faq").show();
   $("#map_container").hide();
+  $('nav').removeClass('fixed');
+  $('nav li.active').removeClass('active');
+  $('nav a#faq_link').parent().addClass('active');
   gapi.client.donate.faqcat.list().execute(function (cats) {
     gapi.client.donate.faqitem.list({"answered": true}).execute(function (items) {
       var items_by_cat = {};
@@ -154,6 +125,9 @@ function showSharing() {
   $("#sharing").show();
   $("#faq").hide();
   $("#map_container").hide();
+  $('nav').removeClass('fixed');
+  $('nav li.active').removeClass('active');
+  $('nav a#sharing_link').parent().addClass('active');
 }
 
 function showHome() {
@@ -161,6 +135,9 @@ function showHome() {
   $("#sharing").hide();
   $("#faq").hide();
   $("#map_container").hide();
+  $('nav').removeClass('fixed');
+  $('nav li.active').removeClass('active');
+  $('nav a#home_link').parent().addClass('active');
 }
 
 function showMap() {
@@ -168,6 +145,9 @@ function showMap() {
   $("#sharing").hide();
   $("#faq").hide();
   $("#map_container").show();
+  $('nav').removeClass('fixed');
+  $('nav li.active').removeClass('active');
+  $('nav a#map_link').parent().addClass('active');
   loadMapIfNeeded();
 }
 
@@ -254,10 +234,6 @@ function loadMapIfNeeded() {
 }
 
 $(document).ready(function () {
-  $(window).bind('hashchange', function (e) {
-    jumpToPage();
-  });
-
   $("#newQuestionModal").on('click', '#save', function (e) {
     console.log(e);
     //$("#unanswered").html("");
@@ -292,5 +268,3 @@ $(document).ready(function () {
 });
 
 $("#map_container").hide();
-
-jumpToPage();
