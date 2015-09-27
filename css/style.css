@@ -34,3 +34,7 @@ body {
     margin-top: -65px;
     display: inline-block;
 }
+#services, #contact {
+    background-color: #fff;
+    color: #333;
+}

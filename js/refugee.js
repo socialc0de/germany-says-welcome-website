@@ -117,6 +117,10 @@ function jumpToPage() {
         $('nav a#map_link').parent().addClass('active');
         showMap();
     }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 }
 
 function loadFAQ() {
