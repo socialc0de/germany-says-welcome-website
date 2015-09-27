@@ -110,7 +110,7 @@ $(document).ready(function() {
 
 function showHome() {
     $("#home").show();
-    $("#unanswered").hide();
+    $("#questions").hide();
 }
 
 function jumpToPage() {
@@ -122,24 +122,40 @@ function jumpToPage() {
         $('nav a#home_link').parent().addClass('active');
         showHome();
 	}
-
-    if (location.match("^#unanswered")) {
+    
+    if (location.match("^#questions")) {
         $('nav').removeClass('fixed');
         $('nav li.active').removeClass('active');
-        $('nav a#unanswered_link').parent().addClass('active');
+        $('nav a#question_link').parent().addClass('active');
+        showQuestions();
+    }
+    
+    if (location.match("^#unanswered")) {
+        $('nav-tabs').removeClass('fixed');
+        $('nav-tabs li.active').removeClass('active');
+        $('nav-tabs a#unanswered_link').parent().addClass('active');
         showUnanswered();
     }
-}
+    
+    if (location.match("^#answered")) {
+        $('nav-tabs').remove('fixed');
+        $('nav-tabs li.active').removeClass('active');
+        $('nav-tabs a#answered_link').parent().addClass('active');
+        showAnswered();
+    }
+
 /*function loadSharing() {
     $("#home").hide();
     $("#sharing").show();
     $("#faq").hide();
     $("#map_container").hide();
 }*/
+   
+}
 
 function showHome() {
     $("#home").show();
-    $("#unanswered").hide();
+    $("#questions").hide();
 }
 
 function showUnanswered() {
@@ -194,6 +210,19 @@ function showUnanswered() {
         });
     });
 }
+
+function showAnswered() {
+    $("#unanswered").hide();
+    $("#answered").show(); 
+}
+
+function showQuestions() {
+    $("#home").hide();
+    $("#questions").show();
+    $("#unanswered").show();
+    $("#answered").hide();
+}
+
 function showUserNotVolunteerOrAdmin() {
     $('#errorModalText').text("Only admins und volunteers are allowed to change things in this area.");
     $('#errorModalLabel').set("You are not allowed");
