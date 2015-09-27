@@ -52,8 +52,8 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li class="active"><a id="home_link" href="#home">Home</a></li>
-          <li><a id="unanswered_link" href="#unanswered">Unanswered Questions</a></li>
-          <li><a id="answered_link" href="#answered">Answered Questions</a></li>
+          <li><a id="answered_link" href="javascript:showAnswered()">Answered Questions</a></li>
+          <li><a id="unanswered_link" href="javascript:showUnanswered()">Unanswered Questions</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton">Sign in</button>
@@ -67,8 +67,8 @@
     <div class="content_wrapper" id="home">
       Welcome to Germany Says Welcome Volunteer Area
     </div>
-    <div class="content_wrapper" style="display:none" id="unanswered"></div>
     <div class="content_wrapper" style="display:none" id="answered"></div>
+    <div class="content_wrapper" style="display:none" id="unanswered"></div>
     <div class="modal fade" role="dialog" aria-labelledby="errorModalLabel" id="errorModal">
       <div class="modal-dialog" role="document">
         <div class="modal-content">

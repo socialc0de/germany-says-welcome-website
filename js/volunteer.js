@@ -52,14 +52,21 @@ function deauth() {
 function signedIn() {
     $("#signInButton").hide();
     $("#signOutButton").show();
-    jumpToPage();
 }
+
 $(document).ready(function() {
-    $(window).bind( 'hashchange', function(e) {
-        jumpToPage()
-    });
-    $("#save").on('click',function(e) {
-        $("#unanswered").html("");
+    setQuestionListener("#answered")
+    setQuestionListener("#unanswered")
+
+});
+
+function ucfirst(str) {
+    var firstLetter = str.substr(0, 1);
+    return firstLetter.toUpperCase() + str.substr(1);
+}
+function setQuestionListener(tag_id) {
+    $(tag_id).on('click', "#save", function(e) {
+        $(tag_id).html("");
         //
         var form = $(e.target).parent();
         NProgress.start();
@@ -72,7 +79,7 @@ $(document).ready(function() {
         gapi.client.donate.faqitem.update({"id":id,"question":question, "answer":answer, "answered":answered, "language":language, "category":category}).execute(function(resp) {
             NProgress.set(0.5);
             if (!resp.code) {
-                showUnanswered();
+                window["show"+ucfirst(tag_id.substring(1))]();
             } else {
                 console.log(resp);
                 $('#errorModalText').text("Error: "+resp.message);
@@ -82,8 +89,8 @@ $(document).ready(function() {
 
         });
     });
-    $("#delete").on('click',function(e) {
-        $("#unanswered").html("");
+    $(tag_id).on('click', "#delete", function(e) {
+        $(tag_id).html("");
         //
         var form = $(e.target).parent();
         NProgress.start();
@@ -91,7 +98,8 @@ $(document).ready(function() {
         gapi.client.donate.faqitem.delete({"id":id}).execute(function(resp) {
             NProgress.set(0.5);
             if (!resp.code) {
-                showUnanswered();
+                window["show"+tag_id.substring(1)]();
+                //showUnanswered();
             } else {
                 console.log(resp);
                 $('#errorModalText').text("Error: "+resp.message);
@@ -101,65 +109,28 @@ $(document).ready(function() {
 
         });
     });
-    $("#unanswered").on('click','.cat',function(e) {
+    $(tag_id).on('click','.cat',function(e) {
         var p = $(e.target).parent().parent().parent();
         p.find("#category").prop('value', e.target.id);
         p.find("#dropdownMenuTitle").text(e.target.textContent);
     });
-});
-
+}
 function showHome() {
     $("#home").show();
     $("#answered").hide();
     $("#unanswered").hide();
+    $('nav').removeClass('fixed');
+    $('nav li.active').removeClass('active');
+    $('nav a#home_link').parent().addClass('active');
 }
 
-function jumpToPage() {
-    var location = window.location.hash;
-
-    if (location.match("^#home")) {
-        $('nav').removeClass('fixed');
-        $('nav li.active').removeClass('active');
-        $('nav a#home_link').parent().addClass('active');
-        showHome();
-	}
-    
-    if (location.match("^#unanswered")) {
-        $('nav').removeClass('fixed');
-        $('nav li.active').removeClass('active');
-        $('nav a#unanswered_link').parent().addClass('active');
-        showUnanswered();
-    }
-    
-    if (location.match("^#answered")) {
-        $('nav').remove('fixed');
-        $('nav li.active').removeClass('active');
-        $('nav a#answered_link').parent().addClass('active');
-        showAnswered();
-    }
-
-/*function loadSharing() {
-    $("#home").hide();
-    $("#sharing").show();
-    $("#faq").hide();
-    $("#map_container").hide();
-}*/
-   
-}
-
-function showHome() {
-    $("#home").show();
-    $("#answered").hide();
-    $("#unanswered").hide();
-}
-
-function showUnanswered() {
+function loadQuestions(answered) {
+    $('nav').removeClass('fixed');
+    $('nav li.active').removeClass('active');
+    $('nav a'+(answered ? "#answered" : "#unanswered")+'_link').parent().addClass('active');
     if (NProgress.status == null) {
         NProgress.start();
     }
-    $("#home").hide();
-    $("#answered").hide();
-    $("#unanswered").show();
     gapi.client.donate.faqcat.list().execute(function(items){
         var predrophtml = '<div id="dropdown" class="dropdown"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuTitle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">';
         var postdrophtml = '</button><ul class="dropdown-menu" aria-labelledby="dropdownMenu1">';
@@ -173,11 +144,11 @@ function showUnanswered() {
         });
         postdrophtml += '</ul></div>';
         NProgress.set(0.75)
-        gapi.client.donate.faqitem.list({"answered":false}).execute(function(items) {
+        gapi.client.donate.faqitem.list({"answered":answered}).execute(function(items) {
             var html = "";
             if (items.items != undefined) {
                 items.items.forEach(function parseItems(item, index, all) {
-                    html += '<div class="jumbotron col-md-4"><form><div class="form-group"><label for="question">Question</label>';
+                    html += '<div class="jumbotron col-md-4"><div><div class="form-group"><label for="question">Question</label>';
                     html += '<input type="text" class="form-control" id="question" placeholder="Question" value="'+item.question+'"></div>';
                     html += '<div class="form-group"><label for="answer">Answer</label>';
                     html += '<input type="text" class="form-control" id="answer" placeholder="Answer" value="'+item.answer+'"></div>';
@@ -201,21 +172,27 @@ function showUnanswered() {
                 html = "Couldn't load FAQ Items";
             }
 
-            $("#unanswered").html(html);
+            $(answered ? "#answered" : "#unanswered").html(html);
             NProgress.done();
         });
     });
 }
+function showUnanswered() {
+    $("#home").hide();
+    $("#answered").hide();
+    $("#unanswered").show();
+    loadQuestions(false);
+}
 
 function showAnswered() {
     $("#home").hide();
+    $("#answered").show();
     $("#unanswered").hide();
-    $("#answered").show(); 
+    loadQuestions(true);
 }
 
 function showQuestions() {
     $("#home").hide();
-    $("#questions").show();
     $("#unanswered").show();
     $("#answered").hide();
 }
