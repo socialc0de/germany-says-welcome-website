@@ -213,13 +213,6 @@ function showAnswered() {
     $("#answered").show(); 
 }
 
-function showQuestions() {
-    $("#home").hide();
-    $("#questions").show();
-    $("#unanswered").show();
-    $("#answered").hide();
-}
-
 function showUserNotVolunteerOrAdmin() {
     $('#errorModalText').text("Only admins und volunteers are allowed to change things in this area.");
     $('#errorModalLabel').set("You are not allowed");
