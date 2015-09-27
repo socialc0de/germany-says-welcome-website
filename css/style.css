@@ -49,4 +49,9 @@ body {
 
 .dropbutton {
     background-color: #F05F40 !important;
+    color: #fff !important;
+}
+
+.dropbutton:active {
+    background-color: #375A7F !important;
 }
