@@ -174,7 +174,7 @@ function loadQuestions(answered) {
             html += cats_by_id[item.category].name;
           }
           html += postdrophtml;
-          html += '<button class="btn btn-default" id="save">Save</button><button class="btn btn-default" id="delete">Delete</button></div></div>';
+          html += '<button class="btn btn-default mybutton" id="save">Save</button><button class="btn btn-default mybutton" id="delete">Delete</button></div></div>';
         });
       } else {
         html = 'Couldn\'t load FAQ Items';
