@@ -140,7 +140,7 @@ function loadQuestions(answered) {
     NProgress.start();
   }
   gapi.client.donate.faqcat.list().execute(function (items) {
-    var predrophtml = '<div id="dropdown" class="dropdown"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuTitle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">';
+    var predrophtml = '<div id="dropdown" class="dropdown"><button class="btn btn-default dropdown-toggle dropbutton" type="button" id="dropdownMenuTitle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">';
     var postdrophtml = '</button><ul class="dropdown-menu" aria-labelledby="dropdownMenu1">';
     cats = items.items;
     cats_by_id = {};
@@ -174,7 +174,7 @@ function loadQuestions(answered) {
             html += cats_by_id[item.category].name;
           }
           html += postdrophtml;
-          html += '<button class="btn btn-default mybutton" id="save">Save</button><button class="btn btn-default mybutton" id="delete">Delete</button></div></div>';
+          html += '<button class="btn btn-default formbutton" id="save">Save</button><button class="btn btn-default formbutton" id="delete">Delete</button></div></div>';
         });
       } else {
         html = 'Couldn\'t load FAQ Items';
