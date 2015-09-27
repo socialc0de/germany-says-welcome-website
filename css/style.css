@@ -1,7 +1,9 @@
 body {
     padding-top: 50px;
 }
-
+#page-top {
+    padding-top: 0px;
+}
 .content_wrapper {
     padding: 15px 15px 15px 15px;
 }
