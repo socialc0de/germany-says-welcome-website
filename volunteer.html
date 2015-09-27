@@ -17,14 +17,23 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/creative.css" />
   <meta name="google-signin-client_id" content="760560844994-04u6qkvpf481an26cnhkaauaf2dvjfk0.apps.googleusercontent.com">
   <script src='js/nprogress.js'></script>
   <link rel='stylesheet' href='css/nprogress.css'/>
   <link rel="shortcut icon" type="image/png" href="image/logo_small.png">
+  <!-- Plugin CSS -->
+  <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body>
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -43,7 +52,12 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li class="active"><a id="home_link" href="#home">Home</a></li>
+<<<<<<< HEAD
           <li><a id="question_link" href="#questions">Questions</a></li>
+=======
+          <li><a id="unanswered_link" href="#unanswered">Unanswered Questions</a></li>
+          <li><a id="answered_link" href="#answered">Answered Questions</a></li>
+>>>>>>> bdce2b78059f8671deaf010d6dab51cd56bed9ef
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton">Sign in</button>
@@ -92,6 +106,13 @@
   <!-- Google APIs -->
   <script src="https://apis.google.com/js/platform.js" async defer></script>
   <script src="https://apis.google.com/js/client.js?onload=init"></script>
+  <!-- Plugin JavaScript -->
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/jquery.fittext.js"></script>
+  <script src="js/wow.min.js"></script>
+
+  <!-- Custom Theme JavaScript -->
+  <script src="js/creative.js"></script>
 
 </body>
 </html>

@@ -58,7 +58,7 @@ $(document).ready(function() {
     $(window).bind( 'hashchange', function(e) {
         jumpToPage()
     });
-    $("#unanswered").on('click','#save',function(e) {
+    $("#save").on('click',function(e) {
         $("#unanswered").html("");
         //
         var form = $(e.target).parent();
@@ -82,7 +82,7 @@ $(document).ready(function() {
 
         });
     });
-    $("#unanswered").on('click','#delete',function(e) {
+    $("#delete").on('click',function(e) {
         $("#unanswered").html("");
         //
         var form = $(e.target).parent();
@@ -199,7 +199,7 @@ function showUnanswered() {
                         html += cats_by_id[item.category].name;
                     }
                     html += postdrophtml;
-                    html += '<button class="btn btn-default" id="save">Save</button><button class="btn btn-default" id="delete">Delete</button></form></div>';
+                    html += '<button class="btn btn-default" id="save">Save</button><button class="btn btn-default" id="delete">Delete</button></div></div>';
                 });
             } else {
                 html = "Couldn't load FAQ Items";
