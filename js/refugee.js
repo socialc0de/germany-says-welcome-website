@@ -68,7 +68,7 @@ $(document).ready(function() {
         $("#newQuestionModal").modal('hide');
 
         var createItems = {"question":question, "answer":answer, "language":language, "category":category};
-        gapi.client.donate.faqitem.create({createItems).execute(function(resp) {
+        gapi.client.donate.faqitem.create(createItems).execute(function(resp) {
             NProgress.done();
             if (resp.code) {
                 console.log(resp);
