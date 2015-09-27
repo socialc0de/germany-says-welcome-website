@@ -1,108 +1,108 @@
 
 <!DOCTYPE html>
 <html class="full" lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <meta name="description" content="The official Germany says Welcome Website">
-  <meta name="keywords" lang="en-us" content="Refugees, #germanysayswelcome, Refugees Welcome">
-  <meta name="keywords" lang="de" content="Flüchtlinge, Flüchtlingshilfe">
-  <meta name="robots" content="noindex, nofollow">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="The official Germany says Welcome Website">
+        <meta name="keywords" lang="en-us" content="Refugees, #germanysayswelcome, Refugees Welcome">
+        <meta name="keywords" lang="de" content="Flüchtlinge, Flüchtlingshilfe">
+        <meta name="robots" content="noindex, nofollow">
 
-  <title>Volunteers</title>
+        <title>Volunteers</title>
 
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/creative.css" />
-  <meta name="google-signin-client_id" content="760560844994-04u6qkvpf481an26cnhkaauaf2dvjfk0.apps.googleusercontent.com">
-  <script src='js/nprogress.js'></script>
-  <link rel='stylesheet' href='css/nprogress.css'/>
-  <link rel="shortcut icon" type="image/png" href="image/logo_small.png">
-  <!-- Plugin CSS -->
-  <link rel="stylesheet" href="css/animate.min.css" type="text/css">
-      <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/creative.css" />
+        <meta name="google-signin-client_id" content="760560844994-04u6qkvpf481an26cnhkaauaf2dvjfk0.apps.googleusercontent.com">
+        <script src='js/nprogress.js'></script>
+        <link rel='stylesheet' href='css/nprogress.css'/>
+        <link rel="shortcut icon" type="image/png" href="image/logo_small.png">
+        <!-- Plugin CSS -->
+        <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
 
-<body>
-  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="index.html">
-          <img style="max-width:35px; margin-top: -7px;" alt="Germany Says Welcome" src="image/logo.png">
-        </a>
-      </div>
+    <body>
+        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <img style="max-width:35px; margin-top: -7px;" alt="Germany Says Welcome" src="image/logo.png">
+                    </a>
+                </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="active"><a id="home_link" href="#home">Home</a></li>
-          <li><a id="answered_link" href="javascript:showAnswered()">Answered Questions</a></li>
-          <li><a id="unanswered_link" href="javascript:showUnanswered()">Unanswered Questions</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton">Sign in</button>
-          <button type="button" style="display: none" onclick="deauth();" class="btn btn-default navbar-btn" id="signOutButton">Sign out</button>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
-  <div id="content">
-    <!-- Page Content -->
-    <div class="content_wrapper" id="home">
-      Welcome to Germany Says Welcome Volunteer Area
-    </div>
-    <div class="content_wrapper" style="display:none" id="answered"></div>
-    <div class="content_wrapper" style="display:none" id="unanswered"></div>
-    <div class="modal fade" role="dialog" aria-labelledby="errorModalLabel" id="errorModal">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="errorModalLabel">Error </h4>
-          </div>
-          <div class="modal-body" id="errorModalText">
-            There was an error processing your request: 
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-  </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a id="home_link" href="#home">Home</a></li>
+                        <li><a id="answered_link" href="javascript:showAnswered()">Answered Questions</a></li>
+                        <li><a id="unanswered_link" href="javascript:showUnanswered()">Unanswered Questions</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton">Sign in</button>
+                        <button type="button" style="display: none" onclick="deauth();" class="btn btn-default navbar-btn" id="signOutButton">Sign out</button>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div id="content">
+            <!-- Page Content -->
+            <div class="content_wrapper" id="home">
+                Welcome to Germany Says Welcome Volunteer Area
+            </div>
+            <div class="content_wrapper" style="display:none" id="answered"></div>
+            <div class="content_wrapper" style="display:none" id="unanswered"></div>
+            <div class="modal fade" role="dialog" aria-labelledby="errorModalLabel" id="errorModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="errorModalLabel">Error </h4>
+                        </div>
+                        <div class="modal-body" id="errorModalText">
+                            There was an error processing your request: 
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+        </div>
 
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <!-- Include all compiled plugins (below), or include individual files as needed -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
-  <script src="js/volunteer.js"></script>
-  <!-- Google APIs -->
-  <script src="https://apis.google.com/js/platform.js" async defer></script>
-  <script src="https://apis.google.com/js/client.js?onload=init"></script>
-  <!-- Plugin JavaScript -->
-  <script src="js/jquery.easing.min.js"></script>
-  <script src="js/jquery.fittext.js"></script>
-  <script src="js/wow.min.js"></script>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+        <script src="js/volunteer.js"></script>
+        <!-- Google APIs -->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src="https://apis.google.com/js/client.js?onload=init"></script>
+        <!-- Plugin JavaScript -->
+        <script src="js/jquery.easing.min.js"></script>
+        <script src="js/jquery.fittext.js"></script>
+        <script src="js/wow.min.js"></script>
 
-  <!-- Custom Theme JavaScript -->
-  <script src="js/creative.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="js/creative.js"></script>
 
-</body>
+    </body>
 </html>
