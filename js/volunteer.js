@@ -110,7 +110,8 @@ $(document).ready(function() {
 
 function showHome() {
     $("#home").show();
-    $("#questions").hide();
+    $("#answered").hide();
+    $("#unanswered").hide();
 }
 
 function jumpToPage() {
@@ -123,24 +124,17 @@ function jumpToPage() {
         showHome();
 	}
     
-    if (location.match("^#questions")) {
+    if (location.match("^#unanswered")) {
         $('nav').removeClass('fixed');
         $('nav li.active').removeClass('active');
-        $('nav a#question_link').parent().addClass('active');
-        showQuestions();
-    }
-    
-    if (location.match("^#unanswered")) {
-        $('nav-tabs').removeClass('fixed');
-        $('nav-tabs li.active').removeClass('active');
-        $('nav-tabs a#unanswered_link').parent().addClass('active');
+        $('nav a#unanswered_link').parent().addClass('active');
         showUnanswered();
     }
     
     if (location.match("^#answered")) {
-        $('nav-tabs').remove('fixed');
-        $('nav-tabs li.active').removeClass('active');
-        $('nav-tabs a#answered_link').parent().addClass('active');
+        $('nav').remove('fixed');
+        $('nav li.active').removeClass('active');
+        $('nav a#answered_link').parent().addClass('active');
         showAnswered();
     }
 
@@ -155,7 +149,8 @@ function jumpToPage() {
 
 function showHome() {
     $("#home").show();
-    $("#questions").hide();
+    $("#answered").hide();
+    $("#unanswered").hide();
 }
 
 function showUnanswered() {
@@ -163,6 +158,7 @@ function showUnanswered() {
         NProgress.start();
     }
     $("#home").hide();
+    $("#answered").hide();
     $("#unanswered").show();
     gapi.client.donate.faqcat.list().execute(function(items){
         var predrophtml = '<div id="dropdown" class="dropdown"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuTitle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">';
@@ -212,6 +208,7 @@ function showUnanswered() {
 }
 
 function showAnswered() {
+    $("#home").hide();
     $("#unanswered").hide();
     $("#answered").show(); 
 }
