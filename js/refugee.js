@@ -149,7 +149,7 @@ function loadFAQ() {
   });
 }
 
-function loadSharing() {
+function showSharing() {
   $("#home").hide();
   $("#sharing").show();
   $("#faq").hide();
