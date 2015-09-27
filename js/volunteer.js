@@ -11,18 +11,24 @@ function signin(mode, authorizeCallback) {
 }
 
 function userAuthed() {
+  NProgress.set(0.5);
   var request =
-    gapi.client.oauth2.userinfo.get().execute(function (resp) {
-      if (!resp.code) {
-        gapi.client.donate.user.create().execute(function (resp) {
-          if (!resp.code) {
+  gapi.client.oauth2.userinfo.get().execute(function(resp) {
+    if (!resp.code) {
+      gapi.client.donate.user.create().execute(function(resp) {
+        if (!resp.code) {
+          console.log(resp)
+          NProgress.set(1);
+          if (resp.is_admin || resp.is_volunteer) {
             signedIn();
+          } else {
+            showUserNotVolunteerOrAdmin();
           }
-        });
-      }
-    });
+        }
+      });
+    }
+  });
 }
-
 function init() {
   var apisToLoad;
   NProgress.start();
