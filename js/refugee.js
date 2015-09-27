@@ -15,8 +15,12 @@ function userAuthed() {
       gapi.client.donate.user.create().execute(function (resp) {
         if (!resp.code) {
           signedIn();
+        } else {
+          deauth();
         }
       });
+    } else {
+      deauth();
     }
   });
 }
