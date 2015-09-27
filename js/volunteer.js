@@ -24,8 +24,12 @@ function userAuthed() {
           } else {
             showUserNotVolunteerOrAdmin();
           }
+        }  else {
+          deauth();
         }
       });
+    } else {
+      deauth();
     }
   });
 }
