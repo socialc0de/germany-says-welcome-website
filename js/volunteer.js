@@ -191,12 +191,6 @@ function showAnswered() {
     loadQuestions(true);
 }
 
-function showQuestions() {
-    $("#home").hide();
-    $("#unanswered").show();
-    $("#answered").hide();
-}
-
 function showUserNotVolunteerOrAdmin() {
     $('#errorModalText').text("Only admins und volunteers are allowed to change things in this area.");
     $('#errorModalLabel').set("You are not allowed");
