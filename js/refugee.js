@@ -185,7 +185,7 @@ function loadMapData() {
   //load wifi hotspots
   $.ajax({
     type: "GET",
-    url: "http://www.freifunk-karte.de/fetch.php?content=gpxfile",
+    url: "/wifispots.gpx",
     dataType: "xml",
     success: function (xml) {
       $(xml).find("wpt").each(function () {
@@ -361,7 +361,7 @@ function showDetails(id) {
       html += "</ul></div>"
       $("#sharing_details").html(html);
       $('#images').slideme();
-      
+
     } else {
       $('#errorModalText').text("Error: " + resp.message);
       $('#errorModalLabel').text("Error Code " + resp.code);
