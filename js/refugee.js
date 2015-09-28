@@ -185,7 +185,7 @@ function loadMapData() {
   //load wifi hotspots
   $.ajax({
     type: "GET",
-    url: "/wifispots.gpx",
+    url: "http://www.freifunk-karte.de/fetch.php?content=gpxfile",
     dataType: "xml",
     success: function (xml) {
       $(xml).find("wpt").each(function () {
@@ -348,20 +348,17 @@ function showDetails(id) {
     console.log(resp);
     NProgress.done();
     if (!resp.code) {
-      $("#sharingmap").hide();
+      $("#sharing").hide();
       $("#sharing_details").html("");
       $("#sharing_details").show();
-      var html = '<div id="images"><ul class="slideme">';
+      var html = '';
       if (resp.image_urls.length >= 1) {
         resp.image_urls.forEach(function addImage(imageUrl) {
-          html += '<li><img src="' + imageUrl + '"/></li>';
-          html += '<li><img src="' + imageUrl + '"/></li>';
+          html += '<img src="' + imageUrl + '"/>';
         });
       }
-      html += "</ul></div>"
       $("#sharing_details").html(html);
-      $('#images').slideme();
-
+      
     } else {
       $('#errorModalText').text("Error: " + resp.message);
       $('#errorModalLabel').text("Error Code " + resp.code);
