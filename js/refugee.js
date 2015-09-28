@@ -1,5 +1,6 @@
 var map;
-
+var sharingMap;
+var sharingLayer;
 function signin(mode, authorizeCallback) {
   gapi.auth.authorize({
       client_id: "760560844994-04u6qkvpf481an26cnhkaauaf2dvjfk0.apps.googleusercontent.com",
@@ -132,6 +133,7 @@ function showSharing() {
   $('nav').removeClass('fixed');
   $('nav li.active').removeClass('active');
   $('nav a#sharing_link').parent().addClass('active');
+  loadSharingMapIfNeeded();
 }
 
 function showHome() {
@@ -155,11 +157,14 @@ function showMap() {
   loadMapIfNeeded();
 }
 
-function onLocationFound(e) {
+function onMapLocationFound(e) {
   var radius = e.accuracy / 2;
   L.circle(e.latlng, radius).addTo(map);
 }
-
+function onSharingLocationFound(e) {
+  var radius = e.accuracy / 2;
+  L.circle(e.latlng, radius).addTo(sharingMap);
+}
 function loadMapData() {
   //load authorities
   var authortiesUrl = 'https://raw.githubusercontent.com/germany-says-welcome/refugees-welcome-app/master/app/src/main/assets/authorities.json';
@@ -227,7 +232,7 @@ function loadMap() {
 
   map.locate({setView: true, maxZoom: 16});
   //switch to current gps position if found
-  map.on('locationfound', onLocationFound);
+  map.on('locationfound', onMapLocationFound);
   loadMapData();
 }
 
@@ -237,6 +242,73 @@ function loadMapIfNeeded() {
   }
 }
 
+function loadSharingMap() {
+  //cologne as default location
+  sharingMap = L.map('sharingmap', {
+    center: [50.9485795, 6.9448561],
+    //default zoom state
+    zoom: 13,
+  });
+
+  mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+  L.tileLayer(
+    'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; ' + mapLink + ' Contributors',
+      maxZoom: 18
+    }).addTo(sharingMap);
+
+  sharingMap.locate({setView: true, maxZoom: 16});
+  //switch to current gps position if found
+  sharingMap.on('locationfound', onSharingLocationFound);
+  sharingMap.on('load', function(e) {
+    requestUpdatedPets(e.target.getBounds());
+  });
+  loadSharingMapData();
+}
+
+function loadSharingMapIfNeeded() {
+  if (sharingMap === undefined) {
+    loadSharingMap();
+  }
+}
+function requestUpdatedPets(bounds) {
+  if (NProgress.status == null) {
+    NProgress.start();
+  }
+  var bbox = bounds._southWest.lng + ',' + bounds._southWest.lat + ',' + bounds._northEast.lng + ',' + bounds._northEast.lat;
+  gapi.client.donate.offer.list_near({"bbox":bbox}).execute(function (resp) {
+    console.log(resp);
+    NProgress.done();
+    if (!resp.code) {
+      resp.items.forEach(function parseItems(item) {
+        if (sharingLayer != undefined) {
+          sharingMap.removeLayer(sharingLayer);
+        }
+        sharingLayer = new L.FeatureGroup();
+        console.log(item);
+        var popup = "<h4>" + item.title + "</h4>";
+        popup += "<h5>" + item.subtitle + "</h5>";
+        if (item.image_urls.length >= 1) {
+          item.image_urls.forEach(function addImage(imageUrl) {
+            popup += '<img height=200 src="' + imageUrl + '">';
+          });
+        }
+        popup += '<p><a href="javascript:showDetails(' + item.id + ')">Show more</a>';
+        L.marker([item.lat, item.lon]).addTo(sharingLayer).bindPopup(popup);
+      });
+      sharingMap.addLayer(sharingLayer);
+    } else {
+      $('#errorModalText').text("Error: " + resp.message);
+      $('#errorModalLabel').text("Error Code " + resp.code);
+      $('#errorModal').modal();
+    }
+  });
+}
+function loadSharingMapData() {
+  sharingMap.on('moveend', function(e) {
+    requestUpdatedPets(e.target.getBounds());
+  });
+}
 $(document).ready(function () {
   $("#newQuestionModal").on('click', '#save', function (e) {
     console.log(e);
@@ -256,7 +328,7 @@ $(document).ready(function () {
       if (resp.code) {
         console.log(resp);
         $('#errorModalText').text("Error: " + resp.message);
-        $('#errorModalLabel').append("Error Code " + resp.code);
+        $('#errorModalLabel').text("Error Code " + resp.code);
         $('#errorModal').modal();
       }
     });
@@ -270,5 +342,34 @@ $(document).ready(function () {
     p.find("#dropdownMenuTitle").text(e.target.textContent);
   });
 });
+function showDetails(id) {
+  console.log(id);
+  gapi.client.donate.offer.get({"id":id}).execute(function (resp) {
+    console.log(resp);
+    NProgress.done();
+    if (!resp.code) {
+      $("#sharingmap").hide();
+      $("#sharing_details").html("");
+      $("#sharing_details").show();
+      var html = '<div id="images"><ul class="slideme">';
+      if (resp.image_urls.length >= 1) {
+        resp.image_urls.forEach(function addImage(imageUrl) {
+          html += '<li><img src="' + imageUrl + '"/></li>';
+          html += '<li><img src="' + imageUrl + '"/></li>';
+        });
+      }
+      html += "</ul></div>"
+      $("#sharing_details").html(html);
+      $('#images').slideme();
+      
+    } else {
+      $('#errorModalText').text("Error: " + resp.message);
+      $('#errorModalLabel').text("Error Code " + resp.code);
+      $('#errorModal').modal();
+    }
+  });
+
+}
 
 $("#map_container").hide();
+$("#sharing").hide();

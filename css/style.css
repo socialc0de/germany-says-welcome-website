@@ -7,6 +7,15 @@ body {
 .content_wrapper {
     padding: 15px 15px 15px 15px;
 }
+#sharing {
+    height: 100%;
+    padding-top: 10px;
+}
+
+#sharingmap {
+    height: 100%;
+    color: black;
+}
 
 #map_container {
     height: 100%;
