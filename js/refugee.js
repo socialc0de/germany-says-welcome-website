@@ -60,6 +60,7 @@ function signedIn() {
 function showFAQ() {
   $("#home").hide();
   $("#sharing").hide();
+  $("#sharing_details").hide();
   $("#faq").show();
   $("#map_container").hide();
   $('nav').removeClass('fixed');
@@ -139,6 +140,7 @@ function showSharing() {
 function showHome() {
   $("#home").show();
   $("#sharing").hide();
+  $("#sharing_details").hide();
   $("#faq").hide();
   $("#map_container").hide();
   $('nav').removeClass('fixed');
@@ -149,6 +151,7 @@ function showHome() {
 function showMap() {
   $("#home").hide();
   $("#sharing").hide();
+  $("#sharing_details").hide();
   $("#faq").hide();
   $("#map_container").show();
   $('nav').removeClass('fixed');
@@ -370,3 +373,4 @@ function showDetails(id) {
 
 $("#map_container").hide();
 $("#sharing").hide();
+$("#sharing_details").hide();
