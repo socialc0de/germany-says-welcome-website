@@ -188,7 +188,7 @@ function loadMapData() {
   //load wifi hotspots
   $.ajax({
     type: "GET",
-    url: "http://www.freifunk-karte.de/fetch.php?content=gpxfile",
+    url: "https://raw.githubusercontent.com/socialc0de/germany-says-welcome-website/master/wifispots.gpx",
     dataType: "xml",
     success: function (xml) {
       $(xml).find("wpt").each(function () {
