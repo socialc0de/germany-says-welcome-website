@@ -64,3 +64,11 @@ body {
 .dropbutton:active {
     background-color: #375A7F !important;
 }
+#left_col {
+   float:left;
+   width:50%;
+}
+#right_col {
+   float:right;
+   width:50%;
+}

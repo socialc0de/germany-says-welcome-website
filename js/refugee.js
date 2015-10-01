@@ -60,6 +60,7 @@ function signedIn() {
 function showFAQ() {
   $("#home").hide();
   $("#sharing").hide();
+  $("#sharing_details").hide();
   $("#faq").show();
   $("#map_container").hide();
   $('nav').removeClass('fixed');
@@ -139,6 +140,7 @@ function showSharing() {
 function showHome() {
   $("#home").show();
   $("#sharing").hide();
+  $("#sharing_details").hide();
   $("#faq").hide();
   $("#map_container").hide();
   $('nav').removeClass('fixed');
@@ -149,6 +151,7 @@ function showHome() {
 function showMap() {
   $("#home").hide();
   $("#sharing").hide();
+  $("#sharing_details").hide();
   $("#faq").hide();
   $("#map_container").show();
   $('nav').removeClass('fixed');
@@ -185,7 +188,7 @@ function loadMapData() {
   //load wifi hotspots
   $.ajax({
     type: "GET",
-    url: "http://www.freifunk-karte.de/fetch.php?content=gpxfile",
+    url: "https://raw.githubusercontent.com/socialc0de/germany-says-welcome-website/master/wifispots.gpx",
     dataType: "xml",
     success: function (xml) {
       $(xml).find("wpt").each(function () {
@@ -312,8 +315,6 @@ function loadSharingMapData() {
 $(document).ready(function () {
   $("#newQuestionModal").on('click', '#save', function (e) {
     console.log(e);
-    //$("#unanswered").html("");
-    //
     var form = $(e.target).parent().parent();
     NProgress.start();
     var question = form.find("#question_text")[0].value;
@@ -351,12 +352,17 @@ function showDetails(id) {
       $("#sharing").hide();
       $("#sharing_details").html("");
       $("#sharing_details").show();
-      var html = '';
+      var html = '<div id="left_col"><h1>' + resp.title + '</h1>';
+      html += '<h4>' + resp.subtitle + '</h4>';
+      html += '<section style="padding:0"><p>' + resp.description + '</p>';
+      html += '<a class="btn btn-default" href="javascript:showMap()">Contact</a></section></div>';
+      html += '<div id="right_col">';
       if (resp.image_urls.length >= 1) {
         resp.image_urls.forEach(function addImage(imageUrl) {
-          html += '<img src="' + imageUrl + '"/>';
+          html += '<figure><img src="' + imageUrl + '"></figure>';
         });
       }
+      html += '</div>';
       $("#sharing_details").html(html);
       
     } else {
@@ -370,3 +376,4 @@ function showDetails(id) {
 
 $("#map_container").hide();
 $("#sharing").hide();
+$("#sharing_details").hide();
