@@ -195,10 +195,7 @@ function loadMapData() {
         var longitude = $(this).attr("lon");
         var latitude = $(this).attr("lat");
         var name = $(this).find("name").first().text();
-
-        var marker = L.marker([latitude, longitude]);
-        marker.bindPopup(name);
-        wifi.addLayer(marker);
+        var marker = L.marker([latitude, longitude]).addTo(wifi).bindPopup(name);
       });
     }
   });
@@ -206,7 +203,7 @@ function loadMapData() {
 
 function loadMap() {
   //create layer groups in order to be accessible from loadMapData
-  authorities = L.layerGroup();
+  authorities = L.markerClusterGroup();
   wifi = L.markerClusterGroup();
 
   //cologne as default location
@@ -215,7 +212,8 @@ function loadMap() {
     //default zoom state
     zoom: 13,
     //just use authorities as default layer
-    layers: [authorities]
+    layers: [authorities],
+    maxZoom: 18
   });
 
   //selectable layers
@@ -264,7 +262,7 @@ function loadSharingMap() {
   //switch to current gps position if found
   sharingMap.on('locationfound', onSharingLocationFound);
   sharingMap.on('load', function(e) {
-    requestUpdatedPets(e.target.getBounds());
+    requestUpdatedOffers(e.target.getBounds());
   });
   loadSharingMapData();
 }
@@ -274,7 +272,7 @@ function loadSharingMapIfNeeded() {
     loadSharingMap();
   }
 }
-function requestUpdatedPets(bounds) {
+function requestUpdatedOffers(bounds) {
   if (NProgress.status == null) {
     NProgress.start();
   }
@@ -309,7 +307,7 @@ function requestUpdatedPets(bounds) {
 }
 function loadSharingMapData() {
   sharingMap.on('moveend', function(e) {
-    requestUpdatedPets(e.target.getBounds());
+    requestUpdatedOffers(e.target.getBounds());
   });
 }
 $(document).ready(function () {
@@ -355,8 +353,12 @@ function showDetails(id) {
       var html = '<div id="left_col"><h1>' + resp.title + '</h1>';
       html += '<h4>' + resp.subtitle + '</h4>';
       html += '<section style="padding:0"><p>' + resp.description + '</p>';
-      html += '<a class="btn btn-default" href="javascript:showMap()">Contact</a></section></div>';
-      html += '<div id="right_col">';
+      im_data = JSON.parse(resp.owner.im);
+      for (contactData in im_data) {
+        html += '<a class="btn btn-default" href="'+ im_data[contactData]['url'] +'">'+im_data[contactData]['display']+'</a>';
+        console.log(im_data[contactData]);
+      };
+      html += '</section></div><div id="right_col">';
       if (resp.image_urls.length >= 1) {
         resp.image_urls.forEach(function addImage(imageUrl) {
           html += '<figure><img src="' + imageUrl + '"></figure>';
@@ -373,7 +375,6 @@ function showDetails(id) {
   });
 
 }
-
 $("#map_container").hide();
 $("#sharing").hide();
 $("#sharing_details").hide();
