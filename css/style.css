@@ -48,7 +48,7 @@ body {
 
 #services, #contact {
     background-color: #fff;
-    color: #333;
+    color: #1F4788;
 }
 
 .formbutton {
@@ -57,7 +57,7 @@ body {
 }
 
 .dropbutton {
-    background-color: #F05F40 !important;
+    background-color: #FF4081 !important;
     color: #fff !important;
 }
 
