@@ -46,6 +46,11 @@ body {
     display: inline-block;
 }
 
+.alias
+{
+    cursor: alias;
+}
+
 #services, #contact {
     background-color: #fff;
     color: #1F4788;
