@@ -19,11 +19,11 @@
         <link rel="stylesheet" href="third-party/css/animate.min.css" type="text/css">
 
         <!--Map styles-->
-        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
-        <link rel="stylesheet" href="http://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.css" />
-        <link rel="stylesheet" href="http://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.Default.css" />
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css"/>
+        <link rel="stylesheet" href="http://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.css"/>
+        <link rel="stylesheet" href="http://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.Default.css"/>
 
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/style.css"/>
 
         <!-- Icons -->
 
@@ -84,10 +84,14 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton">Sign in</button>
+                            <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton">
+                                Sign in
+                            </button>
                         </li>
                         <li>
-                            <button type="button" style="display: none" onclick="deauth();" class="btn btn-default navbar-btn" id="signOutButton">Sign out</button>
+                            <button type="button" style="display: none" onclick="deauth();" class="btn btn-default navbar-btn" id="signOutButton">
+                                Sign out
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -98,15 +102,20 @@
             <div class="content_wrapper" id="home">
                 Welcome to Germany Says Welcome
             </div>
-            <div id="sharing"><div id="sharingmap"></div></div>
+            <div id="sharing">
+                <div id="sharingmap"></div>
+            </div>
             <div style="display:none" id="sharing_details"></div>
             <div class="content_wrapper" id="faq"></div>
-            <div id="map_container"><div id="map"></div></div>
+            <div id="map_container">
+                <div id="map"></div>
+            </div>
             <div class="modal fade" role="dialog" aria-labelledby="errorModalLabel" id="errorModal">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="errorModalLabel">Error </h4>
                         </div>
                         <div class="modal-body" id="errorModalText">
@@ -122,13 +131,20 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="newQuestionModalLabel">Ask a Question</h4>
                         </div>
                         <div class="modal-body" id="newQuestionModalText">
-                            <div class="form-group"><label for="question_text">Question</label><input type="text" class="form-control" id="question_text" placeholder="Question"></div>
-                            <div class="form-group"><label for="question_text">Answer</label><input type="text" class="form-control" id="answer_text" placeholder="Answer (if known)"></div>
-                            <div class="form-group"><label for="language_code">Language-Code</label><input type="text" class="form-control" id="language_code" placeholder="Language-Code (two letters)"></div>
+                            <div class="form-group">
+                                <label for="question_text">Question</label><input type="text" class="form-control" id="question_text" placeholder="Question">
+                            </div>
+                            <div class="form-group">
+                                <label for="question_text">Answer</label><input type="text" class="form-control" id="answer_text" placeholder="Answer (if known)">
+                            </div>
+                            <div class="form-group">
+                                <label for="language_code">Language-Code</label><input type="text" class="form-control" id="language_code" placeholder="Language-Code (two letters)">
+                            </div>
                             <input type="hidden" id="category">
                         </div>
                         <div class="modal-footer">
@@ -145,7 +161,6 @@
         <script src="third-party/js/jquery.easing.min.js"></script>
         <script src="third-party/js/jquery.fittext.js"></script>
         <script src="third-party/js/wow.min.js"></script>
-        <script src="third-party/js/bootstrap.min.js"></script>
         <script src="third-party/js/creative.js"></script>
         <script src='third-party/js/nprogress.js'></script>
 
