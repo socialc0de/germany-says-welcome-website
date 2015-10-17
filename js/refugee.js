@@ -42,7 +42,9 @@ function init() {
 }
 
 function auth() {
-  signin(false, userAuthed);
+  //signin(false, userAuthed);
+  // TMP Fix, init() doesn't get called by client.js
+  init()
 }
 
 function deauth() {
