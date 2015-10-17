@@ -150,7 +150,7 @@
             <div class="container-fluid">
                 <div class="row no-gutter">
                     <div class="col-lg-4 col-sm-6">
-                        <a href="https://betas.to/urYFKbzW" target="_blank" class="portfolio-box">
+                        <a href="https://betas.to/m4pnxorB" target="_blank" class="portfolio-box">
                             <img src="image/portfolio/1.jpg" class="img-responsive" alt="">
 
                             <div class="portfolio-box-caption alias">
@@ -262,19 +262,19 @@
                     detectLngQS: 'lang'
                 };
 
-                $.data-i18n.init(option)
+                $.i18n.init(option)
                         .done(function () {
-                            $('[data-data-i18n]').data-i18n();
+                            $('[data-i18n]').i18n();
                         })
                         .fail(function () {
-                            $('[data-data-i18n]').data-i18n();
+                            $('[data-i18n]').i18n();
                         });
 
 
                 $('#lang-select li[lang]').on('click', function() {
                     var lang = $(this).attr('lang');
-                    $.data-i18n.setLng(lang, function(){
-                        $('[data-data-i18n]').data-i18n();
+                    $.i18n.setLng(lang, function(){
+                        $('[data-i18n]').i18n();
                     });
                 });
             });
