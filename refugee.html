@@ -36,7 +36,7 @@
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
+                        <span class="sr-only" data-i18n="refugee:toggle-navi">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -49,19 +49,27 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a id="home_link" href="javascript:showHome();">Home</a></li>
-                        <li><a id="sharing_link" href="javascript:showSharing();">Sharing</a></li>
-                        <li><a id="faq_link" href="javascript:showFAQ();">FAQ</a></li>
-                        <li><a id="map_link" href="javascript:showMap();">Map</a></li>
+                        <li class="active"><a id="home_link" href="javascript:showHome();" data-i18n="refugee:home">Home</a></li>
+                        <li><a id="sharing_link" href="javascript:showSharing();" data-i18n="refugee:sharing">Sharing</a></li>
+                        <li><a id="faq_link" href="javascript:showFAQ();" data-i18n="refugee:faq">FAQ</a></li>
+                        <li><a id="map_link" href="javascript:showMap();" data-i18n="refugee:map">Map</a></li>
+                        <li class="dropdown" id="lang-select">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false"><span class="glyphicon glyphicon-globe"></span></a>
+                            <ul class="dropdown-menu">
+                                <li lang="de"><a href="#">Deutsch</a></li>
+                                <li lang="en"><a href="#">English</a></li>
+                            </ul>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton">
+                            <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton" data-i18n="refugee:SignIn-Btn">
                                 Sign in
                             </button>
                         </li>
                         <li>
-                            <button type="button" style="display: none" onclick="deauth();" class="btn btn-default navbar-btn" id="signOutButton">
+                            <button type="button" style="display: none" onclick="deauth();" class="btn btn-default navbar-btn" id="signOutButton" data-i18n="refugee:SignOut-Btn">
                                 Sign out
                             </button>
                         </li>
@@ -71,7 +79,7 @@
         </nav>
         <div id="content">
             <!-- Page Content -->
-            <div class="content_wrapper" id="home">
+            <div class="content_wrapper" id="home" data-i18n="refugee:welcome-text">
                 Welcome to Germany Says Welcome
             </div>
             <div id="sharing">
@@ -90,7 +98,7 @@
                                 <span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="errorModalLabel">Error </h4>
                         </div>
-                        <div class="modal-body" id="errorModalText">
+                        <div class="modal-body" id="errorModalText" data-i18n="refugee:error-request">
                             There was an error processing your request:
                         </div>
                         <div class="modal-footer">
@@ -105,7 +113,7 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="newQuestionModalLabel">Ask a Question</h4>
+                            <h4 class="modal-title" id="newQuestionModalLabel" data-i18n="refugee:ask-question">Ask a Question</h4>
                         </div>
                         <div class="modal-body" id="newQuestionModalText">
                             <div class="form-group">
@@ -139,10 +147,13 @@
         <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
         <script src="http://leaflet.github.io/Leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 
+        <script src="third-party/js/bootstrap.min.js" type="text/javascript"></script>
+
         <!-- Google APIs -->
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src="https://apis.google.com/js/client.js?onload=init"></script>
 
         <script src="js/refugee.js"></script>
+        <script src="third-party/js/i18next.js"></script>
     </body>
 </html>
