@@ -3,3 +3,6 @@
 
 # Windows image file caches
 Thumbs.db
+
+# Jetbrains...
+.idea

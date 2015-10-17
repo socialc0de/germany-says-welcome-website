@@ -48,12 +48,17 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a class="page-scroll" href="#about">About</a></li>
-                        <li><a class="page-scroll" href="#services">Features</a></li>
-                        <!--<li>
-                                            <a class="page-scroll" href="#portfolio">Portfolio</a>
-                                        </li>-->
-                        <li><a class="page-scroll" href="#contact">Contact</a></li>
+                        <li><a class="page-scroll" href="#about" data-i18n="index:about">About</a></li>
+                        <li><a class="page-scroll" href="#services" data-i18n="index:features">Features</a></li>
+                        <li><a class="page-scroll" href="#contact" data-i18n="index:contact">Contact</a></li>
+                        <li class="dropdown" id="lang-select">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false"><span class="glyphicon glyphicon-globe"></span></a>
+                            <ul class="dropdown-menu">
+                                <li lang="de"><a href="#">Deutsch</a></li>
+                                <li lang="en"><a href="#">English</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -64,10 +69,10 @@
 
                     <h1>Germany Says Welcome</h1>
                     <hr/>
-                    <p>Navigate to our refugee or volunteer page by clicking the buttons below. Scroll down for further
+                    <p data-i18n="index:introduction">Navigate to our refugee or volunteer page by clicking the buttons below. Scroll down for further
                         information.</p>
-                    <a href="refugee.html" class="btn btn-primary btn-xl">Refugee</a>
-                    <a href="volunteer.html" class="btn btn-primary btn-xl">Volunteer</a></div>
+                    <a href="refugee.html" class="btn btn-primary btn-xl" data-i18n="index:refugee">Refugee</a>
+                    <a href="volunteer.html" class="btn btn-primary btn-xl" data-i18n="index:volunteer">Volunteer</a></div>
             </div>
         </header>
         <section class="bg-primary" id="about">
@@ -243,5 +248,36 @@
         <script src="third-party/js/wow.min.js"></script>
         <script src="third-party/js/bootstrap.min.js"></script>
         <script src="third-party/js/creative.js"></script>
+        <script src="third-party/js/i18next.js"></script>
+
+        <script>
+
+            $(document).ready(function () {
+                var option = {
+                    fallbackLng: 'en',
+                    ns: {
+                        namespaces: ['index']
+                    },
+                    detectLngQS: 'lang'
+                };
+
+                $.i18n.init(option)
+                        .done(function () {
+                            $('[data-i18n]').i18n();
+                        })
+                        .fail(function () {
+                            $('[data-i18n]').i18n();
+                        });
+
+
+                $('#lang-select li[lang]').on('click', function() {
+                    var lang = $(this).attr('lang');
+                    $.i18n.setLng(lang, function(){
+                        $('[data-i18n]').i18n();
+                    });
+                });
+            });
+
+        </script>
     </body>
 </html>
