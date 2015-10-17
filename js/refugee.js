@@ -197,7 +197,7 @@ function loadMapData() {
         var longitude = $(this).attr("lon");
         var latitude = $(this).attr("lat");
         var name = $(this).find("name").first().text();
-        var marker = L.marker([latitude, longitude]).addTo(wifi).bindPopup(name);
+        L.marker([latitude, longitude]).addTo(wifi).bindPopup(name);
       });
     }
   });
