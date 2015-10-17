@@ -1,5 +1,10 @@
 body {
     padding-top: 50px;
+    background-color: #ffffff;
+}
+
+#mainNav {
+    background-color: #003171;
 }
 
 #page-top {
@@ -18,23 +23,20 @@ body {
 #sharing-info {
     width: 35%;
     height: 100%;
-    padding-top: 15px;
     float: left;
     background-color: white;
+    overflow-y: auto;
 }
 
 #sharing-index-items > .container {
     color: #1F4788;
     margin: 10px;
-    padding: 3px;
     width: auto;
-/*    padding-left: 0px;
-    padding-bottom: 0px;*/
+    padding-left: 0px;
+    padding-bottom: 0px;
     background-color: white;
     
     box-shadow: 3px 5px 10px grey;
-    border-radius: 10px;
-    border: 1px solid white;
 }
 
 #sharing-index-items > .container > a {
@@ -48,9 +50,7 @@ body {
     width: 80px;
     float: left;
     
-    margin-right: 10px;
-    margin-left: 0.2px;
-    vertical-align: central;
+    margin-right: 5px;
 }
 
 #sharingmap {
@@ -60,6 +60,7 @@ body {
     color: black;
 }
 
+/* Wenn der Bildschrim zu klein ist, dann liste die EInträge untereinander */
 @media(max-width: 500px) {
     #sharingmap {
         width: 100%;
@@ -68,6 +69,7 @@ body {
 
     #sharing-info {
         width: 100%;
+        /* Die Liste soll auf dynamisch nach der Länge vergrössert werden */
         height: auto;
         text-align: center;
     }
@@ -102,24 +104,19 @@ body {
     display: inline-block;
 }
 
-.alias
-{
-    cursor: alias;
-}
-
 #services, #contact {
     background-color: #fff;
     color: #1F4788;
 }
 
 .formbutton {
-    margin-top: 20px;
     margin-right: 10px;
 }
 
-.dropbutton {
+.pinkbutton {
     background-color: #FF4081 !important;
     color: #fff !important;
+    border-radius: 3px;
 }
 
 .dropbutton:active {
@@ -134,4 +131,54 @@ body {
 #right_col {
     float:right;
     width:50%;
+}
+
+.questions {
+    max-width: 1000px;
+    margin: 0 auto;
+    color: #303030;
+}
+
+.panel {
+    color: black;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 5px 5px 5px lightgrey;
+}
+
+.float_right {
+    float: right;
+}
+
+.float_left {
+    float: left;
+}
+
+.panel-heading {
+    border-radius: 0px;
+}
+
+.form-control, input, input:active, .form-control:active, .form-control:focus, textarea, .btn-default {
+    border: 2px solid #303030;
+    border-radius: 3px
+}
+
+.dropbutton {
+    border-radius: 3px;
+}
+
+label {
+    color: #303030;
+}
+
+.logo {
+    max-width:35px;
+    margin-top: -7px;
+    width: 100%;
+}
+
+.dropdown-menu {
+    background-color: #ffffff;
+    box-shadow: 5px 5px 5px lightgrey;
+    cursor: pointer;
 }

@@ -42,7 +42,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="index.html">
-                        <img style="max-width:35px; margin-top: -7px;" alt="Germany Says Welcome" src="image/logo.png">
+                        <img class="logo" alt="Germany Says Welcome" src="image/new_logo.svg">
                     </a>
                 </div>
 
@@ -82,9 +82,11 @@
             <div class="content_wrapper" id="home" data-i18n="refugee:welcome-text">
                 Welcome to Germany Says Welcome
             </div>
+            <!--Tauschbörsen Tab mit Index und Karte-->
             <div id="sharing">
                 <div id="sharing-info">
                     <div id="sharing-index-items">
+                        <!--Diese Daten werden gelöscht, sobald die Daten geladen wurden-->
                         <div class="container">
                             <a>
                                 <img />
@@ -94,7 +96,8 @@
                         <div class="container">
                             <a>
                                 <img />
-                                <h4>No data available</h4>
+                                <h4>Please log in</h4>
+                                <h5>Just click on the symbol on the right side</h5>
                             </a>
                         </div>
                     </div>
@@ -102,7 +105,9 @@
                 <div id="sharingmap"></div>
                 <div style="display:none" id="sharing_details"></div>
             </div>
+            <!--FAQ-Tab für Fragen und Antworten-->
             <div class="content_wrapper" id="faq"></div>
+            <!--Karte mit kostenlosen Wifi Hotspots und Behoerden-->
             <div id="map_container">
                 <div id="map"></div>
             </div>
@@ -152,6 +157,8 @@
             </div>
         </div>
 
+        <!--Platziere Javascript-Dateien ans Ende, sodass die Seite schneller laden kann-->
+        
         <!-- Plugin JavaScript -->
         <script src="third-party/js/jquery.js"></script>
         <script src="third-party/js/jquery.easing.min.js"></script>
