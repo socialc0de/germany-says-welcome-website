@@ -79,7 +79,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2 text-center">
-                        <h2 class="section-heading" data-i18n="index:UsingHigh-Tech">Using High-Tech to help those who need it!</h2>
+                        <h2 class="section-heading" data-i18n="index:Headline-About">Using High-Tech to help those who need it!</h2>
                         <hr class="light">
                         <p class="text-faded" data-i18n="index:Headline-Text">
                             Germany Says Welcome is more than just a project, it is the aim to help refugees with skills
@@ -150,7 +150,7 @@
             <div class="container-fluid">
                 <div class="row no-gutter">
                     <div class="col-lg-4 col-sm-6">
-                        <a href="https://betas.to/m4pnxorB" target="_blank" class="portfolio-box">
+                        <a href="https://betas.to/urYFKbzW" target="_blank" class="portfolio-box">
                             <img src="image/portfolio/1.jpg" class="img-responsive" alt="">
 
                             <div class="portfolio-box-caption alias">
@@ -262,19 +262,19 @@
                     detectLngQS: 'lang'
                 };
 
-                $.i18n.init(option)
+                $.data-i18n.init(option)
                         .done(function () {
-                            $('[data-i18n]').i18n();
+                            $('[data-data-i18n]').data-i18n();
                         })
                         .fail(function () {
-                            $('[data-i18n]').i18n();
+                            $('[data-data-i18n]').data-i18n();
                         });
 
 
                 $('#lang-select li[lang]').on('click', function() {
                     var lang = $(this).attr('lang');
-                    $.i18n.setLng(lang, function(){
-                        $('[data-i18n]').i18n();
+                    $.data-i18n.setLng(lang, function(){
+                        $('[data-data-i18n]').data-i18n();
                     });
                 });
             });
