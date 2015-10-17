@@ -49,9 +49,9 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a id="home_link" href="javascript:showHome()">Home</a></li>
-                        <li><a id="answered_link" href="javascript:showAnswered()">Answered Questions</a></li>
-                        <li><a id="unanswered_link" href="javascript:showUnanswered()">Unanswered Questions</a></li>
+                        <li class="active"><a id="home_link" href="javascript:showHome()" data-i18n="volunteer:home">Home</a></li>
+                        <li><a id="answered_link" href="javascript:showAnswered()" data-i18n="volunteer:aquestions">Answered Questions</a></li>
+                        <li><a id="unanswered_link" href="javascript:showUnanswered()" data-i18n="volunteer:uquestions">Unanswered Questions</a></li>
                         <li class="dropdown" id="lang-select">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                aria-expanded="false"><span class="glyphicon glyphicon-globe"></span></a>
@@ -63,12 +63,12 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton">
+                            <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton" data-i18n="volunteer:SignIn-Btn">
                                 Sign in
                             </button>
                         </li>
                         <li>
-                            <button type="button" style="display: none" onclick="deauth();" class="btn btn-default navbar-btn" id="signOutButton">
+                            <button type="button" style="display: none" onclick="deauth();" class="btn btn-default navbar-btn" id="signOutButton" data-i18n="volunteer:SignOut-Btn">
                                 Sign out
                             </button>
                         </li>
@@ -90,15 +90,15 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            <h4 class="modal-title" id="errorModalLabel">
+                            <h4 class="modal-title" id="errorModalLabel" data-i18n="volunteer:error">
                                 Error
                             </h4>
                         </div>
-                        <div class="modal-body" id="errorModalText">
+                        <div class="modal-body" id="errorModalText" data-i18n="volunteer:error-text">
                             There was an error processing your request:
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" data-i18n="volunteer:close">
                                 Close
                             </button>
                         </div>
@@ -115,6 +115,7 @@
         <script src="third-party/js/bootstrap.min.js"></script>
         <script src="third-party/js/creative.js"></script>
         <script src='third-party/js/nprogress.js'></script>
+        <script src="third-party/js/i18next.js"></script>
 
         <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
         <script src="http://leaflet.github.io/Leaflet.markercluster/dist/leaflet.markercluster.js"></script>

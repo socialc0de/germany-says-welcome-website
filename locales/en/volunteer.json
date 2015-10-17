@@ -1,3 +1,13 @@
 {
-  
+  "home": "Home",
+
+  "SignIn-Btn": "Log in",
+  "SignOut-Btn": "Log out",
+
+  "aquestions": "Answered Questions",
+  "uquestions": "Answered Questions",
+
+  "error": "Error",
+  "error-text": "There was an error processing your request: ",
+  "close": "Close"
 }
