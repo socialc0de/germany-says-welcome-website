@@ -76,7 +76,7 @@ function signedIn() {
         var firstname = resp.given_name;
         var lastname = resp.family_name;
         
-        html += "<h1>Welcome, " + firstname + ".</h1>";
+        html += "<h1 style='display:inline;margin:0px;' class='black-text' data-i18n='volunteer:welcome'>Welcome</h1><h1 class='black-text' style='display:inline;margin:0px;'>, " + firstname + ".</h1>";
         $('#welcome').html(html);
     });
 }

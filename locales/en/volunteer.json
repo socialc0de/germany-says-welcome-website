@@ -9,5 +9,7 @@
 
   "error": "Error",
   "error-text": "There was an error processing your request: ",
-  "close": "Close"
+  "close": "Close",
+
+  "welcome": "Welcome"
 }
