@@ -1,6 +1,11 @@
 var cats;
 var items_by_cat = {};
 
+/** Meldet den Benutzer über Google Plus an für den Zugriff ans Backend 
+ * 
+ *  @param mode Sollte der access token automatisch aktualisiert werden ohne ein Popup
+ *  @param authorizeCallback Url, worauf Google den User weiterleiten nach einem login
+ */
 function signin(mode, authorizeCallback) {
   gapi.auth.authorize({
       client_id: '760560844994-04u6qkvpf481an26cnhkaauaf2dvjfk0.apps.googleusercontent.com',
@@ -13,9 +18,11 @@ function signin(mode, authorizeCallback) {
 
     html += "<h1>Bitte logge dich ein";
     $('#welcome').html(html);
-
 }
 
+/**
+ * Überprüfe den Loginstatus des Clients
+ */
 function userAuthed() {
   NProgress.set(0.5);
   var request =
@@ -39,6 +46,10 @@ function userAuthed() {
     }
   });
 }
+
+/**
+ * Initialisiere das Skript
+ */
 function init() {
   var apisToLoad = 2;
   NProgress.start();
@@ -61,6 +72,9 @@ function auth() {
   init()
 }
 
+/**
+ * Signalisiere, dass der Benutzer nicht angemeldet ist
+ */
 function deauth() {
   gapi.auth.setToken(null);
   $('#signInButton').show();
@@ -68,6 +82,9 @@ function deauth() {
   $('#signOutButton').hide();
 }
 
+/**
+ * Signalisiere, dass der Benutzer angemeldet ist
+ */
 function signedIn() {
   $('#signInButton').hide();
   $('#signOutButton').show();
@@ -81,6 +98,7 @@ function signedIn() {
     });
 }
 
+//sprachenauswahl und FAQ-Initialisierung
 $(document).ready(function () {
   setQuestionListener('#answered');
   setQuestionListener('#unanswered');
@@ -110,11 +128,19 @@ $(document).ready(function () {
   });
 });
 
+/**
+ * Wandelt das erste Zeichen in ein Großbuchstaben um
+ * 
+ * @param {string} str das zu verwandelne Zeichen
+ */
 function ucfirst(str) {
   var firstLetter = str.substr(0, 1);
   return firstLetter.toUpperCase() + str.substr(1);
 }
 
+/**
+ * Handle das Speichern von Fragen
+ */
 function setQuestionListener(tag_id) {
   $(tag_id).on('click', '#save', function (e) {
     $(tag_id).html('');
@@ -147,6 +173,8 @@ function setQuestionListener(tag_id) {
 
     });
   });
+  
+  //Handle das Löschen
   $(tag_id).on('click', '#delete', function (e) {
     $(tag_id).html('');
     //
@@ -167,6 +195,8 @@ function setQuestionListener(tag_id) {
 
     });
   });
+  
+  //Kategorienauswahl
   $(tag_id).on('click', '.cat', function (e) {
     var p = $(e.target).parent().parent().parent();
     p.find('#category').prop('value', e.target.id);
@@ -174,6 +204,9 @@ function setQuestionListener(tag_id) {
   });
 }
 
+/**
+ * Wechsel den Tab zum Startfenster
+ */
 function showHome() {
   $('#home').show();
   $('#answered').hide();
@@ -183,6 +216,11 @@ function showHome() {
   $('nav a#home_link').parent().addClass('active');
 }
 
+/**
+ * Lade die Fragen
+ * 
+ * @param {boolean} answered sollen die beantworteten Fragen angezeigt werden
+ */
 function loadQuestions(answered) {
   $('nav').removeClass('fixed');
   $('nav li.active').removeClass('active');
@@ -190,28 +228,31 @@ function loadQuestions(answered) {
   if (NProgress.status == null) {
     NProgress.start();
   }
-  if (NProgress.status == null) {
-    NProgress.start();
-  }
+  
+  //abfrage zum Backend nach den Kategorien
   gapi.client.donate.faqcat.list().execute(function (items) {
     var predrophtml = '<div id="" class="dropdown float_left"><button class="btn btn-default dropdown-toggle dropbutton" type="button" id="dropdownMenuTitle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">';
     var postdrophtml = '</button><ul class="dropdown-menu" aria-labelledby="dropdownMenu1">';
     cats = items.items;
     cats_by_id = {};
     items.items.forEach(function parseItems(item) {
+      //entnehme die Daten nach Kategorie
       cats_by_id[item.id] = item;
     });
+    
     items.items.forEach(function parseItems(item) {
+        //Liste die Kategorien
       postdrophtml += '<li class="cat" id="' + item.id + '">' + item.name;
     });
+    
     postdrophtml += '</ul></div>';
-    NProgress.set(0.75)
+    NProgress.set(0.75);
+    //abfrage nach den Fragen
     gapi.client.donate.faqitem.list({"answered": answered}).execute(function (items) {
       var html = '';
       if (items.items != undefined) {
         items.items.forEach(function parseItems(item, index, all) {
-
-html += '<div class="col-md-12 float_right"><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">Question</h3></div><div class="panel-body">';
+          html += '<div class="col-md-12 float_right"><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">Question</h3></div><div class="panel-body">';
           html += '<div class="form-group"><label for="question">Question</label>';
           html += '<input type="text" class="form-control" id="question" placeholder="Question" value="' + item.question + '"></div>';
           html += '<div class="form-group"><label for="answer">Answer</label>';
@@ -219,16 +260,20 @@ html += '<div class="col-md-12 float_right"><div class="panel panel-default"><di
           html += '<div class="form-group"><label for="language">Language-Code</label>';
           html += '<input type="text" class="form-control" id="language" placeholder="Language-Code" value="' + item.language + '"></div>';
           html += '<div class="checkbox"><label><input id="answered" type="checkbox"';
+          //Benutzerhinweis ob die Frage bereits beantwortet wurde
           if (item.answered)
             html += ' checked';
+        
           html += '>Answered</label></div>';
           html += '<input type="hidden" id="category" value="' + item.category + '"><input type="hidden" id="id" value="' + item.id + '">';
           html += predrophtml;
           if (item.category == undefined) {
+              //kategorienauswahl für nicht eingeteilte Fragen
             html += 'Choose Category';
           } else {
             html += cats_by_id[item.category].name;
           }
+          
           html += ' <span class="caret"></span>';
           html += postdrophtml;
           html += '<div class="float_right"><button class="btn btn-default formbutton pinkbutton" id="save">Save</button><button class="btn btn-default formbutton pinkbutton" id="delete">Delete</button></div></div></div></div></div>';
@@ -237,11 +282,16 @@ html += '<div class="col-md-12 float_right"><div class="panel panel-default"><di
         html = 'Couldn\'t load FAQ Items';
       }
 
+      //Füg es zum richtigen Bereich hinzu
       $(answered ? '#answered' : '#unanswered').html(html);
       NProgress.done();
     });
   });
 }
+
+/**
+ * Zeige alle Unbeantworten Fragen
+ */
 function showUnanswered() {
   $('#home').hide();
   $('#answered').hide();
@@ -249,6 +299,9 @@ function showUnanswered() {
   loadQuestions(false);
 }
 
+/**
+ * Zeige alle beantworteten Fragen
+ */
 function showAnswered() {
   $('#home').hide();
   $('#answered').show();
@@ -256,6 +309,9 @@ function showAnswered() {
   loadQuestions(true);
 }
 
+/**
+ * Zeige fehlende Berichtungsdialog
+ */
 function showUserNotVolunteerOrAdmin() {
   $('#errorModalText').text('Only admins und volunteers are allowed to change things in this area.');
   $('#errorModalLabel').set('You are not allowed');
