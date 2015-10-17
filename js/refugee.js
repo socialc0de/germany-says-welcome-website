@@ -305,10 +305,14 @@ function requestUpdatedOffers(bounds) {
         L.marker([item.lat, item.lon]).addTo(sharingLayer).bindPopup(popup);
         
         //add items to index
-        var indexItem = '<div class="wrapper">';
+        var thumbnailUrl = item.image_urls[0];
+        
+        var indexItem = '<div class="container">';
+        indexItem += '<a href="javascript:showDetails(' + item.id + ')">';
+        indexItem += '<img src="' + thumbnailUrl + '">';
         indexItem += '<h4>' + item.title + '</h4>';
         indexItem += '<h5>' + item.subtitle + '</h5>';
-        indexItem += '<a href="javascript:showDetails(' + item.id + ')"> Click here to view it</a>';
+        indexItem += '</a>';
         indexItem += '</div>';
         $('#sharing-index-items').append(indexItem);
       });
