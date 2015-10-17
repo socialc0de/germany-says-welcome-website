@@ -8,6 +8,12 @@ function signin(mode, authorizeCallback) {
       immediate: mode
     },
     authorizeCallback);
+
+    var html = '';
+
+    html += "<h1>Bitte logge dich ein";
+    $('#welcome').html(html);
+
 }
 
 function userAuthed() {
@@ -34,9 +40,10 @@ function userAuthed() {
   });
 }
 function init() {
-  var apisToLoad;
+  var apisToLoad = 2;
   NProgress.start();
-  var loadCallback = function () {
+  var loadCallback = function (a) {
+    console.log(a)
     if (--apisToLoad == 0) {
       signin(true, userAuthed);
     }
@@ -49,7 +56,9 @@ function init() {
 }
 
 function auth() {
-  signin(false, userAuthed);
+  //signin(false, userAuthed);
+  // TMP Fix, init() doesn't get called by client.js
+  init()
 }
 
 function deauth() {
@@ -62,12 +71,19 @@ function deauth() {
 function signedIn() {
   $('#signInButton').hide();
   $('#signOutButton').show();
+    gapi.client.oauth2.userinfo.get().execute(function(resp) {
+        var html = '';
+        var firstname = resp.given_name;
+        var lastname = resp.family_name;
+        
+        html += "<h1>Welcome, " + firstname + ".</h1>";
+        $('#welcome').html(html);
+    });
 }
 
 $(document).ready(function () {
   setQuestionListener('#answered');
   setQuestionListener('#unanswered');
-
 });
 
 function ucfirst(str) {
@@ -133,6 +149,7 @@ function setQuestionListener(tag_id) {
     p.find('#dropdownMenuTitle').text(e.target.textContent);
   });
 }
+
 function showHome() {
   $('#home').show();
   $('#answered').hide();

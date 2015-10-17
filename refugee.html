@@ -4,64 +4,32 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="The official Germany says Welcome Website">
-        <meta name="keywords" lang="en-us" content="Refugees, #germanysayswelcome, Refugees Welcome">
+        <meta name="keywords" lang="en" content="Refugees, #germanysayswelcome, Refugees Welcome">
         <meta name="keywords" lang="de" content="Flüchtlinge, Flüchtlingshilfe">
-        <meta name="robots" content="noindex, nofollow">
         <meta name="google-signin-client_id" content="760560844994-04u6qkvpf481an26cnhkaauaf2dvjfk0.apps.googleusercontent.com">
 
         <title>Refugees Welcome To Germany</title>
 
-        <!-- Bootstrap -->
+        <link rel='stylesheet' href='third-party/css/nprogress.css'/>
         <link rel="stylesheet" href="third-party/css/bootstrap.min.css">
+        <link rel="stylesheet" href="third-party/css/creative.css">
+        <link rel="stylesheet" href="third-party/css/animate.min.css" type="text/css">
 
         <!--Map styles-->
-        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
-        <link rel="stylesheet" href="http://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.css" />
-        <link rel="stylesheet" href="http://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.Default.css" />
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css"/>
+        <link rel="stylesheet" href="http://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.css"/>
+        <link rel="stylesheet" href="http://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.Default.css"/>
 
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/style.css"/>
 
-        <link rel="stylesheet" href="third-party/css/creative.css">
-
-        <!-- Icons -->
-
-        <!-- Apple Touch icons -->
-        <!-- IPhone -->
-        <link rel="apple-touch-icon" href="image/icons/apple-touch-icon.png">
-
-        <!-- IPad -->
-        <link rel="apple-touch-icon" sizes="76x76" href="image/icons/apple-touch-icon-76x76.png">
-
-        <!-- IPhone Retina -->
-        <link rel="apple-touch-icon" sizes="120x120" href="image/icons/apple-touch-icon-120x120.png">
-
-        <!-- IPad Retina -->
-        <link rel="apple-touch-icon" sizes="152x152" href="image/icons/apple-touch-icon-152x152.png">
-
-        <!-- Ohne Glanz -->
-        <link rel="apple-touch-icon" href="image/icons/apple-touch-icon-precomposed.png">
-
-        <!-- Android -->
-        <link rel="icon" sizes="192x192" href="image/icons/nice-highres.png">
-        <link rel="icon" sizes="128x128" href="image/icons/niceicon.png">
-        <link rel="apple-touch-icon" sizes="128x128" href="image/icons/niceicon.png">
-        <link rel="apple-touch-icon-precomposed" sizes="128x128" href="image/icons/niceicon.png">
-
-        <!-- Windows 8/10 -->
-        <meta name="application-name" content="Germany says Welcome">
-        <meta name="msapplication-TileImage" content="image/icons/windows-icon.png">
-        <meta name="msapplication-TileColor" content="#fff">
-
-        <!-- Favicon -->
         <link rel="shortcut icon" type="image/png" href="image/logo_small.png">
 
-        <script src='third-party/js/nprogress.js'></script>
-        <link rel='stylesheet' href='third-party/css/nprogress.css'/>
-        
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
     </head>
-
     <body>
         <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
@@ -87,26 +55,45 @@
                         <li><a id="map_link" href="javascript:showMap();">Map</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton">Sign in</button>
-                        <button type="button" style="display: none" onclick="deauth();" class="btn btn-default navbar-btn" id="signOutButton">Sign out</button>
+                        <li>
+                            <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton">
+                                Sign in
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" style="display: none" onclick="deauth();" class="btn btn-default navbar-btn" id="signOutButton">
+                                Sign out
+                            </button>
+                        </li>
                     </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
+                </div>
+            </div>
         </nav>
         <div id="content">
             <!-- Page Content -->
             <div class="content_wrapper" id="home">
                 Welcome to Germany Says Welcome
             </div>
-            <div id="sharing"><div id="sharingmap"></div></div>
-            <div style="display:none" id="sharing_details"></div>
+            <div id="sharing">
+                <div id="sharing-info">
+                    <h3 style="color: black">Sharing Index of the current view</h3>
+                    <div id="sharing-index-items">
+                        
+                    </div>
+                </div>
+                <div id="sharingmap"></div>
+                <div style="display:none" id="sharing_details"></div>
+            </div>
             <div class="content_wrapper" id="faq"></div>
-            <div id="map_container"><div id="map"></div></div>
+            <div id="map_container">
+                <div id="map"></div>
+            </div>
             <div class="modal fade" role="dialog" aria-labelledby="errorModalLabel" id="errorModal">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="errorModalLabel">Error </h4>
                         </div>
                         <div class="modal-body" id="errorModalText">
@@ -115,50 +102,53 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
+                    </div>
+                </div>
+            </div>
             <div class="modal fade" role="dialog" aria-labelledby="newQuestionModalLabel" id="newQuestionModal">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="newQuestionModalLabel">Ask a Question</h4>
                         </div>
                         <div class="modal-body" id="newQuestionModalText">
-                            <div class="form-group"><label for="question_text">Question</label><input type="text" class="form-control" id="question_text" placeholder="Question"></div>
-                            <div class="form-group"><label for="question_text">Answer</label><input type="text" class="form-control" id="answer_text" placeholder="Answer (if known)"></div>
-                            <div class="form-group"><label for="language_code">Language-Code</label><input type="text" class="form-control" id="language_code" placeholder="Language-Code (two letters)"></div>
+                            <div class="form-group">
+                                <label for="question_text">Question</label><input type="text" class="form-control" id="question_text" placeholder="Question">
+                            </div>
+                            <div class="form-group">
+                                <label for="question_text">Answer</label><input type="text" class="form-control" id="answer_text" placeholder="Answer (if known)">
+                            </div>
+                            <div class="form-group">
+                                <label for="language_code">Language-Code</label><input type="text" class="form-control" id="language_code" placeholder="Language-Code (two letters)">
+                            </div>
                             <input type="hidden" id="category">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary" id="save">Save changes</button>
                         </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
-        <script src="http://leaflet.github.io/Leaflet.markercluster/dist/leaflet.markercluster.js"></script>
-
-        <script src="third-party/js/gamma.js"></script>
-
-        <script src="js/refugee.js"></script>
-        <!-- Google APIs -->
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <script src="https://apis.google.com/js/client.js?onload=init"></script>
         <!-- Plugin JavaScript -->
+        <script src="third-party/js/jquery.js"></script>
         <script src="third-party/js/jquery.easing.min.js"></script>
         <script src="third-party/js/jquery.fittext.js"></script>
         <script src="third-party/js/wow.min.js"></script>
-
-        <!-- Custom Theme JavaScript -->
         <script src="third-party/js/creative.js"></script>
+        <script src='third-party/js/nprogress.js'></script>
+
+        <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+        <script src="http://leaflet.github.io/Leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+
+        <!-- Google APIs -->
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src="https://apis.google.com/js/client.js?onload=init"></script>
+
+        <script src="js/refugee.js"></script>
     </body>
 </html>

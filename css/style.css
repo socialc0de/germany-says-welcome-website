@@ -1,20 +1,48 @@
 body {
     padding-top: 50px;
 }
+
 #page-top {
     padding-top: 0px;
 }
+
 .content_wrapper {
     padding: 15px 15px 15px 15px;
 }
+
 #sharing {
     height: 100%;
     padding-top: 10px;
 }
 
+#sharing-info {
+    width: 35%;
+    height: 100%;
+    float: left;
+    background-color: white;
+}
+
+#sharing-index-items > .container {
+    color: #1F4788;
+}
+
 #sharingmap {
+    width: 65%;
+    float: right;
     height: 100%;
     color: black;
+}
+
+@media(max-width: 500px) {
+    #sharingmap {
+        width: 100%;
+        height: 600px;
+    }
+    
+    #sharing-info {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 #map_container {
@@ -46,9 +74,14 @@ body {
     display: inline-block;
 }
 
+.alias
+{
+    cursor: alias;
+}
+
 #services, #contact {
     background-color: #fff;
-    color: #333;
+    color: #1F4788;
 }
 
 .formbutton {
@@ -57,17 +90,19 @@ body {
 }
 
 .dropbutton {
-    background-color: #F05F40 !important;
+    background-color: #FF4081 !important;
     color: #fff !important;
 }
 
 .dropbutton:active {
     background-color: #375A7F !important;
 }
+
 #left_col {
    float:left;
    width:50%;
 }
+
 #right_col {
    float:right;
    width:50%;
