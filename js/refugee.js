@@ -197,7 +197,7 @@ function loadMapData() {
         var longitude = $(this).attr("lon");
         var latitude = $(this).attr("lat");
         var name = $(this).find("name").first().text();
-        var marker = L.marker([latitude, longitude]).addTo(wifi).bindPopup(name);
+        L.marker([latitude, longitude]).addTo(wifi).bindPopup(name);
       });
     }
   });
@@ -250,7 +250,7 @@ function loadSharingMap() {
   sharingMap = L.map('sharingmap', {
     center: [50.9485795, 6.9448561],
     //default zoom state
-    zoom: 13,
+    zoom: 13
   });
 
   mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
@@ -278,15 +278,19 @@ function requestUpdatedOffers(bounds) {
   if (NProgress.status == null) {
     NProgress.start();
   }
+  
   var bbox = bounds._southWest.lng + ',' + bounds._southWest.lat + ',' + bounds._northEast.lng + ',' + bounds._northEast.lat;
-  gapi.client.donate.offer.list_near({"bbox":bbox}).execute(function (resp) {
+  gapi.client.donate.offer.list_near({"bbox": bbox}).execute(function (resp) {
     console.log(resp);
+    //clear old items
+    $('#sharing-index-items').empty();
     NProgress.done();
     if (!resp.code) {
       resp.items.forEach(function parseItems(item) {
         if (sharingLayer != undefined) {
           sharingMap.removeLayer(sharingLayer);
         }
+        
         sharingLayer = new L.FeatureGroup();
         console.log(item);
         var popup = "<h4>" + item.title + "</h4>";
@@ -296,9 +300,23 @@ function requestUpdatedOffers(bounds) {
             popup += '<img height=200 src="' + imageUrl + '">';
           });
         }
+        
         popup += '<p><a href="javascript:showDetails(' + item.id + ')">Show more</a>';
         L.marker([item.lat, item.lon]).addTo(sharingLayer).bindPopup(popup);
+        
+        //add items to index
+        var thumbnailUrl = item.image_urls[0];
+        
+        var indexItem = '<div class="container">';
+        indexItem += '<a href="javascript:showDetails(' + item.id + ')">';
+        indexItem += '<img src="' + thumbnailUrl + '">';
+        indexItem += '<h4>' + item.title + '</h4>';
+        indexItem += '<h5>' + item.subtitle + '</h5>';
+        indexItem += '</a>';
+        indexItem += '</div>';
+        $('#sharing-index-items').append(indexItem);
       });
+      
       sharingMap.addLayer(sharingLayer);
     } else {
       $('#errorModalText').text("Error: " + resp.message);
@@ -313,6 +331,30 @@ function loadSharingMapData() {
   });
 }
 $(document).ready(function () {
+  var option = {
+    fallbackLng: 'en',
+    ns: {
+      namespaces: ['refugee']
+    },
+    detectLngQS: 'lang'
+  };
+
+  $.i18n.init(option)
+      .done(function () {
+        $('[data-i18n]').i18n();
+      })
+      .fail(function () {
+        $('[data-i18n]').i18n();
+      });
+
+
+  $('#lang-select li[lang]').on('click', function() {
+    var lang = $(this).attr('lang');
+    $.i18n.setLng(lang, function(){
+      $('[data-i18n]').i18n();
+    });
+  });
+
   $("#newQuestionModal").on('click', '#save', function (e) {
     console.log(e);
     var form = $(e.target).parent().parent();

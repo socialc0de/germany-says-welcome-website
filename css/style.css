@@ -10,17 +10,72 @@ body {
 #page-top {
     padding-top: 0px;
 }
+
 .content_wrapper {
     padding: 15px 15px 15px 15px;
 }
+
 #sharing {
     height: 100%;
     padding-top: 10px;
 }
 
+#sharing-info {
+    width: 35%;
+    height: 100%;
+    padding-top: 15px;
+    float: left;
+    background-color: white;
+}
+
+#sharing-index-items > .container {
+    color: #1F4788;
+    margin: 10px;
+    padding: 3px;
+    width: auto;
+/*    padding-left: 0px;
+    padding-bottom: 0px;*/
+    background-color: white;
+    
+    box-shadow: 3px 5px 10px grey;
+    border-radius: 10px;
+    border: 1px solid white;
+}
+
+#sharing-index-items > .container > a {
+    color: black;
+    text-decoration: none;
+}
+
+#sharing-index-items > .container > a > img {
+    height: 80px;
+    background-color: lightgray;
+    width: 80px;
+    float: left;
+    
+    margin-right: 10px;
+    margin-left: 0.2px;
+    vertical-align: central;
+}
+
 #sharingmap {
+    width: 65%;
+    float: right;
     height: 100%;
     color: black;
+}
+
+@media(max-width: 500px) {
+    #sharingmap {
+        width: 100%;
+        height: 600px;
+    }
+
+    #sharing-info {
+        width: 100%;
+        height: auto;
+        text-align: center;
+    }
 }
 
 #map_container {
@@ -70,13 +125,15 @@ body {
 .dropbutton:active {
     background-color: #375A7F !important;
 }
+
 #left_col {
-   float:left;
-   width:50%;
+    float:left;
+    width:50%;
 }
+
 #right_col {
-   float:right;
-   width:50%;
+    float:right;
+    width:50%;
 }
 
 .questions {
