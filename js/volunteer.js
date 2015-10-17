@@ -146,7 +146,7 @@ function setQuestionListener(tag_id) {
   $(tag_id).on('click', '.cat', function (e) {
     var p = $(e.target).parent().parent().parent();
     p.find('#category').prop('value', e.target.id);
-    p.find('#dropdownMenuTitle').text(e.target.textContent);
+    p.find('#dropdownMenuTitle').html(e.target.textContent  + ' <span class="caret"></span></li>');
   });
 }
 
@@ -166,8 +166,11 @@ function loadQuestions(answered) {
   if (NProgress.status == null) {
     NProgress.start();
   }
+  if (NProgress.status == null) {
+    NProgress.start();
+  }
   gapi.client.donate.faqcat.list().execute(function (items) {
-    var predrophtml = '<div id="dropdown" class="dropdown"><button class="btn btn-default dropdown-toggle dropbutton" type="button" id="dropdownMenuTitle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">';
+    var predrophtml = '<div id="" class="dropdown float_left"><button class="btn btn-default dropdown-toggle dropbutton" type="button" id="dropdownMenuTitle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">';
     var postdrophtml = '</button><ul class="dropdown-menu" aria-labelledby="dropdownMenu1">';
     cats = items.items;
     cats_by_id = {};
@@ -175,7 +178,7 @@ function loadQuestions(answered) {
       cats_by_id[item.id] = item;
     });
     items.items.forEach(function parseItems(item) {
-      postdrophtml += '<li class="cat" id="' + item.id + '">' + item.name + '</li>';
+      postdrophtml += '<li class="cat" id="' + item.id + '">' + item.name;
     });
     postdrophtml += '</ul></div>';
     NProgress.set(0.75)
@@ -183,7 +186,9 @@ function loadQuestions(answered) {
       var html = '';
       if (items.items != undefined) {
         items.items.forEach(function parseItems(item, index, all) {
-          html += '<div class="jumbotron col-md-4"><div><div class="form-group"><label for="question">Question</label>';
+
+html += '<div class="col-md-12 float_right"><div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title">Question</h3></div><div class="panel-body">';
+          html += '<div class="form-group"><label for="question">Question</label>';
           html += '<input type="text" class="form-control" id="question" placeholder="Question" value="' + item.question + '"></div>';
           html += '<div class="form-group"><label for="answer">Answer</label>';
           html += '<input type="text" class="form-control" id="answer" placeholder="Answer" value="' + item.answer + '"></div>';
@@ -196,12 +201,13 @@ function loadQuestions(answered) {
           html += '<input type="hidden" id="category" value="' + item.category + '"><input type="hidden" id="id" value="' + item.id + '">';
           html += predrophtml;
           if (item.category == undefined) {
-            html += 'Choose Category<span class="caret"></span>';
+            html += 'Choose Category';
           } else {
             html += cats_by_id[item.category].name;
           }
+          html += ' <span class="caret"></span>';
           html += postdrophtml;
-          html += '<button class="btn btn-default formbutton" id="save">Save</button><button class="btn btn-default formbutton" id="delete">Delete</button></div></div>';
+          html += '<div class="float_right"><button class="btn btn-default formbutton pinkbutton" id="save">Save</button><button class="btn btn-default formbutton pinkbutton" id="delete">Delete</button></div></div></div></div></div>';
         });
       } else {
         html = 'Couldn\'t load FAQ Items';
