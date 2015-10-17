@@ -341,7 +341,11 @@ function loadSharingMapIfNeeded() {
   }
 }
 
-
+/**
+ * Lädt neue Angebote für die Tauschbörse
+ * 
+ * @param {type} bounds
+ */
 function requestUpdatedOffers(bounds) {
   if (NProgress.status == null) {
     NProgress.start();
@@ -398,6 +402,8 @@ function loadSharingMapData() {
     requestUpdatedOffers(e.target.getBounds());
   });
 }
+
+//Sprachenauswahl
 $(document).ready(function () {
   var option = {
     fallbackLng: 'en',
@@ -422,7 +428,8 @@ $(document).ready(function () {
       $('[data-i18n]').i18n();
     });
   });
-
+  
+  //Dialog-Handling für neue Fragen
   $("#newQuestionModal").on('click', '#save', function (e) {
     console.log(e);
     var form = $(e.target).parent().parent();
@@ -453,6 +460,12 @@ $(document).ready(function () {
     p.find("#dropdownMenuTitle").text(e.target.textContent);
   });
 });
+
+/**
+ * Zeige Tauschbörseninformationen
+ * 
+ * @param {type} id
+ */
 function showDetails(id) {
   console.log(id);
   gapi.client.donate.offer.get({"id":id}).execute(function (resp) {
