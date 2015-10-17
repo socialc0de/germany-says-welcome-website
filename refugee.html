@@ -64,9 +64,9 @@
                         <li class="dropdown" id="lang-select">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                aria-expanded="false"><span class="glyphicon glyphicon-globe"></span></a>
-                            <ul class="dropdown-menu">
-                                <li lang="de"><a href="#">Deutsch</a></li>
-                                <li lang="en"><a href="#">English</a></li>
+                            <ul class="dropdown-menu" id="language-switch">
+                                <li lang="de"><a class="black-text" href="#">Deutsch</a></li>
+                                <li lang="en"><a class="black-text" href="#">English</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -97,7 +97,7 @@
             </noscript>
             
             <!-- Page Content -->
-            <div class="content_wrapper" id="home" data-i18n="refugee:welcome-text">
+            <div class="content_wrapper black-text" id="home" data-i18n="refugee:welcome-text">
                 Welcome to Germany Says Welcome
             </div>
             <!--Tauschbörsen Tab mit Index und Karte-->
@@ -205,5 +205,6 @@
         <script src="third-party/js/i18next.js"></script>
         <!--Lade zuerst die Libaries, damit wir auf diese Zugreifen können-->
         <script src="js/refugee.js"></script>
+        <script src="js/browser-language.js"></script>
     </body>
 </html>

@@ -186,5 +186,10 @@ label {
 }
 
 .black-text {
-    color: black;
+    color: black !important;
+}
+
+#language-switch
+{
+    box-shadow: none !important;
 }
