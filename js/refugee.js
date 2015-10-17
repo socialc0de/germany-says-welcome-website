@@ -1,6 +1,13 @@
+//Reservierte globale Variablen
 var map;
 var sharingMap;
 var sharingLayer;
+
+/** Meldet den Benutzer über Google Plus an für den Zugriff ans Backend 
+ * 
+ *  @param mode Sollte der access token automatisch aktualisiert werden ohne ein Popup
+ *  @param authorizeCallback Url, worauf Google den User weiterleiten nach einem login
+ */
 function signin(mode, authorizeCallback) {
   gapi.auth.authorize({
       client_id: "760560844994-04u6qkvpf481an26cnhkaauaf2dvjfk0.apps.googleusercontent.com",
@@ -11,19 +18,19 @@ function signin(mode, authorizeCallback) {
 }
 
 function userAuthed() {
-  var request = gapi.client.oauth2.userinfo.get().execute(function (resp) {
-    if (!resp.code) {
-      gapi.client.donate.user.create().execute(function (resp) {
-        if (!resp.code) {
-          signedIn();
+    gapi.client.oauth2.userinfo.get().execute(function (resp) {
+        if (resp.code) {
+            deauth();
         } else {
-          deauth();
+            gapi.client.donate.user.create().execute(function (resp) {
+                if (resp.code) {
+                    deauth();
+                } else {
+                    signedIn();
+                }
+            });
         }
-      });
-    } else {
-      deauth();
-    }
-  });
+    });
 }
 
 function init() {
@@ -44,7 +51,7 @@ function init() {
 function auth() {
   //signin(false, userAuthed);
   // TMP Fix, init() doesn't get called by client.js
-  init()
+  init();
 }
 
 function deauth() {
