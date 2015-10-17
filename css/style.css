@@ -3,6 +3,7 @@ body {
     background-color: #ffffff;
 }
 
+/*Navigationsleiste*/
 #mainNav {
     background-color: #003171;
 }
@@ -25,12 +26,14 @@ body {
     height: 100%;
     float: left;
     background-color: white;
+    /* Mache diesen Teil in sich scrollbar */
     overflow-y: auto;
 }
 
 #sharing-index-items > .container {
     color: #1F4788;
     margin: 10px;
+    /*Der Inhalt wird hiermit dynmamisch skaliert*/
     width: auto;
     padding-left: 0px;
     padding-bottom: 0px;
@@ -46,18 +49,17 @@ body {
 
 #sharing-index-items > .container > a > img {
     height: 80px;
-    background-color: lightgray;
     width: 80px;
-    float: left;
     
+    background-color: lightgray;
+    float: left;
     margin-right: 5px;
 }
 
 #sharingmap {
     width: 65%;
-    float: right;
     height: 100%;
-    color: black;
+    float: right;
 }
 
 /* Wenn der Bildschrim zu klein ist, dann liste die EInträge untereinander */

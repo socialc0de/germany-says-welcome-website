@@ -4,9 +4,11 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--Suchmaschinenenoptimierung-->
         <meta name="description" content="The official Germany says Welcome Website">
         <meta name="keywords" lang="en" content="Refugees, #germanysayswelcome, Refugees Welcome">
         <meta name="keywords" lang="de" content="Flüchtlinge, Flüchtlingshilfe">
+        <!--Verifizierungs Hint für die Android App-->
         <meta name="google-signin-client_id" content="760560844994-04u6qkvpf481an26cnhkaauaf2dvjfk0.apps.googleusercontent.com">
 
         <title>Refugees Welcome To Germany</title>
@@ -21,8 +23,10 @@
         <link rel="stylesheet" href="http://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.css"/>
         <link rel="stylesheet" href="http://leaflet.github.io/Leaflet.markercluster/dist/MarkerCluster.Default.css"/>
 
+        <!--Lade zuerst die Third-Parties, damit wir diese überschreiben können-->
         <link rel="stylesheet" href="css/style.css"/>
 
+        <!--Favicon für Lesezeichen-->
         <link rel="shortcut icon" type="image/png" href="image/logo_small.png">
 
         <!--[if lt IE 9]>
@@ -31,9 +35,10 @@
         <![endif]-->
     </head>
     <body>
+        <!--Navigationsleiste-->
         <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
+                <!-- Mobiler Button für die Öffnung des Menüs -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                         <span class="sr-only" data-i18n="refugee:toggle-navi">Toggle navigation</span>
@@ -41,18 +46,21 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                    <!--Logo für die Navigationsleiste-->
                     <a class="navbar-brand" href="index.html">
                         <img class="logo" alt="Germany Says Welcome" src="image/new_logo.svg">
                     </a>
                 </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
+                <!-- Menüauswahl -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
+                        <!--Aktuelle Seite-->
                         <li class="active"><a id="home_link" href="javascript:showHome();" data-i18n="refugee:home">Home</a></li>
                         <li><a id="sharing_link" href="javascript:showSharing();" data-i18n="refugee:sharing">Sharing</a></li>
                         <li><a id="faq_link" href="javascript:showFAQ();" data-i18n="refugee:faq">FAQ</a></li>
                         <li><a id="map_link" href="javascript:showMap();" data-i18n="refugee:map">Map</a></li>
+                        <!--Sprachenauswahl-->
                         <li class="dropdown" id="lang-select">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                                aria-expanded="false"><span class="glyphicon glyphicon-globe"></span></a>
@@ -62,6 +70,8 @@
                             </ul>
                         </li>
                     </ul>
+                    
+                    <!--Login Button für Google Plus-->
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                             <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton" data-i18n="refugee:SignIn-Btn">
@@ -69,6 +79,7 @@
                             </button>
                         </li>
                         <li>
+                            <!--Auslog-Button - Dies bleibt unsichtbar solange der Login noch nicht überprüft wurde-->
                             <button type="button" style="display: none" onclick="deauth();" class="btn btn-default navbar-btn" id="signOutButton" data-i18n="refugee:SignOut-Btn">
                                 Sign out
                             </button>
@@ -77,7 +88,14 @@
                 </div>
             </div>
         </nav>
+        
+        <!--Webseiten Inhalt-->
         <div id="content">
+            <noscript>
+                Bitte aktiviere Javascript in deinem Browser. Javascript
+                wird verlangt, um diese Seite nutzen zu können.
+            </noscript>
+            
             <!-- Page Content -->
             <div class="content_wrapper" id="home" data-i18n="refugee:welcome-text">
                 Welcome to Germany Says Welcome
@@ -89,12 +107,14 @@
                         <!--Diese Daten werden gelöscht, sobald die Daten geladen wurden-->
                         <div class="container">
                             <a>
+                                <!--Beispielbild zum Anzeigen des Layouts-->
                                 <img />
                                 <h4>No data available</h4>
                             </a>
                         </div>
                         <div class="container">
                             <a>
+                                <!--Beispielbild zum Anzeigen des Layouts-->
                                 <img />
                                 <h4>Please log in</h4>
                                 <h5>Just click on the symbol on the right side</h5>
@@ -102,6 +122,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div id="sharingmap"></div>
                 <div style="display:none" id="sharing_details"></div>
             </div>
@@ -111,6 +132,8 @@
             <div id="map_container">
                 <div id="map"></div>
             </div>
+            
+            <!--Error Dialog für neue Fragen-->
             <div class="modal fade" role="dialog" aria-labelledby="errorModalLabel" id="errorModal">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -128,6 +151,8 @@
                     </div>
                 </div>
             </div>
+            
+            <!--Dialog für neue Fragen, die bisher noch nicht existieren -->
             <div class="modal fade" role="dialog" aria-labelledby="newQuestionModalLabel" id="newQuestionModal">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -169,6 +194,7 @@
         <script src="third-party/js/creative.js"></script>
         <script src='third-party/js/nprogress.js'></script>
 
+        <!--Karten Libary-->
         <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
         <script src="http://leaflet.github.io/Leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 
@@ -176,7 +202,8 @@
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src="https://apis.google.com/js/client.js?onload=init"></script>
 
-        <script src="js/refugee.js"></script>
         <script src="third-party/js/i18next.js"></script>
+        <!--Lade zuerst die Libaries, damit wir auf diese Zugreifen können-->
+        <script src="js/refugee.js"></script>
     </body>
 </html>
