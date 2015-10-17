@@ -40,9 +40,10 @@ function userAuthed() {
   });
 }
 function init() {
-  var apisToLoad;
+  var apisToLoad = 2;
   NProgress.start();
-  var loadCallback = function () {
+  var loadCallback = function (a) {
+    console.log(a)
     if (--apisToLoad == 0) {
       signin(true, userAuthed);
     }
@@ -55,7 +56,9 @@ function init() {
 }
 
 function auth() {
-  signin(false, userAuthed);
+  //signin(false, userAuthed);
+  // TMP Fix, init() doesn't get called by client.js
+  init()
 }
 
 function deauth() {
