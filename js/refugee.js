@@ -197,7 +197,7 @@ function loadMapData() {
         var longitude = $(this).attr("lon");
         var latitude = $(this).attr("lat");
         var name = $(this).find("name").first().text();
-        var marker = L.marker([latitude, longitude]).addTo(wifi).bindPopup(name);
+        L.marker([latitude, longitude]).addTo(wifi).bindPopup(name);
       });
     }
   });
@@ -250,7 +250,7 @@ function loadSharingMap() {
   sharingMap = L.map('sharingmap', {
     center: [50.9485795, 6.9448561],
     //default zoom state
-    zoom: 13,
+    zoom: 13
   });
 
   mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
@@ -278,15 +278,19 @@ function requestUpdatedOffers(bounds) {
   if (NProgress.status == null) {
     NProgress.start();
   }
+  
   var bbox = bounds._southWest.lng + ',' + bounds._southWest.lat + ',' + bounds._northEast.lng + ',' + bounds._northEast.lat;
-  gapi.client.donate.offer.list_near({"bbox":bbox}).execute(function (resp) {
+  gapi.client.donate.offer.list_near({"bbox": bbox}).execute(function (resp) {
     console.log(resp);
+    //clear old items
+    $('#sharing-index-items').empty();
     NProgress.done();
     if (!resp.code) {
       resp.items.forEach(function parseItems(item) {
         if (sharingLayer != undefined) {
           sharingMap.removeLayer(sharingLayer);
         }
+        
         sharingLayer = new L.FeatureGroup();
         console.log(item);
         var popup = "<h4>" + item.title + "</h4>";
@@ -296,9 +300,19 @@ function requestUpdatedOffers(bounds) {
             popup += '<img height=200 src="' + imageUrl + '">';
           });
         }
+        
         popup += '<p><a href="javascript:showDetails(' + item.id + ')">Show more</a>';
         L.marker([item.lat, item.lon]).addTo(sharingLayer).bindPopup(popup);
+        
+        //add items to index
+        var indexItem = '<div class="wrapper">';
+        indexItem += '<h4>' + item.title + '</h4>';
+        indexItem += '<h5>' + item.subtitle + '</h5>';
+        indexItem += '<a href="javascript:showDetails(' + item.id + ')"> Click here to view it</a>';
+        indexItem += '</div>';
+        $('#sharing-index-items').append(indexItem);
       });
+      
       sharingMap.addLayer(sharingLayer);
     } else {
       $('#errorModalText').text("Error: " + resp.message);
