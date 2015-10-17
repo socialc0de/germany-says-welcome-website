@@ -262,19 +262,19 @@
                     detectLngQS: 'lang'
                 };
 
-                $.data-i18n.init(option)
+                $.i18n.init(option)
                         .done(function () {
-                            $('[data-data-i18n]').data-i18n();
+                            $('[data-i18n]').i18n();
                         })
                         .fail(function () {
-                            $('[data-data-i18n]').data-i18n();
+                            $('[data-i18n]').i18n();
                         });
 
 
                 $('#lang-select li[lang]').on('click', function() {
                     var lang = $(this).attr('lang');
-                    $.data-i18n.setLng(lang, function(){
-                        $('[data-data-i18n]').data-i18n();
+                    $.i18n.setLng(lang, function(){
+                        $('[data-i18n]').i18n();
                     });
                 });
             });
