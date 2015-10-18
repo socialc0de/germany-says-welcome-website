@@ -5,7 +5,7 @@ body {
 
 /*Navigationsleiste*/
 #mainNav {
-    background-color: #003171;
+    background-color: transparent;
 }
 
 #page-top {
@@ -162,7 +162,7 @@ body {
 
 .form-control, input, input:active, .form-control:active, .form-control:focus, textarea, .btn-default {
     border: 2px solid #303030;
-    border-radius: 3px
+    border-radius: 300px;
 }
 
 .dropbutton {
@@ -192,4 +192,9 @@ label {
 #language-switch
 {
     box-shadow: none !important;
+}
+
+.affix
+{
+    background-color: white !important;
 }
