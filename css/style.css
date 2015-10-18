@@ -8,6 +8,10 @@ body {
     background-color: transparent;
 }
 
+.refugee {
+   background-color: #003171 !important;
+}
+
 #page-top {
     padding-top: 0px;
 }
