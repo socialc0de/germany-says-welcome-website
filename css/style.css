@@ -193,12 +193,27 @@ label {
     color: black !important;
 }
 
-#language-switch
-{
+#language-switch {
+    box-shadow: none !important;
+    border-top-left-radius: 4px;
+}
+
+#language-switch2 {
     box-shadow: none !important;
 }
 
-.affix
-{
+.affix {
     background-color: white !important;
+}
+
+.switch_flag {
+    vertical-align: middle;
+}
+
+.flag1 {
+    vertical-align: middle;
+}
+
+.switchlink:active {
+    color: #003171;
 }

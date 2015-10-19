@@ -55,10 +55,11 @@
                         <li><a class="page-scroll" href="#contact" data-i18n="index:contact">Contact</a></li>
                         <li class="dropdown" id="lang-select">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                               aria-expanded="false"><span class="glyphicon glyphicon-globe"></span></a>
+                               aria-expanded="false"><img class="flag1" src="image/german.png" id="flag_de"><img class="flag1" src="image/english.png" id="flag_en"></a>
+
                             <ul class="dropdown-menu" id="language-switch">
-                                <li lang="de"><a class="black-text" href="#"><span><img src="image/german.png"></span> Deutsch</a></li>
-                                <li lang="en"><a class="black-text" href="#"><span><img src="image/english.png"></span> English</a></li>
+                                <li lang="de" class="switchlink" id="de"><a class="black-text" href="#"><span><img class="switch_flag" src="image/german.png"></span> Deutsch</a></li>
+                                <li lang="en" class="switchlink" id="en"><a class="black-text" href="#"><span><img class="switch_flag" src="image/english.png"></span> English</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -276,6 +277,20 @@
 
                 $('#lang-select li[lang]').on('click', function() {
                     var lang = $(this).attr('lang');
+
+                    if(lang == "de"){
+                        $("#flag_de").show();
+                        $("#flag_en").hide();
+                    }
+
+                    if(lang == "en"){
+                        $("#flag_de").hide();
+                        $("#flag_en").show();
+                    }
+
+
+                    $('#lang-select li[lang]').removeClass("active");
+                    $(this).addClass("active");
                     $.i18n.setLng(lang, function(){
                         $('[data-i18n]').i18n();
                     });
