@@ -318,7 +318,7 @@
         preload: [],
         lowerCaseLng: false,
         returnObjectTrees: false,
-        fallbackLng: ['dev'],
+        fallbackLng: ['en'],
         fallbackNS: [],
         detectLngQS: 'setLng',
         detectLngFromLocalStorage: false,

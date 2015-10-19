@@ -121,7 +121,7 @@ aside {
     background-color: transparent;
 }
 
-@media(min-width:768px) {
+/*@media(min-width:768px) {*/
     .navbar-default {
         border-color: rgba(255,255,255,.3);
         background-color: transparent;
@@ -170,7 +170,7 @@ aside {
     .navbar-default.affix .nav>li>a:focus:hover {
         color: #FF4081;
     }
-}
+/*}*/
 
 #mainheader {
     position: relative;
