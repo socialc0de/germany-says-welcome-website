@@ -1,6 +1,13 @@
+//Reservierte globale Variablen
 var map;
 var sharingMap;
 var sharingLayer;
+
+/** Meldet den Benutzer über Google Plus an für den Zugriff ans Backend 
+ * 
+ *  @param mode Sollte der access token automatisch aktualisiert werden ohne ein Popup
+ *  @param authorizeCallback Url, worauf Google den User weiterleiten nach einem login
+ */
 function signin(mode, authorizeCallback) {
   gapi.auth.authorize({
       client_id: "760560844994-04u6qkvpf481an26cnhkaauaf2dvjfk0.apps.googleusercontent.com",
@@ -10,26 +17,33 @@ function signin(mode, authorizeCallback) {
     authorizeCallback);
 }
 
+/**
+ * Überprüfe den Loginstatus des Clients
+ */
 function userAuthed() {
-  var request = gapi.client.oauth2.userinfo.get().execute(function (resp) {
-    if (!resp.code) {
-      gapi.client.donate.user.create().execute(function (resp) {
-        if (!resp.code) {
-          signedIn();
+    gapi.client.oauth2.userinfo.get().execute(function (resp) {
+        if (resp.code) {
+            deauth();
         } else {
-          deauth();
+            gapi.client.donate.user.create().execute(function (resp) {
+                if (resp.code) {
+                    deauth();
+                } else {
+                    signedIn();
+                }
+            });
         }
-      });
-    } else {
-      deauth();
-    }
-  });
+    });
 }
 
+/**
+ * Initialisiere das Skript
+ */
 function init() {
   var apisToLoad;
   var loadCallback = function () {
     if (--apisToLoad === 0) {
+      //Aufruf, wenn alle APIs geladen wurde
       signin(true, userAuthed);
     }
   };
@@ -44,9 +58,12 @@ function init() {
 function auth() {
   //signin(false, userAuthed);
   // TMP Fix, init() doesn't get called by client.js
-  init()
+  init();
 }
 
+/**
+ * Signalisiere, dass der Benutzer nicht angemeldet ist
+ */
 function deauth() {
   gapi.auth.setToken(null);
   $("#signInButton").show();
@@ -54,11 +71,17 @@ function deauth() {
   $("#signOutButton").hide();
 }
 
+/**
+ * Signalisiere, dass der Benutzer angemeldet ist
+ */
 function signedIn() {
   $("#signInButton").hide();
   $("#signOutButton").show();
 }
 
+/**
+ * Wechsel den Tab zum FAQ-Bereich
+ */
 function showFAQ() {
   $("#home").hide();
   $("#sharing").hide();
@@ -68,14 +91,17 @@ function showFAQ() {
   $('nav').removeClass('fixed');
   $('nav li.active').removeClass('active');
   $('nav a#faq_link').parent().addClass('active');
+  
+  //rufe die Fragen ab
   gapi.client.donate.faqcat.list().execute(function (cats) {
     gapi.client.donate.faqitem.list({"answered": true}).execute(function (items) {
       var items_by_cat = {};
       var html = "";
       var popup_html = '<div id="dropdown" class="dropdown"><button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuTitle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Choose Category</button><ul class="dropdown-menu" aria-labelledby="dropdownMenu1">';
-      var askbutton = '<h3>Didn\'t find what you need? <a class="btn btn-primary" data-toggle="modal" data-target="#newQuestionModal">Ask a question!</a></h3>';
+      var askbutton = '<h3 class="black-text">Didn\'t find what you need? <a class="btn btn-primary" data-toggle="modal" data-target="#newQuestionModal">Ask a question!</a></h3>';
 
       if (items.items === undefined) {
+        //keine Einträge gefunden
         html += askbutton;
         $("#faq").html(html);
       } else {
@@ -93,7 +119,8 @@ function showFAQ() {
 
         cats.items.forEach(function generateHTML(cat) {
           items = items_by_cat[cat.id];
-          if (items != undefined) {
+          if (items !== undefined) {
+            //Kategorie gefunden
             html += '<a href="#faq_' + cat.name + '">' + cat.name + "</a><br />";
           }
 
@@ -128,6 +155,9 @@ function showFAQ() {
   });
 }
 
+/**
+ * Wechsel den Tab zur Tauschbörse
+ */
 function showSharing() {
   $("#home").hide();
   $("#sharing").show();
@@ -139,6 +169,9 @@ function showSharing() {
   loadSharingMapIfNeeded();
 }
 
+/**
+ * Wechsel den Tab zur Startseite
+ */
 function showHome() {
   $("#home").show();
   $("#sharing").hide();
@@ -150,6 +183,9 @@ function showHome() {
   $('nav a#home_link').parent().addClass('active');
 }
 
+/**
+ * Wechsel den Tab zur Karte
+ */
 function showMap() {
   $("#home").hide();
   $("#sharing").hide();
@@ -162,14 +198,28 @@ function showMap() {
   loadMapIfNeeded();
 }
 
+/**
+ * Callback, wenn die GEO-Position erlaubt und gefunden wurde.
+ * Dann soll diese Position auf der Karte angezeigt werden.
+ */
 function onMapLocationFound(e) {
   var radius = e.accuracy / 2;
   L.circle(e.latlng, radius).addTo(map);
 }
+
+/**
+ * Callback, wenn die GEO-Position erlaubt und gefunden wurde.
+ * Dann soll diese Position auf der Karte angezeigt werden, sodass man die
+ * Angebote inder Nähe findet.
+ */
 function onSharingLocationFound(e) {
   var radius = e.accuracy / 2;
   L.circle(e.latlng, radius).addTo(sharingMap);
 }
+
+/**
+ * Lädt den Karteninhalt
+ */
 function loadMapData() {
   //load authorities
   var authortiesUrl = 'https://raw.githubusercontent.com/germany-says-welcome/refugees-welcome-app/master/app/src/main/assets/authorities.json';
@@ -182,7 +232,7 @@ function loadMapData() {
       popup += entry.website ? '<i class="glyphicon glyphicon-info-sign"></i> <a href="http://' + entry.website + '">' + entry.website + '</a><br />' : '';
       popup += 'Data from <a href="http://www.amt-de.com">www.amt-de.com';
 
-      //bind the authority to it's category
+      //füge den Punkt zur Karte hinzu
       L.marker([entry.location.lat, entry.location.lng]).addTo(authorities).bindPopup(popup);
     });
   });
@@ -197,12 +247,17 @@ function loadMapData() {
         var longitude = $(this).attr("lon");
         var latitude = $(this).attr("lat");
         var name = $(this).find("name").first().text();
-        var marker = L.marker([latitude, longitude]).addTo(wifi).bindPopup(name);
+        
+        //füge den Punkt zur Karte hinzu
+        L.marker([latitude, longitude]).addTo(wifi).bindPopup(name);
       });
     }
   });
 }
 
+/**
+ * Lädt die Karte
+ */
 function loadMap() {
   //create layer groups in order to be accessible from loadMapData
   authorities = L.markerClusterGroup();
@@ -239,12 +294,20 @@ function loadMap() {
   loadMapData();
 }
 
+/**
+ * Lädt die Karte nur wenn man es benötigt
+ */
 function loadMapIfNeeded() {
   if (map === undefined) {
+    //Lade die Karte nur, wenn dies noch nicht zuvor geschehen ist, um
+    //unnötiges laden zu vermeiden
     loadMap();
   }
 }
 
+/**
+ * Lädt die Tauschbörse-Karte
+ */
 function loadSharingMap() {
   //cologne as default location
   sharingMap = L.map('sharingmap', {
@@ -269,11 +332,20 @@ function loadSharingMap() {
   loadSharingMapData();
 }
 
+/**
+ * Lädt die Tauschbörse nur wenn man es benötigt
+ */
 function loadSharingMapIfNeeded() {
   if (sharingMap === undefined) {
     loadSharingMap();
   }
 }
+
+/**
+ * Lädt neue Angebote für die Tauschbörse
+ * 
+ * @param {type} bounds
+ */
 function requestUpdatedOffers(bounds) {
   if (NProgress.status == null) {
     NProgress.start();
@@ -305,10 +377,14 @@ function requestUpdatedOffers(bounds) {
         L.marker([item.lat, item.lon]).addTo(sharingLayer).bindPopup(popup);
         
         //add items to index
-        var indexItem = '<div class="wrapper">';
+        var thumbnailUrl = item.image_urls[0];
+        
+        var indexItem = '<div class="container">';
+        indexItem += '<a href="javascript:showDetails(' + item.id + ')">';
+        indexItem += '<img src="' + thumbnailUrl + '">';
         indexItem += '<h4>' + item.title + '</h4>';
         indexItem += '<h5>' + item.subtitle + '</h5>';
-        indexItem += '<a href="javascript:showDetails(' + item.id + ')"> Click here to view it</a>';
+        indexItem += '</a>';
         indexItem += '</div>';
         $('#sharing-index-items').append(indexItem);
       });
@@ -326,7 +402,48 @@ function loadSharingMapData() {
     requestUpdatedOffers(e.target.getBounds());
   });
 }
+
+//Sprachenauswahl
 $(document).ready(function () {
+  var option = {
+    fallbackLng: 'en',
+    ns: {
+      namespaces: ['refugee']
+    },
+    detectLngQS: 'lang'
+  };
+
+  $.i18n.init(option)
+      .done(function () {
+        $('[data-i18n]').i18n();
+      })
+      .fail(function () {
+        $('[data-i18n]').i18n();
+      });
+
+
+  $('#lang-select li[lang]').on('click', function() {
+    var lang = $(this).attr('lang');
+
+    if(lang == "de"){
+      $("#flag_de").show();
+      $("#flag_en").hide();
+    }
+
+    if(lang == "en"){
+      $("#flag_de").hide();
+      $("#flag_en").show();
+    }
+
+
+    $('#lang-select li[lang]').removeClass("active");
+    $(this).addClass("active");
+    $.i18n.setLng(lang, function(){
+      $('[data-i18n]').i18n();
+    });
+  });
+  
+  //Dialog-Handling für neue Fragen
   $("#newQuestionModal").on('click', '#save', function (e) {
     console.log(e);
     var form = $(e.target).parent().parent();
@@ -357,6 +474,12 @@ $(document).ready(function () {
     p.find("#dropdownMenuTitle").text(e.target.textContent);
   });
 });
+
+/**
+ * Zeige Tauschbörseninformationen
+ * 
+ * @param {type} id
+ */
 function showDetails(id) {
   console.log(id);
   gapi.client.donate.offer.get({"id":id}).execute(function (resp) {

@@ -8,7 +8,7 @@
         <meta name="keywords" lang="en" content="Refugees, #germanysayswelcome, Refugees Welcome">
         <meta name="keywords" lang="de" content="Flüchtlinge, Flüchtlingshilfe">
         <meta name="google-signin-client_id" content="760560844994-04u6qkvpf481an26cnhkaauaf2dvjfk0.apps.googleusercontent.com">
-
+        <meta name="theme-color" content="#003171">
         <title>Volunteers</title>
 
         <link rel='stylesheet' href='third-party/css/nprogress.css'/>
@@ -31,7 +31,7 @@
         <![endif]-->
     </head>
     <body>
-        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top mainNav2">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -42,25 +42,34 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="index.html">
-                        <img style="max-width:35px; margin-top: -7px;" alt="Germany Says Welcome" src="image/logo.png">
+                        <img style="max-width:35px; margin-top: -7px; width: 100%;" alt="Germany Says Welcome" src="image/new_logo.svg">
                     </a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a id="home_link" href="javascript:showHome()">Home</a></li>
-                        <li><a id="answered_link" href="javascript:showAnswered()">Answered Questions</a></li>
-                        <li><a id="unanswered_link" href="javascript:showUnanswered()">Unanswered Questions</a></li>
+                        <li class="active"><a id="home_link" href="javascript:showHome()" data-i18n="volunteer:home">Home</a></li>
+                        <li><a id="answered_link" href="javascript:showAnswered()" data-i18n="volunteer:aquestions">Answered Questions</a></li>
+                        <li><a id="unanswered_link" href="javascript:showUnanswered()" data-i18n="volunteer:uquestions">Unanswered Questions</a></li>
+                        <li class="dropdown" id="lang-select">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false"><img class="flag1" src="image/german.png" id="flag_de"><img class="flag1" src="image/english.png" id="flag_en"></a>
+
+                            <ul class="dropdown-menu" id="language-switch2">
+                                <li lang="de" class="switchlink" id="de"><a class="black-text" href="#"><span><img class="switch_flag" src="image/german.png"></span> Deutsch</a></li>
+                                <li lang="en" class="switchlink" id="en"><a class="black-text" href="#"><span><img class="switch_flag" src="image/english.png"></span> English</a></li>
+                            </ul>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton">
+                            <button type="button" onclick="auth();" class="btn btn-default navbar-btn" id="signInButton" data-i18n="volunteer:SignIn-Btn">
                                 Sign in
                             </button>
                         </li>
                         <li>
-                            <button type="button" style="display: none" onclick="deauth();" class="btn btn-default navbar-btn" id="signOutButton">
+                            <button type="button" style="display: none" onclick="deauth();" class="btn btn-default navbar-btn" id="signOutButton" data-i18n="volunteer:SignOut-Btn">
                                 Sign out
                             </button>
                         </li>
@@ -69,12 +78,17 @@
             </div>
         </nav>
         <div id="content">
+            <noscript>
+                Bitte aktiviere Javascript in deinem Browser. Javascript
+                wird verlangt, um diese Seite nutzen zu können.
+            </noscript>
+            
             <!-- Page Content -->
             <div class="content_wrapper" id="home">
                 <span id="welcome"></span>
             </div>
-            <div class="content_wrapper" style="display:none" id="answered"></div>
-            <div class="content_wrapper" style="display:none" id="unanswered"></div>
+            <div class="content_wrapper questions" style="display:none" id="answered"></div>
+            <div class="content_wrapper questions" style="display:none" id="unanswered"></div>
             <div class="modal fade" role="dialog" aria-labelledby="errorModalLabel" id="errorModal">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -82,15 +96,15 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            <h4 class="modal-title" id="errorModalLabel">
+                            <h4 class="modal-title" id="errorModalLabel" data-i18n="volunteer:error">
                                 Error
                             </h4>
                         </div>
-                        <div class="modal-body" id="errorModalText">
+                        <div class="modal-body" id="errorModalText" data-i18n="volunteer:error-text">
                             There was an error processing your request:
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" data-i18n="volunteer:close">
                                 Close
                             </button>
                         </div>
@@ -107,6 +121,8 @@
         <script src="third-party/js/bootstrap.min.js"></script>
         <script src="third-party/js/creative.js"></script>
         <script src='third-party/js/nprogress.js'></script>
+        <script src="third-party/js/i18next.js"></script>
+        <script src="js/browser-language.js"></script>
 
         <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
         <script src="http://leaflet.github.io/Leaflet.markercluster/dist/leaflet.markercluster.js"></script>

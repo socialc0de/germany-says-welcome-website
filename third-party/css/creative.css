@@ -79,7 +79,7 @@ aside {
 .navbar-default {
     border-color: rgba(34,34,34,.05);
     font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
-    background-color: #fff;
+    background-color: #003171;
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;
@@ -102,7 +102,7 @@ aside {
     text-transform: uppercase;
     font-size: 13px;
     font-weight: 700;
-    color: #003171;
+    color: white;
 }
 
 .navbar-default .nav > li>a:hover,
@@ -121,7 +121,7 @@ aside {
     background-color: transparent;
 }
 
-@media(min-width:768px) {
+/*@media(min-width:768px) {*/
     .navbar-default {
         border-color: rgba(255,255,255,.3);
         background-color: transparent;
@@ -148,7 +148,7 @@ aside {
 
     .navbar-default.affix {
         border-color: rgba(34,34,34,.05);
-        background-color: #fff;
+        background-color: #003171;
     }
 
     .navbar-default.affix .navbar-header .navbar-brand {
@@ -170,7 +170,7 @@ aside {
     .navbar-default.affix .nav>li>a:focus:hover {
         color: #FF4081;
     }
-}
+/*}*/
 
 #mainheader {
     position: relative;
@@ -273,7 +273,7 @@ header .header-content .header-content-inner p {
     text-align: center;
     color: #fff;
     opacity: 0;
-    background: rgba(240,95,64,.9);
+    background: rgba(255,64,129,.6);
     -webkit-transition: all .35s;
     -moz-transition: all .35s;
     transition: all .35s;

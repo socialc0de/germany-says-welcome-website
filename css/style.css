@@ -1,5 +1,15 @@
 body {
     padding-top: 50px;
+    background-color: #ffffff;
+}
+
+/*Navigationsleiste*/
+#mainNav {
+    background-color: transparent;
+}
+
+.mainNav2 {
+   background-color: #003171 !important;
 }
 
 #page-top {
@@ -20,27 +30,53 @@ body {
     height: 100%;
     float: left;
     background-color: white;
+    /* Mache diesen Teil in sich scrollbar */
+    overflow-y: auto;
 }
 
 #sharing-index-items > .container {
     color: #1F4788;
+    margin: 10px;
+    /*Der Inhalt wird hiermit dynmamisch skaliert*/
+    width: auto;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    background-color: white;
+    
+    box-shadow: 3px 5px 10px grey;
+}
+
+#sharing-index-items > .container > a {
+    color: black;
+    text-decoration: none;
+}
+
+#sharing-index-items > .container > a > img {
+    height: 80px;
+    width: 80px;
+    
+    background-color: lightgray;
+    float: left;
+    margin-right: 5px;
 }
 
 #sharingmap {
     width: 65%;
-    float: right;
     height: 100%;
-    color: black;
+    float: right;
 }
 
+/* Wenn der Bildschrim zu klein ist, dann liste die EInträge untereinander */
 @media(max-width: 500px) {
     #sharingmap {
         width: 100%;
         height: 600px;
     }
-    
+
     #sharing-info {
         width: 100%;
+        /* Die Liste soll auf dynamisch nach der Länge vergrössert werden */
+        height: auto;
         text-align: center;
     }
 }
@@ -74,24 +110,19 @@ body {
     display: inline-block;
 }
 
-.alias
-{
-    cursor: alias;
-}
-
 #services, #contact {
     background-color: #fff;
     color: #1F4788;
 }
 
 .formbutton {
-    margin-top: 20px;
     margin-right: 10px;
 }
 
-.dropbutton {
+.pinkbutton {
     background-color: #FF4081 !important;
     color: #fff !important;
+    border-radius: 3px;
 }
 
 .dropbutton:active {
@@ -99,11 +130,90 @@ body {
 }
 
 #left_col {
-   float:left;
-   width:50%;
+    float:left;
+    width:50%;
 }
 
 #right_col {
-   float:right;
-   width:50%;
+    float:right;
+    width:50%;
+}
+
+.questions {
+    max-width: 1000px;
+    margin: 0 auto;
+    color: #303030;
+}
+
+.panel {
+    color: black;
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 5px 5px 5px lightgrey;
+}
+
+.float_right {
+    float: right;
+}
+
+.float_left {
+    float: left;
+}
+
+.panel-heading {
+    border-radius: 0px;
+}
+
+.form-control, input, input:active, .form-control:active, .form-control:focus, textarea, .btn-default {
+    border: 2px solid #303030;
+    border-radius: 300px;
+}
+
+.dropbutton {
+    border-radius: 3px;
+}
+
+label {
+    color: #303030;
+}
+
+.logo {
+    max-width:35px;
+    margin-top: -7px;
+    width: 100%;
+}
+
+.dropdown-menu {
+    background-color: #ffffff;
+    box-shadow: 5px 5px 5px lightgrey;
+    cursor: pointer;
+}
+
+.black-text {
+    color: black !important;
+}
+
+#language-switch {
+    box-shadow: none !important;
+    border-top-left-radius: 4px;
+}
+
+#language-switch2 {
+    box-shadow: none !important;
+}
+
+.affix {
+    background-color: white !important;
+}
+
+.switch_flag {
+    vertical-align: middle;
+}
+
+.flag1 {
+    vertical-align: middle;
+}
+
+.switchlink:active {
+    color: #003171;
 }
