@@ -1,6 +1,8 @@
 import router from './refugee/router'
 import langPicker from './refugee/language-picker'
 
+import home from './refugee/home'
+
 //Reservierte globale Variablen
 var map;
 var sharingMap;
@@ -170,20 +172,6 @@ function showSharing() {
   $('nav li.active').removeClass('active');
   $('nav a#sharing_link').parent().addClass('active');
   loadSharingMapIfNeeded();
-}
-
-/**
- * Wechsel den Tab zur Startseite
- */
-function showHome() {
-  $("#home").show();
-  $("#sharing").hide();
-  $("#sharing_details").hide();
-  $("#faq").hide();
-  $("#map_container").hide();
-  $('nav').removeClass('fixed');
-  $('nav li.active').removeClass('active');
-  $('nav a#home_link').parent().addClass('active');
 }
 
 /**
@@ -458,7 +446,7 @@ $(document).ready(function () {
   });
 
   router($('#bs-example-navbar-collapse-1'), {
-    showHome: showHome,
+    showHome: home.show,
     showMap: showMap,
     showFAQ: showFAQ,
     showDetails: showDetails
