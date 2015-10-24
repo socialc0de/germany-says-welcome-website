@@ -9,10 +9,11 @@ var browserSync = require('browser-sync').create()
 
 // Input file.
 watchify.args.debug = true
-var bundler = browserify('./js/refugee.js', watchify.args)
+var bundler = browserify('./js/src/refugee.js', watchify.args)
 
 // If we're running the default task, watch for changes
-if (!process.argv.length) {
+gutil.log(JSON.stringify(process.argv))
+if (process.argv.length === 2) {
   bundler = watchify(bundler)
 }
 

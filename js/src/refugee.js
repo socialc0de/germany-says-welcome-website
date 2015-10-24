@@ -3,12 +3,12 @@ var map;
 var sharingMap;
 var sharingLayer;
 
-/** Meldet den Benutzer über Google Plus an für den Zugriff ans Backend 
- * 
+/** Meldet den Benutzer über Google Plus an für den Zugriff ans Backend
+ *
  *  @param mode Sollte der access token automatisch aktualisiert werden ohne ein Popup
  *  @param authorizeCallback Url, worauf Google den User weiterleiten nach einem login
  */
-function signin(mode, authorizeCallback) {
+function siginin (mode, authorizeCallback) {
   gapi.auth.authorize({
       client_id: "760560844994-04u6qkvpf481an26cnhkaauaf2dvjfk0.apps.googleusercontent.com",
       scope: ["https://www.googleapis.com/auth/plus.login", "https://www.googleapis.com/auth/userinfo.email"],
@@ -20,7 +20,7 @@ function signin(mode, authorizeCallback) {
 /**
  * Überprüfe den Loginstatus des Clients
  */
-function userAuthed() {
+function siginin () {
     gapi.client.oauth2.userinfo.get().execute(function (resp) {
         if (resp.code) {
             deauth();
@@ -91,7 +91,7 @@ function showFAQ() {
   $('nav').removeClass('fixed');
   $('nav li.active').removeClass('active');
   $('nav a#faq_link').parent().addClass('active');
-  
+
   //rufe die Fragen ab
   gapi.client.donate.faqcat.list().execute(function (cats) {
     gapi.client.donate.faqitem.list({"answered": true}).execute(function (items) {
@@ -247,7 +247,7 @@ function loadMapData() {
         var longitude = $(this).attr("lon");
         var latitude = $(this).attr("lat");
         var name = $(this).find("name").first().text();
-        
+
         //füge den Punkt zur Karte hinzu
         L.marker([latitude, longitude]).addTo(wifi).bindPopup(name);
       });
@@ -343,14 +343,14 @@ function loadSharingMapIfNeeded() {
 
 /**
  * Lädt neue Angebote für die Tauschbörse
- * 
+ *
  * @param {type} bounds
  */
 function requestUpdatedOffers(bounds) {
   if (NProgress.status == null) {
     NProgress.start();
   }
-  
+
   var bbox = bounds._southWest.lng + ',' + bounds._southWest.lat + ',' + bounds._northEast.lng + ',' + bounds._northEast.lat;
   gapi.client.donate.offer.list_near({"bbox": bbox}).execute(function (resp) {
     console.log(resp);
@@ -362,7 +362,7 @@ function requestUpdatedOffers(bounds) {
         if (sharingLayer != undefined) {
           sharingMap.removeLayer(sharingLayer);
         }
-        
+
         sharingLayer = new L.FeatureGroup();
         console.log(item);
         var popup = "<h4>" + item.title + "</h4>";
@@ -372,13 +372,13 @@ function requestUpdatedOffers(bounds) {
             popup += '<img height=200 src="' + imageUrl + '">';
           });
         }
-        
+
         popup += '<p><a href="javascript:showDetails(' + item.id + ')">Show more</a>';
         L.marker([item.lat, item.lon]).addTo(sharingLayer).bindPopup(popup);
-        
+
         //add items to index
         var thumbnailUrl = item.image_urls[0];
-        
+
         var indexItem = '<div class="container">';
         indexItem += '<a href="javascript:showDetails(' + item.id + ')">';
         indexItem += '<img src="' + thumbnailUrl + '">';
@@ -388,7 +388,7 @@ function requestUpdatedOffers(bounds) {
         indexItem += '</div>';
         $('#sharing-index-items').append(indexItem);
       });
-      
+
       sharingMap.addLayer(sharingLayer);
     } else {
       $('#errorModalText').text("Error: " + resp.message);
@@ -442,7 +442,7 @@ $(document).ready(function () {
       $('[data-i18n]').i18n();
     });
   });
-  
+
   //Dialog-Handling für neue Fragen
   $("#newQuestionModal").on('click', '#save', function (e) {
     console.log(e);
@@ -477,7 +477,7 @@ $(document).ready(function () {
 
 /**
  * Zeige Tauschbörseninformationen
- * 
+ *
  * @param {type} id
  */
 function showDetails(id) {
@@ -505,7 +505,7 @@ function showDetails(id) {
       }
       html += '</div>';
       $("#sharing_details").html(html);
-      
+
     } else {
       $('#errorModalText').text("Error: " + resp.message);
       $('#errorModalLabel').text("Error Code " + resp.code);
