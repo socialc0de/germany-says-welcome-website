@@ -1,3 +1,5 @@
+import router from './refugee/router'
+
 //Reservierte globale Variablen
 var map;
 var sharingMap;
@@ -473,6 +475,13 @@ $(document).ready(function () {
     p.find("#category").prop('value', e.target.id);
     p.find("#dropdownMenuTitle").text(e.target.textContent);
   });
+
+  router({
+    showHome: showHome,
+    showMap: showMap,
+    showFAQ: showFAQ,
+    showDetails: showDetails
+  })
 });
 
 /**
@@ -512,8 +521,8 @@ function showDetails(id) {
       $('#errorModal').modal();
     }
   });
-
 }
+
 $("#map_container").hide();
 $("#sharing").hide();
 $("#sharing_details").hide();
