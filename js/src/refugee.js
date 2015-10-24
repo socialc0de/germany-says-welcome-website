@@ -11,7 +11,7 @@ var sharingLayer;
  *  @param mode Sollte der access token automatisch aktualisiert werden ohne ein Popup
  *  @param authorizeCallback Url, worauf Google den User weiterleiten nach einem login
  */
-function siginin (mode, authorizeCallback) {
+function signin(mode, authorizeCallback) {
   gapi.auth.authorize({
       client_id: "760560844994-04u6qkvpf481an26cnhkaauaf2dvjfk0.apps.googleusercontent.com",
       scope: ["https://www.googleapis.com/auth/plus.login", "https://www.googleapis.com/auth/userinfo.email"],
@@ -23,7 +23,7 @@ function siginin (mode, authorizeCallback) {
 /**
  * Überprüfe den Loginstatus des Clients
  */
-function siginin () {
+function userAuthed() {
     gapi.client.oauth2.userinfo.get().execute(function (resp) {
         if (resp.code) {
             deauth();
@@ -53,12 +53,12 @@ function init() {
 
   $("#signInButton").text("Signing in ...");
   apisToLoad = 2;
-  apiRoot = 'https://donate-backend.appspot.com/_ah/api';
+  window.apiRoot = 'https://donate-backend.appspot.com/_ah/api';
   gapi.client.load('donate', 'v1', loadCallback, apiRoot);
   gapi.client.load('oauth2', 'v2', loadCallback);
 }
 
-function auth() {
+window.auth = function auth() {
   //signin(false, userAuthed);
   // TMP Fix, init() doesn't get called by client.js
   init();
@@ -67,7 +67,7 @@ function auth() {
 /**
  * Signalisiere, dass der Benutzer nicht angemeldet ist
  */
-function deauth() {
+window.deauth = function deauth() {
   gapi.auth.setToken(null);
   $("#signInButton").show();
   $("#signInButton").text("Sign in");
@@ -457,7 +457,7 @@ $(document).ready(function () {
     p.find("#dropdownMenuTitle").text(e.target.textContent);
   });
 
-  router({
+  router($('#bs-example-navbar-collapse-1'), {
     showHome: showHome,
     showMap: showMap,
     showFAQ: showFAQ,
