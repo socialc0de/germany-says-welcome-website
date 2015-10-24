@@ -21,3 +21,16 @@ Folder structure:
 * js - Javascript files for dynamic and clickable pages 
 * third-party - Self hosted libaries 
 * locale - internationalization (i18) for different languages
+
+## Development notes
+
+In order to bundle the JS files, you need [node](http://nodejs.org/). The version currently used is 4.2. In order to set everything up, after cloning the repo run `npm install`, which fetches all necessary dependencies. The build tool in use is [gulp](http://gulpjs.com/), so install it globally via `npm install --global gulp`.
+
+Building works as follows:
+
+```
+$ # Bundle js files
+$ gulp bundle
+$ # Start a browser sync server, watch for changes and automatically recompile sources (useful for active development)
+$ gulp
+```
