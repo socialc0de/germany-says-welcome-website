@@ -1,85 +1,16 @@
 import router from './refugee/router'
 import langPicker from './refugee/language-picker'
+import loginInit from './refugee/login-button'
 
 //Reservierte globale Variablen
 var map;
 var sharingMap;
 var sharingLayer;
 
-/** Meldet den Benutzer über Google Plus an für den Zugriff ans Backend
- *
- *  @param mode Sollte der access token automatisch aktualisiert werden ohne ein Popup
- *  @param authorizeCallback Url, worauf Google den User weiterleiten nach einem login
- */
-function signin(mode, authorizeCallback) {
-  gapi.auth.authorize({
-      client_id: "760560844994-04u6qkvpf481an26cnhkaauaf2dvjfk0.apps.googleusercontent.com",
-      scope: ["https://www.googleapis.com/auth/plus.login", "https://www.googleapis.com/auth/userinfo.email"],
-      immediate: mode
-    },
-    authorizeCallback);
-}
-
-/**
- * Überprüfe den Loginstatus des Clients
- */
-function userAuthed() {
-    gapi.client.oauth2.userinfo.get().execute(function (resp) {
-        if (resp.code) {
-            deauth();
-        } else {
-            gapi.client.donate.user.create().execute(function (resp) {
-                if (resp.code) {
-                    deauth();
-                } else {
-                    signedIn();
-                }
-            });
-        }
-    });
-}
-
-/**
- * Initialisiere das Skript
- */
-function init() {
-  var apisToLoad;
-  var loadCallback = function () {
-    if (--apisToLoad === 0) {
-      //Aufruf, wenn alle APIs geladen wurde
-      signin(true, userAuthed);
-    }
-  };
-
-  $("#signInButton").text("Signing in ...");
-  apisToLoad = 2;
-  window.apiRoot = 'https://donate-backend.appspot.com/_ah/api';
-  gapi.client.load('donate', 'v1', loadCallback, apiRoot);
-  gapi.client.load('oauth2', 'v2', loadCallback);
-}
-
 window.auth = function auth() {
   //signin(false, userAuthed);
   // TMP Fix, init() doesn't get called by client.js
-  init();
-}
-
-/**
- * Signalisiere, dass der Benutzer nicht angemeldet ist
- */
-window.deauth = function deauth() {
-  gapi.auth.setToken(null);
-  $("#signInButton").show();
-  $("#signInButton").text("Sign in");
-  $("#signOutButton").hide();
-}
-
-/**
- * Signalisiere, dass der Benutzer angemeldet ist
- */
-function signedIn() {
-  $("#signInButton").hide();
-  $("#signOutButton").show();
+  loginInit()
 }
 
 /**
@@ -263,8 +194,8 @@ function loadMapData() {
  */
 function loadMap() {
   //create layer groups in order to be accessible from loadMapData
-  authorities = L.markerClusterGroup();
-  wifi = L.markerClusterGroup();
+  window.authorities = L.markerClusterGroup();
+  window.wifi = L.markerClusterGroup();
 
   //cologne as default location
   map = L.map('map', {

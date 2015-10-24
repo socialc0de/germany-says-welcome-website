@@ -1,5 +1,4 @@
 //Sprachenauswahl
-
 export default function langPicker () {
   $('#lang-select li[lang]').on('click', function() {
     var lang = $(this).attr('lang');
