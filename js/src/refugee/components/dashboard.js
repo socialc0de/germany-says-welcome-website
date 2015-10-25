@@ -1,7 +1,9 @@
 import React from 'react'
 
+// simpliest React Component
 var Dashboard = React.createClass({
 
+  // for debbuging
   displayName: 'Dashboard',
 
   render () {

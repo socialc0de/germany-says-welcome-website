@@ -15,6 +15,7 @@ const POIStore = Hoverboard({
     return JSON.parse(JSON.stringify(state))
   },
 
+  // fetch Points of Interest from the Api
   onFetch () {
     // Hoverboard generates an action for every onSomething,
     // so we can call .fetch() on the POIStore later

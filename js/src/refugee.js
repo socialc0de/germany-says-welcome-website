@@ -13,5 +13,6 @@ window.auth = function auth () {
 
 // mount the react app and render it as soon as our document is ready
 $(document).ready(() => {
+  // mount React Main Component into content Container
   render(App, document.getElementById('content'))
 })
