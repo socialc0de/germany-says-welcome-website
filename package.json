@@ -28,7 +28,10 @@
     "watchify": "^2.3.0"
   },
   "dependencies": {
-    "react": "^0.13.3",
-    "react-mini-router": "^1.1.7"
+    "leaflet": "^0.7.5",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-leaflet": "^0.8.1",
+    "tiny-react-router": "^1.0.2"
   }
 }
