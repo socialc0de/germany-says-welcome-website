@@ -28,6 +28,7 @@
     "watchify": "^2.3.0"
   },
   "dependencies": {
+    "hoverboard": "^1.5.0",
     "leaflet": "^0.7.5",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
