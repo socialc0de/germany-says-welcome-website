@@ -3,6 +3,7 @@ import { RouterMixin } from 'react-mini-router'
 
 // all pages are organized as separate components
 import Dashboard from './dashboard'
+import Map from './map'
 
 var App = React.createClass({
 
@@ -10,19 +11,19 @@ var App = React.createClass({
 
   routes: {
     '/': 'home',
-    '/test': 'test'
+    '/map': 'map'
   },
 
   home () {
     return <Dashboard />
   },
 
-  test () {
-    return <h1>Testing</h1>
+  map () {
+    return <Map />
   },
 
   notFound (path) {
-    return <div>Page Not Found: {path}</div>
+    return <p>Page Not Found: {path}</p>
   },
 
   render () {
