@@ -3,6 +3,11 @@ import POIStore from '../stores/poi'
 
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
 
+//
+// Documentation for the react-leaflet wrapper can be found at
+// http://react-components.com/component/react-leaflet
+//
+
 const MapComponent = React.createClass({
 
   displayName: 'Map',
@@ -27,7 +32,11 @@ const MapComponent = React.createClass({
     // console.log('Received state update', state)
 
     var markers = state ? state.points.map((point, i) => {
-      return <Marker key={i} position={point.location} />
+      return <Marker key={i} position={point.location}>
+        <Popup>
+          <p>{point.adresse}</p>
+        </Popup>
+      </Marker>
     }) : null
 
     // center in germany
