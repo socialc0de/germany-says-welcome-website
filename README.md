@@ -34,3 +34,14 @@ $ gulp bundle
 $ # Start a browser sync server, watch for changes and automatically recompile sources (useful for active development)
 $ gulp
 ```
+
+## Production build
+
+The JavaScript file that results from the build is quite large and not suited for any serious usage. In order to produce a smaller version there is a separate gulp task:
+
+```
+$ # Bundle and minify javascript
+$ gulp minify
+```
+
+You should run this before pushing the latest result to the server, so the file `js/dist/bundle.js` will always be optimized.

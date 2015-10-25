@@ -1,5 +1,6 @@
 var gulp = require('gulp')
 var gutil = require('gulp-util')
+var uglify = require('gulp-uglify')
 var source = require('vinyl-source-stream')
 var babelify = require('babelify')
 var watchify = require('watchify')
@@ -45,6 +46,12 @@ function bundle () {
  */
 gulp.task('bundle', function () {
   return bundle()
+})
+
+gulp.task('minify', ['bundle'], function () {
+  return gulp.src('js/dist/bundle.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('js/dist'))
 })
 
 /**
