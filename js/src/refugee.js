@@ -8,6 +8,9 @@ import homeController from './refugee/home'
 import faqController from './refugee/faq'
 import mapController from './refugee/map'
 
+import React from 'react'
+import App from './refugee/components/app'
+
 window.auth = function auth () {
   // signin(false, userAuthed);
   // TMP Fix, init() doesn't get called by client.js
@@ -15,6 +18,7 @@ window.auth = function auth () {
 }
 
 // Sprachenauswahl
+/*
 $(document).ready(function () {
   var option = {
     fallbackLng: 'en',
@@ -69,6 +73,16 @@ $(document).ready(function () {
     showMap: mapController.show,
     showFAQ: faqController.show
   })
+})
+*/
+
+$(document).ready(() => {
+  // debugger
+  React.render(
+    // we can not use html5 history as of now because our root is a refugee.html
+    React.createFactory(App)({ history: false }),
+    document.getElementById('foobar')
+  )
 })
 
 $('#map_container').hide()

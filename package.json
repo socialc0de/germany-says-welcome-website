@@ -26,5 +26,9 @@
     "minimist": "^1.2.0",
     "vinyl-source-stream": "^1.0.0",
     "watchify": "^2.3.0"
+  },
+  "dependencies": {
+    "react": "^0.13.3",
+    "react-mini-router": "^1.1.7"
   }
 }
