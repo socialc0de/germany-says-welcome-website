@@ -1,6 +1,6 @@
 import React from 'react'
 
-// simpliest React Component
+// most simple React Component
 var Dashboard = React.createClass({
 
   // for debbuging

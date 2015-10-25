@@ -2,7 +2,17 @@
 
 import Hoverboard from 'hoverboard'
 
-// current docs for Hoverboard are found at npmjs.com/package/hoverboard
+// Stores encapsulate all logic that operate on data; they provide means to
+// refetch and eventually also to add new data. This architecture is similar to
+// MVC, but it's not the same. It's called Flux and was introduced by facebook.
+//
+// Info for flux: https://facebook.github.io/flux/docs/overview.html
+//
+// You don't *need* Flux to build apps with react.js, but it makes it a lot
+// easier in the long term.
+//
+// The flux implmentation we use is called Hoverboard. The docs can be found at
+// npmjs.com/package/hoverboard
 const POIStore = Hoverboard({
 
   getInitialState () {
@@ -11,7 +21,7 @@ const POIStore = Hoverboard({
   },
 
   getState (state) {
-    // for immutability:
+    // for immutability we create a deep copy of the state before returning it
     return JSON.parse(JSON.stringify(state))
   },
 

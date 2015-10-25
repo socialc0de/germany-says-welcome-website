@@ -14,19 +14,34 @@ const MapComponent = React.createClass({
 
   unsubsribeFromStore: null,
 
+  // componentWillMount and componentWillUnmount are so-called lifecycle-methods;
+  // they are called automatically by react at certain times. this for example
+  // is called before the component gets appended to the DOM
   componentWillMount () {
     // POIStore.getState registers a callback that get's called every time the
-    // store is called. It returns a function to unsubscribe from these events
+    // store's data changes. It returns a function to unsubscribe from these
+    // changes.
+    //
+    // What we do is change this *component's* state to the one passed
+    // in from the *store*. This way we have cleanly separated the data from
+    // its represtandation. This component's render()-function gets called
+    // every time the state changes and all we need to do is look at this.state
+    // and render our HTML accordingly.
     this.unsubscribeFromStore = POIStore.getState(this.setState.bind(this))
 
     // fetch initial data
     POIStore.fetch()
   },
 
+  // this one gets called before the component gets removed from the DOM, that
+  // means when we change the currently viewed page.
   componenWillUnmount () {
     this.unsubscribeFromStore()
   },
 
+  // the render method gets called automatically when the component is mounted
+  // and each time the state changes. It returns the component's representation,
+  // which in this case is a map with some markers
   render () {
     var state = this.state
     // console.log('Received state update', state)
