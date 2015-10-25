@@ -81,7 +81,7 @@ $(document).ready(() => {
   React.render(
     // we can not use html5 history as of now because our root is a refugee.html
     React.createFactory(App)({ history: false }),
-    document.getElementById('foobar')
+    document.getElementById('content')
   )
 })
 

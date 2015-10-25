@@ -1,6 +1,9 @@
 import React from 'react'
 import { RouterMixin } from 'react-mini-router'
 
+// all pages are organized as separate components
+import Dashboard from './dashboard'
+
 var App = React.createClass({
 
   mixins: [ RouterMixin ],
@@ -11,7 +14,7 @@ var App = React.createClass({
   },
 
   home () {
-    return <h1>Hello world</h1>
+    return <Dashboard />
   },
 
   test () {
