@@ -30,5 +30,5 @@ build/Release
 # https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
 node_modules
 
-# Ignore build results
-js/dist
+# Ignore temporary build results
+js/dist/bundle.js.map
