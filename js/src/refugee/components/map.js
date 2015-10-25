@@ -1,7 +1,9 @@
 import React from 'react'
 import POIStore from '../stores/poi'
 
-const Map = React.createClass({
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
+
+const MapComponent = React.createClass({
 
   displayName: 'Map',
 
@@ -24,13 +26,19 @@ const Map = React.createClass({
     var state = this.state
     // console.log('Received state update', state)
 
-    return (<ul>
-      {state ? state.points.map(function (point, i) {
-        return (<li key={i}>{JSON.stringify(point)}</li>)
-      }) : null}
-    </ul>)
+    var markers = state ? state.points.map((point, i) => {
+      return <Marker key={i} position={point.location} />
+    }) : null
+
+    // center in germany
+    return (<Map center={[ 51.165, 10.451 ]} zoom={6}>
+        <TileLayer
+          url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' />
+        {markers}
+      </Map>)
   }
 
 })
 
-export default Map
+export default MapComponent
