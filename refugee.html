@@ -89,73 +89,8 @@
             </div>
         </nav>
 
-        <!--Webseiten Inhalt-->
-        <div id="content">
-            <noscript>
-                Bitte aktiviere Javascript in deinem Browser. Javascript
-                wird verlangt, um diese Seite nutzen zu können.
-            </noscript>
-
-            <!-- Page Content -->
-            <div class="content_wrapper black-text" id="home" data-i18n="refugee:welcome-text">
-                Welcome to Germany Says Welcome
-            </div>
-
-            <!--FAQ-Tab für Fragen und Antworten-->
-            <div class="content_wrapper" id="faq"></div>
-            <!--Karte mit kostenlosen Wifi Hotspots und Behoerden-->
-            <div id="map_container">
-                <div id="map"></div>
-            </div>
-
-            <!--Error Dialog für neue Fragen-->
-            <div class="modal fade" role="dialog" aria-labelledby="errorModalLabel" id="errorModal">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="errorModalLabel">Error </h4>
-                        </div>
-                        <div class="modal-body" id="errorModalText" data-i18n="refugee:error-request">
-                            There was an error processing your request:
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--Dialog für neue Fragen, die bisher noch nicht existieren -->
-            <div class="modal fade" role="dialog" aria-labelledby="newQuestionModalLabel" id="newQuestionModal">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="newQuestionModalLabel" data-i18n="refugee:ask-question">Ask a Question</h4>
-                        </div>
-                        <div class="modal-body" id="newQuestionModalText">
-                            <div class="form-group">
-                                <label for="question_text">Question</label><input type="text" class="form-control" id="question_text" placeholder="Question">
-                            </div>
-                            <div class="form-group">
-                                <label for="question_text">Answer</label><input type="text" class="form-control" id="answer_text" placeholder="Answer (if known)">
-                            </div>
-                            <div class="form-group">
-                                <label for="language_code">Language-Code</label><input type="text" class="form-control" id="language_code" placeholder="Language-Code (two letters)">
-                            </div>
-                            <input type="hidden" id="category">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" id="save">Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- React Container -->
+        <div id="content"></div>
 
         <!--Platziere Javascript-Dateien ans Ende, sodass die Seite schneller laden kann-->
 
@@ -165,9 +100,6 @@
         <script src="third-party/js/jquery.fittext.js"></script>
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-        <script src="third-party/js/wow.min.js"></script>
-        <script src="third-party/js/creative.js"></script>
-        <script src='third-party/js/nprogress.js'></script>
 
         <!-- Google APIs -->
         <script src="https://apis.google.com/js/platform.js" async defer></script>
