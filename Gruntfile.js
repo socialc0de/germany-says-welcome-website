@@ -201,7 +201,7 @@ module.exports = function (grunt) {
     // Automatically inject Bower components into the app
     wiredep: {
       app: {
-        src: ['<%= yeoman.app %>/index.html'],
+        src: ['<%= yeoman.app %>/*.html'],
         ignorePath:  /\.\.\//
       },
       test: {
@@ -423,9 +423,19 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
-    }
+    },
+    'gh-pages':{
+      options: {
+        base: './dist',
+        message: 'Auto-generated commit by grunt-gh-pages'
+      },
+      src:['./js/**/*.js',
+          './*.html',
+          './css/**/*.css'
+        ]
+    },
   });
-
+  grunt.loadNpmTasks('grunt-gh-pages');
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {

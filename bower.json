@@ -4,12 +4,13 @@
   "dependencies": {
     "angular": "^1.4.0",
     "bootstrap": "^3.2.0",
-    "angular-animate": "^1.4.0",
-    "angular-cookies": "^1.4.0",
-    "angular-resource": "^1.4.0",
-    "angular-route": "^1.4.0",
-    "angular-sanitize": "^1.4.0",
-    "angular-touch": "^1.4.0"
+    "i18next": "~1.11.0",
+    "FitText.js": "jquery-fittext.js#~1.2.0",
+    "wow": "WOW#~1.1.2",
+    "font-awesome": "fontawesome#~4.4.0",
+    "angular-leaflet-directive": "~0.9.0",
+    "angular-simple-logger": "~0.1.5",
+    "leaflet.markercluster": "~0.4.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"
@@ -23,6 +24,18 @@
         "dist/css/bootstrap.css",
         "dist/js/bootstrap.js"
       ]
+    },
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.css"
+      ]
+    },
+    "leaflet.markercluster": {
+     "main": [
+        "dist/leaflet.markercluster-src.js",
+        "dist/MarkerCluster.css",
+        "dist/MarkerCluster.Default.css"
+        ]
     }
   }
 }

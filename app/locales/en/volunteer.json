@@ -1,0 +1,15 @@
+{
+  "home": "Home",
+
+  "SignIn-Btn": "Log in",
+  "SignOut-Btn": "Log out",
+
+  "aquestions": "Answered Questions",
+  "uquestions": "Unanswered Questions",
+
+  "error": "Error",
+  "error-text": "There was an error processing your request: ",
+  "close": "Close",
+
+  "welcome": "Welcome"
+}

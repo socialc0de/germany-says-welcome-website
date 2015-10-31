@@ -1,0 +1,15 @@
+{
+  "home": "Home",
+
+  "SignIn-Btn": "Einloggen",
+  "SignOut-Btn": "Ausloggen",
+
+  "aquestions": "Beantwortete Fragen",
+  "uquestions": "Unbeantwortete Fragen",
+
+  "error": "Fehler",
+  "error-text": "Fehler beim senden deiner Frage:",
+  "close": "Schliessen",
+
+  "welcome": "Willkommen"
+}
