@@ -238,7 +238,7 @@ module.exports = function (grunt) {
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
     useminPrepare: {
-      html: '<%= yeoman.app %>/index.html',
+      html: '<%= yeoman.app %>/*.html',
       options: {
         dest: '<%= yeoman.dist %>',
         flow: {
@@ -257,7 +257,7 @@ module.exports = function (grunt) {
     usemin: {
       html: ['<%= yeoman.dist %>/{,*/}*.html'],
       css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-      js: ['<%= yeoman.dist %>/scripts/{,*/}*.js'],
+      js: ['<%= yeoman.dist %>/**/*.js'],
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>',
@@ -268,8 +268,8 @@ module.exports = function (grunt) {
           js: [[/(images\/[^''""]*\.(png|jpg|jpeg|gif|webp|svg))/g, 'Replacing references to images']]
         }
       }
-    },
 
+    },
     // The following *-min tasks will produce minified files in the dist folder
     // By default, your `index.html`'s <!-- Usemin block --> will take care of
     // minification. These next options are pre-configured if you do not wish
@@ -380,7 +380,8 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '*.html',
             'images/{,*/}*.{webp}',
-            'styles/fonts/{,*/}*.*'
+            'styles/fonts/{,*/}*.*',
+            'locales/**'
           ]
         }, {
           expand: true,
@@ -392,6 +393,16 @@ module.exports = function (grunt) {
           cwd: 'bower_components/bootstrap/dist',
           src: 'fonts/*',
           dest: '<%= yeoman.dist %>'
+        }, {
+          expand: true,
+          cwd: 'bower_components/font-awesome',
+          src: 'fonts/*',
+          dest: '<%= yeoman.dist %>'
+        }, {
+          expand: true,
+          cwd: 'bower_components/leaflet/dist',
+          src: 'images/*',
+          dest: '<%= yeoman.dist %>/styles'
         }]
       },
       styles: {
@@ -429,10 +440,7 @@ module.exports = function (grunt) {
         base: './dist',
         message: 'Auto-generated commit by grunt-gh-pages'
       },
-      src:['./js/**/*.js',
-          './*.html',
-          './css/**/*.css'
-        ]
+      src:['**']
     },
   });
   grunt.loadNpmTasks('grunt-gh-pages');

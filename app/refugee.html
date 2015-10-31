@@ -34,25 +34,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <!-- build:js(.) scripts/vendor.js -->
-        <!-- bower:js -->
-        <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="bower_components/i18next/i18next.js"></script>
-        <script src="bower_components/FitText.js/jquery.fittext.js"></script>
-        <script src="bower_components/wow/dist/wow.js"></script>
-        <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
-        <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
-        <script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
-        <script src="bower_components/leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
-        <!-- endbower -->
-        <!-- endbuild -->
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/creative.js"></script>
-        <script src="scripts/browser-language.js"></script>
-        <script src="scripts/refugee.js"></script>
-        <!-- endbuild -->
     </head>
     <body>
         <!--Navigationsleiste-->
@@ -189,9 +170,30 @@
                 </div>
             </div>
         </div>
-
         <!--Platziere Javascript-Dateien ans Ende, sodass die Seite schneller laden kann-->
-        
-
+        <!-- build:js(.) scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/i18next/i18next.js"></script>
+        <script src="bower_components/FitText.js/jquery.fittext.js"></script>
+        <script src="bower_components/wow/dist/wow.js"></script>
+        <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+        <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
+        <script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
+        <script src="bower_components/leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
+        <script src="bower_components/jquery-easing/jquery.easing.js"></script>
+        <script src="bower_components/jquery-easing/jquery.easing.min.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+        <script style="text/javascript">
+            L.Icon.Default.imagePath = 'styles/images';
+        </script>
+        <!-- build:js({.tmp,app}) scripts/refugee.js -->
+        <script src="scripts/refugee.js"></script>
+        <script src="scripts/creative.js"></script>
+        <script src="scripts/browser-language.js"></script>
+        <!-- endbuild -->
     </body>
 </html>
