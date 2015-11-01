@@ -1,8 +1,16 @@
 body {
-    padding-top: 41px;
     background-color: #ffffff;
 }
-
+@media (max-width: 992px) {
+  body {
+    padding-top: 41px;
+  }
+}
+@media (min-width: 992px) {
+  body {
+    padding-left: calc(100%/6);
+  }
+}
 /*Navigationsleiste*/
 .navbar-fixed-top {
   border-width: 0;
@@ -13,11 +21,12 @@ body {
 }
 
 #page-top {
-    padding-top: 0px;
+    padding: 0px;
 }
 
 .content_wrapper {
     padding: 15px 15px 15px 15px;
+    height: 100%;
 }
 
 #sharing {
@@ -83,7 +92,6 @@ body {
 
 #map_container {
     height: 100%;
-    padding-top: 10px;
 }
 
 #map {
@@ -222,4 +230,60 @@ label {
 
 .switchlink:active {
     color: #003171;
+}
+
+.bottom_brand {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center
+  }
+.navmenu, .navbar-offcanvas {
+  width: calc(100%/6);
+}
+.navmenu-default {
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    background-color: #003171;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+.navmenu-default .navmenu-nav > li > a:hover {
+  color: #FF4081;
+  background-color: #303030;
+}
+.navmenu-default .navmenu-nav > .active > a, .navbar-default .navbar-offcanvas .navmenu-nav > .active > a, .navmenu-default .navmenu-nav > .active > a:hover, .navbar-default .navbar-offcanvas .navmenu-nav > .active > a:hover, .navmenu-default .navmenu-nav > .active > a:focus, .navbar-default .navbar-offcanvas .navmenu-nav > .active > a:focus {
+  color: #FF4081;
+  background-color: #003171;
+}
+.navmenu-default .nav > li>a, .navmenu-default .nav>li>a:focus {
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700;
+  color: white;
+}
+#dashboard {
+    position:relative;
+}
+vr {
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 100%;
+  border: 0;
+  border-left: 1px solid #cccccc;
+  display: inline-block;
+  vertical-align: bottom;
+}
+.dashboard-heading {
+    color: rgba(0,0,0,.5);
+    font-weight: 500;
+    line-height: 1.1;
+    font-size: 20px;
+    padding-bottom: 15px;
+    text-align: left
+}
+#newsfeed {
+    text-align: right;
+    height: 95%;
 }
