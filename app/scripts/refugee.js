@@ -1,40 +1,20 @@
 MAIN_URL = "http://gsw.pajowu.de/api/"
 $(document).ready(function () {
     showHome();
-    var option = {
-        fallbackLng: 'en',
-        ns: {
-            namespaces: ['refugee']
-        },
-        detectLngQS: 'lang'
-    };
-
-    $.i18n.init(option).done(function () {
-        $('[data-i18n]').i18n();
-    }).fail(function () {
-        $('[data-i18n]').i18n();
-    });
-    $('#lang-select li[lang]').on('click', function() {
-        var lang = $(this).attr('lang');
-
-        if(lang == "de"){
-            $("#flag_de").show();
-            $("#flag_en").hide();
-        }
-
-        if(lang == "en"){
-            $("#flag_de").hide();
-            $("#flag_en").show();
-        }
-
-
-        $('#lang-select li[lang]').removeClass("active");
-        $(this).addClass("active");
-        $.i18n.setLng(lang, function(){
-            $('[data-i18n]').i18n();
-        });
-    });
-    var app = angular.module('gsw', ['nemLogging','leaflet-directive']);
+    angular.module('jm.i18next').config(['$i18nextProvider', function ($i18nextProvider) {
+    $i18nextProvider.options = {
+            lng: 'de',
+            useCookie: false,
+            useLocalStorage: false,
+            fallbackLng: 'en',
+            resGetPath: 'locales/__lng__/__ns__.json',
+            defaultLoadingValue: '', // ng-i18next option, *NOT* directly supported by i18next
+            ns: {
+                namespaces: ['refugee']
+            },
+        };
+    }]);
+    var app = angular.module('gsw', ['nemLogging','leaflet-directive','jm.i18next']);
     app.controller('FAQController', function($scope, $http) {
         $scope.faqData = {}
         $scope.audiences = {}
@@ -62,7 +42,7 @@ $(document).ready(function () {
     app.controller('DashboardController', function($scope, $http) {
         $scope.audiences = {}
         $scope.colWidth = 12
-        $scope.dashboardCards = [{"name":"</h4><h1>FAQ</h1><h4>"},{"name":"Map"}]
+        $scope.dashboardCards = [{"name":"FAQ"},{"name":"Map"}]
         $scope.loadDashboard = function() {
             $http.get(MAIN_URL + "audiences/").success(function(data) {
                 data.forEach(function(value, key) {

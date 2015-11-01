@@ -25,7 +25,6 @@ module.exports = function(config) {
       'bower_components/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
       'bower_components/bootstrap/dist/js/bootstrap.js',
-      'bower_components/i18next/i18next.js',
       'bower_components/FitText.js/jquery.fittext.js',
       'bower_components/wow/dist/wow.js',
       'bower_components/angular-simple-logger/dist/angular-simple-logger.js',
@@ -35,6 +34,9 @@ module.exports = function(config) {
       'bower_components/jquery-easing/jquery.easing.js',
       'bower_components/jquery-easing/jquery.easing.min.js',
       'bower_components/jasny-bootstrap/dist/js/jasny-bootstrap.js',
+      'bower_components/angular-sanitize/angular-sanitize.js',
+      'bower_components/i18next/i18next.js',
+      'bower_components/ng-i18next/dist/ng-i18next.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
