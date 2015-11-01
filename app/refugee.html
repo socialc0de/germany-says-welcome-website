@@ -112,17 +112,22 @@
             <div class="content_wrapper black-text" id="home" data-i18n="refugee:welcome-text">
                 Welcome to Germany Says Welcome
             </div>
-            <div class="content_wrapper black-text" id="dashboard">
+            <div class="content_wrapper black-text" id="dashboard" ng-controller="DashboardController">
                 <div class="col-xs-18 col-sm-6 col-md-7">
-                    <div class="col-xs-18 col-sm-6 col-md-4" ng-repeat="k in (0|number:1) track by $index">
-                        <div class="dashboard-heading">Step {{$index+1}}: Blub Bub</div>
-                        {{dashboardData}}
-                        <!--<div class="thumbnail">
+                    <div class="col-xs-18 col-sm-6 col-md-{{colWidth}}" ng-repeat="(id,name) in audiences">
+                        <div class="dashboard-heading">{{name}}</div>
+                        <div class="thumbnail">
                             <img src="http://placehold.it/500x250/EEE">
                             <div class="caption">
-                                <h4>Thumbnail label</h4>
+                                <h4 class="ng-binding" data-i18n="refugee:faq">FAQ</h4>
                             </div>
-                        </div>-->
+                        </div>
+                        <div class="thumbnail">
+                            <img src="http://placehold.it/500x250/EEE">
+                            <div class="caption">
+                                <h4 class="ng-binding" data-i18n="refugee:map">Map</h4>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!--<div style="height: 100%;"><vr></vr></div>-->
@@ -142,7 +147,7 @@
             <!--FAQ-Tab für Fragen und Antworten-->
             <div class="content_wrapper" id="faq" ng-controller="FAQController">
                 <div ng-repeat="(key,data) in faqData" class="col-xs-18 col-sm-6 col-md-4">
-                    <div class="dashboard-heading">Step {{key}}</div>
+                    <div class="dashboard-heading">{{audiences[key]}}</div>
                     <div ng-repeat="faqitem in data track by $i">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="{{key}}heading{{faqitem.id}}">

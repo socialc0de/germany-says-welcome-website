@@ -1,5 +1,4 @@
 MAIN_URL = "http://gsw.pajowu.de/api/"
-MAIN_URL = "http://localhost:8000/api/"
 $(document).ready(function () {
     showHome();
     var option = {
@@ -38,7 +37,15 @@ $(document).ready(function () {
     var app = angular.module('gsw', ['nemLogging','leaflet-directive']);
     app.controller('FAQController', function($scope, $http) {
         $scope.faqData = {}
+        $scope.audiences = {}
+
         $scope.loadFAQ = function() {
+            $http.get(MAIN_URL + "audiences/").success(function(data) {
+                data.forEach(function(value, key) {
+                    $scope.audiences[value['id']] = value['name']
+                });
+                //$scope.audiences = data;
+            });
             for (var i=1;i<=3;i++) {
                 $http.get(MAIN_URL + "faq/by-audience/" + i).success((function(key) {
                     return function(data) {
@@ -52,7 +59,20 @@ $(document).ready(function () {
             }
         }
     });
-
+    app.controller('DashboardController', function($scope, $http) {
+        $scope.audiences = {}
+        $scope.colWidth = 12
+        $scope.dashboardCards = [{"name":"</h4><h1>FAQ</h1><h4>"},{"name":"Map"}]
+        $scope.loadDashboard = function() {
+            $http.get(MAIN_URL + "audiences/").success(function(data) {
+                data.forEach(function(value, key) {
+                    $scope.audiences[value['id']] = value['name']
+                });
+                $scope.colWidth = Math.floor(12/data.length);
+                //$scope.audiences = data;
+            });
+        }
+    });
     app.controller('POIController', ["$scope", "$http", "leafletData",  function($scope, $http, leafletData) {
         $scope.authorities = L.markerClusterGroup();
         $scope.wifi = L.markerClusterGroup();
@@ -148,6 +168,7 @@ function showDashboard() {
     $('#nav').removeClass('fixed');
     $('#nav li.active').removeClass('active');
     $('#nav a#dashboard_link').parent().addClass('active');
+    angular.element("#dashboard").scope().loadDashboard();
 }
 function showFAQ() {
     $("#home").hide();
