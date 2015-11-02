@@ -3,6 +3,7 @@ set -e # exit with nonzero exit code if anything fails
 
 grunt build
 
+cp CNAME dist/CNAME
 # go to the out directory and create a *new* Git repo
 cd dist
 git init 
