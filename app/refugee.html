@@ -149,7 +149,7 @@
             <div class="full-height" id="faq" ng-controller="FAQController">
                 <div ng-repeat="(key,data) in faqData" class="col-xs-18 col-sm-6 col-md-4 content_wrapper"  ng-class-even="'even-column'">
                     <div class="dashboard-heading" ng-i18next="refugee:{{audiences[key]}}">{{audiences[key]}}</div>
-                    <div ng-repeat="faqitem in data track by $i">
+                    <div ng-repeat="faqitem in data track by $index">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="{{key}}heading{{faqitem.id}}">
                                 <h4 class="panel-title">
