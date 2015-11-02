@@ -4,11 +4,19 @@ body {
 @media (max-width: 992px) {
   body {
     padding-top: 41px;
+    padding-left: 0;
   }
+  .navbar-toggle {
+    display: inline;
+  }
+
 }
 @media (min-width: 992px) {
   body {
     padding-left: calc(100%/6);
+  }
+.navmenu-fixed-left {
+    left: 0 !important;
   }
 }
 /*Navigationsleiste*/

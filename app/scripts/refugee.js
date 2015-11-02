@@ -171,3 +171,8 @@ function showMap() {
     angular.element("#map").scope().loadMap();
 
 }
+ $('.navmenu-fixed-left').offcanvas({
+     placement: 'left',
+     autohide: 'true',
+     recalc: 'true'
+ });
