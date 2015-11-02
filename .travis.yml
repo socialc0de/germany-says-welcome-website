@@ -5,7 +5,7 @@ node_js:
 before_script:
   - 'npm install -g bower grunt-cli'
   - 'bower install'
-script: grunt build gh-pages
+script: bash ./deploy.sh
 env:
   global:
   - GH_REF: github.com/socialc0de/germany-says-welcome-website.git
