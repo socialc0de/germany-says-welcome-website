@@ -8,7 +8,7 @@
         <meta name="description" content="The official Germany says Welcome Website">
         <meta name="keywords" lang="en" content="Refugees, #germanysayswelcome, Refugees Welcome">
         <meta name="keywords" lang="de" content="Flüchtlinge, Flüchtlingshilfe">
-        
+
         <meta name="theme-color" content="#003171">
 
         <title>Refugees Welcome To Germany</title>
@@ -94,13 +94,11 @@
             </div>
         </div>
 
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu">
+        <button id="toggleNav" type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".navmenu">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-        </nav>
         <!--Webseiten Inhalt-->
         <div id="content">
             <noscript>
@@ -112,26 +110,29 @@
             <div class="content_wrapper black-text" id="home" ng-i18next="refugee:welcome-text">
                 Welcome to Germany Says Welcome
             </div>
-            <div class="content_wrapper black-text" id="dashboard" ng-controller="DashboardController">
-                <div class="col-xs-18 col-sm-6 col-md-7">
-                    <div class="col-xs-18 col-sm-6 col-md-{{colWidth}}" ng-repeat="(id,name) in audiences">
-                        <div class="dashboard-heading" ng-i18next="refugee:{{name}}">{{name}}</div>
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/500x250/EEE">
-                            <div class="caption">
-                                <h4 class="ng-binding" ng-i18next="refugee:faq">FAQ</h4>
+            <div class="black-text full-height" id="dashboard" ng-controller="DashboardController">
+                <div class="col-xs-18 col-sm-6 col-md-7 full-height">
+                    <div class="col-xs-18 col-sm-6 col-md-{{colWidth}} full-height" ng-repeat="(id,name) in audiences" ng-class-even="'even-column'">
+                        <div class="content_wrapper">
+                            <div class="dashboard-heading" ng-i18next="refugee:{{name}}">{{name}}</div>
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/500x250/EEE">
+                                <div class="caption">
+                                    <h4 class="ng-binding" ng-i18next="refugee:faq">FAQ</h4>
+                                </div>
                             </div>
-                        </div>
-                        <div class="thumbnail">
-                            <img src="http://placehold.it/500x250/EEE">
-                            <div class="caption">
-                                <h4 class="ng-binding" ng-i18next="refugee:map">Map</h4>
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/500x250/EEE">
+                                <div class="caption">
+                                    <h4 class="ng-binding" ng-i18next="refugee:map">Map</h4>
+                                </div>
                             </div>
+                            <div class="vr"></div>
                         </div>
                     </div>
                 </div>
-                <!--<div style="height: 100%;"><vr></vr></div>-->
-                <div id="newsfeed" class="col-xs-18 col-sm-6 col-md-5">
+
+                <div id="newsfeed" class="col-xs-18 col-sm-6 col-md-5 content_wrapper" style="padding-left: 0;">
                     <div class="dashboard-heading">Newsfeed</div>
                     <a height="100%" class="twitter-timeline" href="https://twitter.com/GerSaysWelcome" data-widget-id="660754833473937409">Tweets von @GerSaysWelcome </a>
                     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
@@ -145,8 +146,8 @@
                 </div>
             </div>
             <!--FAQ-Tab für Fragen und Antworten-->
-            <div class="content_wrapper" id="faq" ng-controller="FAQController">
-                <div ng-repeat="(key,data) in faqData" class="col-xs-18 col-sm-6 col-md-4">
+            <div class="full-height" id="faq" ng-controller="FAQController">
+                <div ng-repeat="(key,data) in faqData" class="col-xs-18 col-sm-6 col-md-4 content_wrapper"  ng-class-even="'even-column'">
                     <div class="dashboard-heading" ng-i18next="refugee:{{audiences[key]}}">{{audiences[key]}}</div>
                     <div ng-repeat="faqitem in data track by $i">
                         <div class="panel panel-default">
@@ -160,13 +161,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="vr" ng-hide="$last"></div>
                 </div>
             </div>
             <!--Karte mit kostenlosen Wifi Hotspots und Behoerden-->
             <div id="map_container" ng-controller="POIController">
                 <leaflet lf-center="center" id="map" width="100%" height="100%" layers="layers"></leaflet>
             </div>
-            
+
             <!--Error Dialog für neue Fragen-->
             <div class="modal fade" role="dialog" aria-labelledby="errorModalLabel" id="errorModal">
                 <div class="modal-dialog" role="document">
@@ -185,7 +187,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!--Dialog für neue Fragen, die bisher noch nicht existieren -->
             <div class="modal fade" role="dialog" aria-labelledby="newQuestionModalLabel" id="newQuestionModal">
                 <div class="modal-dialog" role="document">
