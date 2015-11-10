@@ -15,7 +15,9 @@
     "leaflet.markerclusterer": "leaflet.markercluster#~0.4.0",
     "virtual-dom": "~2.1.1",
     "wow": "~1.1.2",
-    "requirejs-domready": "~2.0.1"
+    "requirejs-domready": "~2.0.1",
+    "requirejs": "~2.1.20",
+    "hoverboard-flux": "~2.0.2"
   },
   "moduleName": "gsw"
 }
