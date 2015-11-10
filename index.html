@@ -1,302 +1,266 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--Suchmaschineneoptimierung-->
-        <meta name="description" content="Germany Says Welcome">
-        <meta name="author" content="Patrice Becker">
-        <meta name="description" lang="en" content="Website to help refugees in Germany, from arriving to immigration">
-        <meta name="description" lang="de" content="Germany Says Welcome ist eine Webseite, die Flüchtlingen hilft.- Von der Ankunft bis zur Einbürgerung.">
-        <meta name="keywords" lang="en" content="refugees, app, jugendhackt, germany, help">
-        <meta name="keywords" lang="de" content="flüchtlinge, app, webseite, deutschland, hilfe, jugendhackt">
-        <meta name="theme-color" content="#003171">
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Suchmaschinenenoptimierung-->
+    <meta name="description" content="The official Germany says Welcome Website">
+    <meta name="keywords" lang="en" content="Refugees, #germanysayswelcome, Refugees Welcome">
+    <meta name="keywords" lang="de" content="Flüchtlinge, Flüchtlingshilfe">
+    <meta name="theme-color" content="#003171">
+    <title>Refugees Welcome To Germany</title>
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="css/third-party/bootstrap.css" />
+    <link rel="stylesheet" href="css/third-party/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="css/third-party/jasny-bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="css/creative.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- endbuild -->
+</head>
+<body id="page-top">
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
 
-        <title>Germany Says Welcome</title>
+<!-- Add your site or application content here -->
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">Germany Says Welcome</a>
+        </div>
 
-        <link rel="stylesheet" href="third-party/css/bootstrap.min.css">
-        <link rel="stylesheet" href="third-party/css/creative.css">
-        <link rel="stylesheet" href="third-party/css/animate.min.css" type="text/css">
-
-        <!--Lade zuerst die Third-Parties, damit wir diese überschreiben können-->
-        <link rel="stylesheet" href="css/style.css" type="text/css">
-
-        <!-- Custom Fonts -->
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="third-party/css/font-awesome.min.css" type="text/css">
-
-        <link rel="shortcut icon" type="image/png" href="image/logo_small.png">
-
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-    </head>
-    <body id="page-top">
-        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
-                <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand page-scroll" href="#page-top">Germany Says Welcome</a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a class="page-scroll" href="#about" data-i18n="index:about">About</a></li>
-                        <li><a class="page-scroll" href="#services" data-i18n="index:features">Features</a></li>
-                        <li><a class="page-scroll" href="#contact" data-i18n="index:contact">Contact</a></li>
-                        <li class="dropdown" id="lang-select">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                               aria-expanded="false"><img class="flag1" src="image/german.png" id="flag_de"><img class="flag1" src="image/english.png" id="flag_en"></a>
-
-                            <ul class="dropdown-menu" id="language-switch">
-                                <li lang="de" class="switchlink" id="de"><a class="black-text" href="#"><span><img class="switch_flag" src="image/german.png"></span> Deutsch</a></li>
-                                <li lang="en" class="switchlink" id="en"><a class="black-text" href="#"><span><img class="switch_flag" src="image/english.png"></span> English</a></li>
-                            </ul>
-                        </li>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="page-scroll" href="#about" data-i18n="index:about">About</a></li>
+                <li><a class="page-scroll" href="#services" data-i18n="index:features">Features</a></li>
+                <li><a class="page-scroll" href="#contact" data-i18n="index:contact">Contact</a></li>
+                <li class="dropdown" id="lang-select">
+                </li>
+<!--                <li class="dropdown" id="lang-select">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false"><img class="flag1" src="images/lang/german.png" id="flag_de"><img class="flag1" src="images/lang/english.png" id="flag_en"></a>
+                    <ul class="dropdown-menu" id="language-switch">
+                        <li lang="de" class="switchlink" id="de"><a class="black-text" href="#"><span><img class="switch_flag" src="images/lang/german.png"></span> Deutsch</a></li>
+                        <li lang="en" class="switchlink" id="en"><a class="black-text" href="#"><span><img class="switch_flag" src="images/lang/english.png"></span> English</a></li>
                     </ul>
+                </li>-->
+
+
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<header id="mainheader">
+    <div class="header-content">
+        <div class="header-content-inner">
+            <img src="images/ref_welcome_logo.png" align="middle"/>
+            <h1>Germany Says Welcome</h1>
+            <hr/>
+            <p data-i18n="index:introduction">
+                Navigate to our refugee or volunteer page by clicking the buttons below. Scroll down for further information.
+            </p>
+            <a href="refugee.html" class="btn btn-primary btn-xl" data-i18n="index:refugee">Refugee</a>
+            <a href="volunteer.html" class="btn btn-primary btn-xl" data-i18n="index:volunteer">Volunteer</a>
+        </div>
+    </div>
+</header>
+<section class="bg-primary" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading" data-i18n="index:Headline-About">Using High-Tech to help those who need it!</h2>
+                <hr class="light">
+                <p class="text-faded" data-i18n="index:Headline-Text">
+                    Germany Says Welcome is more than just a project, it is the aim to help refugees with skills
+                    we are good at. We've created an
+                    <a href="https://betas.to/QC6U5Lmk" class="text-faded" target="_blank"><strong><em>
+                        app</em></strong></a> and the website you're browsing with certain features; for example
+                    a
+                    <a href="http://www.germany-says-welcome.de/refugee.html" class="text-faded" target="_blank"><strong><em>map</em></strong></a>
+                    with all German authorities or a sharing platform. Scroll down to find out more about
+                    Germany Says Welcome.
+                </p>
+                <a href="#services" class="btn btn-default btn-xl page-scroll" data-i18n="index:FindOutMore">Find out more!</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading" data-i18n="index:WhatSoftwareDoes">What Our Software Does</h2>
+                <hr class="primary">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box"><i class="fa fa-4x fa-location-arrow wow bounceIn text-primary"></i>
+
+                    <h3 data-i18n="index:Navigation">Navigation</h3>
+
+                    <p class="text-muted" data-i18n="index:AdmimAndWifi">Helps refugees to find nearby administrations and free wifi.</p>
                 </div>
             </div>
-        </nav>
-        <header id="mainheader">
-            <div class="header-content">
-                <div class="header-content-inner"><img src="image/ref_welcome_logo.png" align="middle">
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-question wow bounceIn text-primary" data-wow-delay=".1s"></i>
 
-                    <h1>Germany Says Welcome</h1>
-                    <hr/>
-                    <p data-i18n="index:introduction">Navigate to our refugee or volunteer page by clicking the buttons below. Scroll down for further
-                        information.</p>
-                    <a href="refugee.html" class="btn btn-primary btn-xl" data-i18n="index:refugee">Refugee</a>
-                    <a href="volunteer.html" class="btn btn-primary btn-xl" data-i18n="index:volunteer">Volunteer</a></div>
-            </div>
-        </header>
-        <section class="bg-primary" id="about">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 text-center">
-                        <h2 class="section-heading" data-i18n="index:Headline-About">Using High-Tech to help those who need it!</h2>
-                        <hr class="light">
-                        <p class="text-faded" data-i18n="index:Headline-Text">
-                            Germany Says Welcome is more than just a project, it is the aim to help refugees with skills
-                            we are good at. We've created an
-                            <a href="https://betas.to/QC6U5Lmk" class="text-faded" target="_blank"><strong><em>
-                                app</em></strong></a> and the website you're browsing with certain features; for example
-                            a
-                            <a href="http://www.germany-says-welcome.de/refugee.html" class="text-faded" target="_blank"><strong><em>map</em></strong></a>
-                            with all German authorities or a sharing platform. Scroll down to find out more about
-                            Germany Says Welcome.
-                        </p>
-                        <a href="#services" class="btn btn-default btn-xl page-scroll" data-i18n="index:FindOutMore">Find out more!</a>
-                    </div>
+                    <h3 data-i18n="index:FAQ">FAQ</h3>
+
+                    <p class="text-muted" data-i18n="index:FAQ-Text">Our FAQ provides answers to important questions.</p>
                 </div>
             </div>
-        </section>
-        <section id="services">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 text-center">
-                        <h2 class="section-heading" data-i18n="index:WhatSoftwareDoes">What Our Software Does</h2>
-                        <hr class="primary">
-                    </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-exchange wow bounceIn text-primary" data-wow-delay=".2s"></i>
+
+                    <h3 data-i18n="index:Marketplace">Exchange Marketplace</h3>
+
+                    <p class="text-muted" data-i18n="index:Marketplace-Text">
+                        A digital notice-board equips you for exchanging goods and services.
+                    </p>
                 </div>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="service-box"><i class="fa fa-4x fa-location-arrow wow bounceIn text-primary"></i>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <i class="fa fa-4x fa-comments-o wow bounceIn text-primary" data-wow-delay=".3s"></i>
 
-                            <h3 data-i18n="index:Navigation">Navigation</h3>
+                    <h3 data-i18n="index:Mentoring">Mentoring Platform</h3>
 
-                            <p class="text-muted" data-i18n="index:AdmimAndWifi">Helps refugees to find nearby administrations and free wifi.</p>
+                    <p class="text-muted" data-i18n="index:Mentoring-Text">Get in contact with one particular refugee to help him directly</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="no-padding" id="portfolio">
+    <div class="container-fluid">
+        <div class="row no-gutter">
+            <div class="col-lg-4 col-sm-6">
+                <a href="https://betas.to/QC6U5Lmk" target="_blank" class="portfolio-box">
+                    <img src="images/portfolio/1.jpg" class="img-responsive" alt="">
+
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded" data-i18n="index:Download"> Download</div>
+                            <div class="project-name" data-i18n="index:CheckApp"> Check out our App!</div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="service-box">
-                            <i class="fa fa-4x fa-question wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a href="https://youtu.be/mmv_IFvJgIs?t=1h5m38s" target="_blank" class="portfolio-box">
+                    <img src="images/portfolio/2.jpg" class="img-responsive" alt="">
 
-                            <h3 data-i18n="index:FAQ">FAQ</h3>
-
-                            <p class="text-muted" data-i18n="index:FAQ-Text">Our FAQ provides answers to important questions.</p>
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded"> Video</div>
+                            <div class="project-name" data-i18n="index:HowItAllBegan"> How it all began</div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="service-box">
-                            <i class="fa fa-4x fa-exchange wow bounceIn text-primary" data-wow-delay=".2s"></i>
+                </a>
+            </div>
+            <div class="col-lg-4 col-sm-6">
+                <a href="http://www.heise.de/developer/meldung/Jugend-hackt-in-Berlin-Germany-says-Welcome-2849987.html" target="_blank" class="portfolio-box">
+                    <img src="images/portfolio/3.jpg" class="img-responsive" alt="">
 
-                            <h3 data-i18n="index:Marketplace">Exchange Marketplace</h3>
-
-                            <p class="text-muted" data-i18n="index:Marketplace-Text">A digital notice-board equips you for exchanging goods and
-                                services.</p>
+                    <div class="portfolio-box-caption">
+                        <div class="portfolio-box-caption-content">
+                            <div class="project-category text-faded" data-i18n="index:Press">Press</div>
+                            <div class="project-name" data-i18n="index:ArticleJuHa"> Article about JugendHackt</div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 text-center">
-                        <div class="service-box">
-                            <i class="fa fa-4x fa-comments-o wow bounceIn text-primary" data-wow-delay=".3s"></i>
-
-                            <h3 data-i18n="index:Mentoring">Mentoring Platform</h3>
-
-                            <p class="text-muted" data-i18n="index:Mentoring-Text">Get in contact with one particular refugee to help him directly</p>
-                        </div>
-                    </div>
-                </div>
+                </a>
             </div>
-        </section>
-        <section class="no-padding" id="portfolio">
-            <div class="container-fluid">
-                <div class="row no-gutter">
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="https://betas.to/QC6U5Lmk" target="_blank" class="portfolio-box">
-                            <img src="image/portfolio/1.jpg" class="img-responsive" alt="">
-
-                            <div class="portfolio-box-caption">
-                                <div class="portfolio-box-caption-content">
-                                    <div class="project-category text-faded" data-i18n="index:Download"> Download</div>
-                                    <div class="project-name" data-i18n="index:CheckApp"> Check out our App!</div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="https://youtu.be/mmv_IFvJgIs?t=1h5m38s" target="_blank" class="portfolio-box">
-                            <img src="image/portfolio/2.jpg" class="img-responsive" alt="">
-
-                            <div class="portfolio-box-caption">
-                                <div class="portfolio-box-caption-content">
-                                    <div class="project-category text-faded"> Video</div>
-                                    <div class="project-name" data-i18n="index:HowItAllBegan"> How it all began</div>
-                                </div>
-                            </div>
-                        </a></div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="http://www.heise.de/developer/meldung/Jugend-hackt-in-Berlin-Germany-says-Welcome-2849987.html" target="_blank" class="portfolio-box">
-                            <img src="image/portfolio/3.jpg" class="img-responsive" alt="">
-
-                            <div class="portfolio-box-caption">
-                                <div class="portfolio-box-caption-content">
-                                    <div class="project-category text-faded" data-i18n="index:Press">Press</div>
-                                    <div class="project-name" data-i18n="index:ArticleJuHa"> Article about JugendHackt</div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+        </div>
+    </div>
+</section>
+<aside class="bg-dark">
+    <div class="container text-center">
+        <div class="call-to-action">
+            <h2 data-i18n="index:GitHub">Check out our GitHub Repositories!</h2>
+            <a href="https://github.com/socialc0de" class="btn btn-default btn-xl wow tada" data-i18n="SourceCode">Source Code</a>
+        </div>
+    </div>
+</aside>
+<section id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading" data-i18n="index:LetsGoTouch">Let's Get In Touch!</h2>
+                <hr class="primary"/>
+                <p data-i18n="index:LetsGoTouch-Text">Do you want to get in touch with us to help improving our software? That's great! Contact us via mail, phone or social media:</p>
             </div>
-        </section>
-        <aside class="bg-dark">
-            <div class="container text-center">
-                <div class="call-to-action">
-                    <h2 data-i18n="index:GitHub">Check out our GitHub Repositories!</h2>
-                    <a href="https://github.com/socialc0de" class="btn btn-default btn-xl wow tada" data-i18n="SourceCode">Source Code</a>
-                </div>
+            <div class="col-lg-4 col-lg-offset-2 text-center"><i class="fa fa-phone fa-3x wow bounceIn"></i>
+                <a href="tel:+49221677741920">
+                    <p>0221 / 677741920</p>
+                </a>
             </div>
-        </aside>
-        <section id="contact">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2 text-center">
-                        <h2 class="section-heading" data-i18n="index:LetsGoTouch">Let's Get In Touch!</h2>
-                        <hr class="primary"/>
-                        <p data-i18n="index:LetsGoTouch-Text">Do you want to get in touch with us to help improving our software? That's great! Contact us
-                            via mail, phone or social media:</p>
-                    </div>
-                    <div class="col-lg-4 col-lg-offset-2 text-center"><i class="fa fa-phone fa-3x wow bounceIn"></i>
-                        <a href="tel:+49221677741920">
-                            <p>0221 / 677741920</p>
-                        </a></div>
-                    <div class="col-lg-4 text-center">
-                        <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+            <div class="col-lg-4 text-center">
+                <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
 
-                        <p><a href="mailto:info@germany-says-welcome.de">info@germany-says-welcome.de</a></p>
-                    </div>
-                    <div class="col-lg-4 col-lg-offset-2 text-center">
-                        <i class="fa fa-facebook-official fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-
-                        <p><a href="https://www.facebook.com/germanysayswelcome">Facebook</a></p>
-                    </div>
-                    <div class="col-lg-4 text-center">
-                        <i class="fa fa-twitter fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-
-                        <p><a href="https://twitter.com/gersayswelcome">Twitter</a></p>
-                    </div>
-                    <div class="col-lg-8 col-lg-offset-2 text-center">
-                        <i class="fa fa-user fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-
-                        <h3 class="section-heading" data-i18n="index:LegalNotice">Legal Notice</h3>
-
-                        <p><b>Fachstelle für Jugendmedienkultur NRW</b>
-                            <br />
-                            ComputerProjekt Köln e.V.<br/>
-                            Weinsbergstr. 190<br/>
-                            50825 Köln<br/>
-                            Germany </p>
-                        <p>
-                            <a href="disclaimer.html">Disclaimer & Privacy Policy</a>
-                        </p>
-                    </div>
-                </div>
+                <p><a href="mailto:info@germany-says-welcome.de">info@germany-says-welcome.de</a></p>
             </div>
-        </section>
+            <div class="col-lg-4 col-lg-offset-2 text-center">
+                <i class="fa fa-facebook-official fa-3x wow bounceIn" data-wow-delay=".1s"></i>
 
-        <!-- Plugin JavaScript -->
-        <script src="third-party/js/jquery.js"></script>
-        <script src="third-party/js/jquery.easing.min.js"></script>
-        <script src="third-party/js/jquery.fittext.js"></script>
-        <script src="third-party/js/wow.min.js"></script>
-        <script src="third-party/js/bootstrap.min.js"></script>
-        <script src="third-party/js/creative.js"></script>
-        <script src="third-party/js/i18next.js"></script>
-        <script src="js/browser-language.js"></script>
+                <p><a href="https://www.facebook.com/germanysayswelcome">Facebook</a></p>
+            </div>
+            <div class="col-lg-4 text-center">
+                <i class="fa fa-twitter fa-3x wow bounceIn" data-wow-delay=".1s"></i>
 
-        <!--Sprachenauswahl-->
-        <script>
-            $(document).ready(function () {
-                var option = {
-                    fallbackLng: 'en',
-                    ns: {
-                        namespaces: ['index']
-                    },
-                    detectLngQS: 'lang'
-                };
+                <p><a href="https://twitter.com/gersayswelcome">Twitter</a></p>
+            </div>
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <i class="fa fa-user fa-3x wow bounceIn" data-wow-delay=".1s"></i>
 
-                $.i18n.init(option)
-                        .done(function () {
-                            $('[data-i18n]').i18n();
-                        })
-                        .fail(function () {
-                            $('[data-i18n]').i18n();
-                        });
+                <h3 class="section-heading" data-i18n="index:LegalNotice">Legal Notice</h3>
 
+                <p><b>Fachstelle für Jugendmedienkultur NRW</b>
+                    <br />
+                    ComputerProjekt Köln e.V.<br/>
+                    Weinsbergstr. 190<br/>
+                    50825 Köln<br/>
+                    Germany
+                </p>
+                <p>
+                    <a href="disclaimer.html">Disclaimer & Privacy Policy</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+</section>
 
-                $('#lang-select li[lang]').on('click', function() {
-                    var lang = $(this).attr('lang');
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="js/third-party/jquery.js"></script>
+<script src="js/third-party/bootstrap.js"></script>
+<script src="js/third-party/jquery.fittext.js"></script>
+<script src="js/third-party/wow.js"></script>
+<script src="js/third-party/jquery.easing.js"></script>
+<script src="js/third-party/jasny-bootstrap.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
 
-                    if(lang == "de"){
-                        $("#flag_de").show();
-                        $("#flag_en").hide();
-                    }
-
-                    if(lang == "en"){
-                        $("#flag_de").hide();
-                        $("#flag_en").show();
-                    }
-
-
-                    $('#lang-select li[lang]').removeClass("active");
-                    $(this).addClass("active");
-                    $.i18n.setLng(lang, function(){
-                        $('[data-i18n]').i18n();
-                    });
-                });
-            });
-        </script>
-    </body>
+<script src="js/theme/creative.js"></script>
+<script data-main="js/app/index.js" src="bower_components/requirejs/require.js"></script>
+</body>
 </html>
