@@ -4,9 +4,9 @@ define(function (require) {
     var Component = require("view/Component");
     var handlebars = require("handlebars");
 
-    LanguageSelect.prototype = new Component();
+    LanguageSelect.prototype = Object.create(Component.prototype);
 
-    LanguageSelect.prototype.render = function (state) {
+    LanguageSelect.prototype.render = function (state, props) {
         var selected = state.selected || "en";
         var languages = state.languages || {};
         var data = {
@@ -36,6 +36,7 @@ define(function (require) {
     };
 
     function LanguageSelect() {
+        Component.call(this, { x: "y" });
     }
 
     return LanguageSelect;

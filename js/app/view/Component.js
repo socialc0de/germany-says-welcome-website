@@ -10,37 +10,74 @@ define(function(require) {
 
     var ID = 1;
 
-    Component.prototype.render = function(state, children) {
+    Component.prototype.render = function(state, props, children) {
         return '<div></div>';
     };
 
-    Component.prototype.subscribe = function(hoverboard) {
-        return hoverboard.getState($.proxy(this._tree.setState, this._tree));
+    Component.prototype.subscribe = function(hoverboard, namespace) {
+        var setter = function(state) {
+            this.setState(state, namespace);
+        };
+        return hoverboard.getState($.proxy(setter, this));
     };
 
-    var _Tree = function(component) {
+    Component.prototype.setState = function(newState, namespace) {
+        _mergeStates(this.state, newState, namespace);
+        this._tree.render(this.state);
+    };
+
+    Component.prototype.replaceState = function(namespace, newState) {
+        _resetState(this.state, namespace);
+        _mergeStates(this.state, newState, namespace);
+        this._tree.render(this.state);
+    };
+
+    Component.prototype.resetState = function(namespace) {
+        _resetState(this.state, namespace);
+        _mergeStates(this.state, {}, namespace);
+        this._tree.render(this.state);
+    };
+
+    function _mergeStates(state, newState, namespace) {
+        if ( namespace ) {
+            if ( !state[namespace] ) {
+                state[namespace] = {};
+            }
+            $.extend(state[namespace], newState);
+        } else {
+            $.extend(state, newState);
+        }
+        return state;
+    }
+
+    function _resetState(state, namespace) {
+        if ( namespace ) {
+            state[namespace] = {};
+        } else {
+            state = {};
+        }
+        return state;
+    }
+
+    var _Tree = function(component, props) {
 
         var children = {};
         var state = {};
         var tree = undefined;
 
-        this.setState = function(newState) {
-            state = newState;
-            this.render();
-        };
 
         this.html = function() {
             return tree;
         };
 
-
-        this.render = function() {
-            var _state = $.extend({}, state);
+        this.render = function(state) {
+            var _state = $.extend(true, {}, state);
+            var _props = $.extend(true, {}, props);
             var _childTrees = {};
             for ( var id in children ) {
                 _childTrees[id] = children._tree.html();
             }
-            var values = component.render(_state, _childTrees);
+            var values = component.render(_state, _props, _childTrees);
             var html = undefined;
             var selector = undefined;
             var callback = undefined;
@@ -140,9 +177,10 @@ define(function(require) {
 
     };
 
-    function Component() {
-        this._tree = new _Tree(this);
+    function Component(props) {
+        this._tree = new _Tree(this, props || {});
         this.subscriptions = {};
+        this.state = {};
     }
 
     return Component;
