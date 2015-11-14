@@ -75,6 +75,12 @@ gulp.task('deps_vdom', function () {
     ]).pipe(gulp.dest('js/third-party'));
 });
 
+gulp.task('deps_underscore', function () {
+    gulp.src([
+        'bower_components/underscore/underscore.js'
+    ]).pipe(gulp.dest('js/third-party'));
+});
+
 gulp.task('deps_wow', function () {
     gulp.src([
         'bower_components/wow/dist/wow.js'
@@ -90,6 +96,7 @@ gulp.task('deps', [
     'deps_hoverboard',
     'deps_jquery',
     'deps_requirejs',
+    'deps_underscore',
     'deps_vdom',
     'deps_wow'
 ], function () {

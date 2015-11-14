@@ -8,6 +8,7 @@ require.config(
             'html2hscript': ['../third-party/html2hscript'],
             'i18next': "../third-party/i18next",
             'jquery': "../third-party/jquery",
+            'underscore': "../third-party/underscore",
             'virtual-dom': ['../third-party/virtual-dom'],
             'domReady': ['../third-party/requirejs-domReady']
         },
@@ -17,9 +18,14 @@ require.config(
     }
 );
 
-require(['domReady!', 'model/BrowserLanguage', 'view/LanguageSelect'], function (domReady, BrowserLanguage, LanguageSelect) {
+require(['domReady!', 'jquery', 'bootstrap', 'model/BrowserLanguage', 'view/LanguageSelect'], function (domReady, $, bootstrap, BrowserLanguage, LanguageSelect) {
     var browserLanguage = new BrowserLanguage();
-    var languageSelect = new LanguageSelect();
+    var languageSelect = new LanguageSelect("#lang-select");
+    languageSelect.onRenderReady = function(event, element) {
+        if ( event === 'create' ) {
+            $('#lang-select .dropdown-toggle').dropdown();
+        }
+    };
     languageSelect.subscribe(browserLanguage);
     browserLanguage.init('index');
 

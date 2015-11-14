@@ -117,48 +117,44 @@ Components
 ----------
   
 Components are inspired by React but hide the complexity of setting up a React development environment. Components are 
-implemented by inheriting from the component base class `view/Component` and by overriding its `render()` method.
+implemented by inheriting from the component base class `view/Component` (line #5 and line #12) and by overriding its `render()` method
+(line #7).
 
-    define(function (require) {
-    
-        var Component = require("view/Component");
-    
-        Hello.prototype = new Component();
-    
-        Hello.prototype.render = function (state) {
-            ...
-        };
-    
-        function Hello() {
-        }
-    
-        return Hello;
-    
-    });
+    #1 define(function (require) {
+    #2
+    #3    var Component = require("view/Component");
+    #4
+    #5    Hello.prototype = Object.create(Component.prototype);
+    #6
+    #7    Hello.prototype.render = function (state) {
+    #8        ...
+    #9    };
+    #10
+    #11    function Hello() {
+    #12         Component.call(this, '#hello'); 
+    #13    }
+    #14
+    #15    return Hello;
+    #16
+    #17 });
 
 The `render()` method takes a copy of the current state as an argument and should return the rendered HTML of the component.
 In our framework you do not change DOM nodes of the HTML document directly. You always render the complete component and 
 the system takes care of figuring out the differences between the current DOM nodes and the changes that need to apply. This
 is the basic idea of React we try to resemble.
 
-To attach the component somewhere in the DOM document you need to return a jQuery selector (line #4) with the HTML 
-(line #3) in an array.
+To attach the component somewhere in the DOM document you need to pass a jQuery selector to the components constructor
+(line #12 in the code above). The rendering takes place in the overridden `render()` method (line #2 below).
 
     #1 Hello.prototype.render = function (state) {
-    #2    return [ 
-    #3        '<h1>Hello world!</h1>, 
-    #4        '#hello' 
-    #5        ];
-    #6 };
+    #2    return '<h1>Hello world!</h1>'; 
+    #3 };
 
-Let's say we have stored the user's name in the `state`, we can use it during rendering (line #3):
+Let's say we have stored the user's name in the `state`, we can use it during rendering (line #2):
  
     #1 Hello.prototype.render = function (state) {
-    #2    return [ 
-    #3        '<h1>Hello, ' + state.name  + '!</h1>, 
-    #4        '#hello' 
-    #5        ];
-    #6 };
+    #2    return '<h1>Hello, ' + state.name  + '!</h1>'; 
+    #3 };
  
 In more complex scenarios, [Handlebars](http://handlebarsjs.com/) could be quite useful:
 
@@ -166,10 +162,7 @@ In more complex scenarios, [Handlebars](http://handlebarsjs.com/) could be quite
     
     Hello.prototype.render = function (state) {
         var html = handlebars.compile('<h1>Hello, {{name}}!</h1>');
-        return [ 
-            html(state),
-           '#hello' 
-        ];
+        return html(state);
     };  
     
 And to wire everything up you need a Flux data model for the user's name:

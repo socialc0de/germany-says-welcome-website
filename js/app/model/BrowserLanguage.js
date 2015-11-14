@@ -23,7 +23,6 @@ define(function (require) {
                     var options = {ns: namespace};
                     $.extend(options, i18nextOptions)
                     $.i18n.init(options).always(function () {
-                            var lang = $.i18n.lng();
                             instance.select($.i18n.lng());
                             $.each(languages, function (lang, data) {
                                 instance.add(lang, data.flag, data.label);

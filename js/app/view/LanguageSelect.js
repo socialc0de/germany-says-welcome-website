@@ -1,6 +1,7 @@
 define(function (require) {
 
     var $ = require("jquery");
+
     var Component = require("view/Component");
     var handlebars = require("handlebars");
 
@@ -26,17 +27,12 @@ define(function (require) {
             '</ul>' +
             '</li>';
         var html = handlebars.compile(template);
-        var ready = function(event) {
-            if ( event === 'create' ) {
-                $('#lang-select .dropdown-toggle').dropdown();
-            }
-        };
         var t = html(data);
-        return [t, '#lang-select', $.proxy(ready, this)];
+        return html(data);
     };
 
-    function LanguageSelect() {
-        Component.call(this, { x: "y" });
+    function LanguageSelect(selector) {
+        Component.call(this, selector);
     }
 
     return LanguageSelect;
