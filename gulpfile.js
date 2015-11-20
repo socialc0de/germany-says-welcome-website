@@ -180,5 +180,11 @@ gulp.task('cleanup', function () {
 });
 
 
+gulp.task('deploy', function () {
+    return gulp.src('dist/**/*')
+        .pipe(gulp.dest('app/'));
+});
+
+
 gulp.task('default', ['deps'], function () {
 });

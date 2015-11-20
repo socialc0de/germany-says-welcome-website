@@ -1,0 +1,22 @@
+{
+  "toggle-navi": "",
+
+  "SignIn-Btn": "Einloggen",
+  "SignOut-Btn": "Ausloggen",
+
+  "home": "Home",
+  "dashboard": "Dashboard",
+  "faq": "FAQ",
+  "map": "Karte",
+
+  "welcome-text": "Willkommen bei Germany Says Welcome",
+
+  "ask-question": "Stell eine Frage",
+
+  "error-request": "",
+  "brand_name":"Germany Says Welcome",
+
+  "Step 1":"Schritt 1",
+  "Step 2":"Schritt 2",
+  "Step 3":"Schritt 3"
+}

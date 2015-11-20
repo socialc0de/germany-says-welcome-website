@@ -43,3 +43,7 @@ versions of all dependencies are used.
 Clean the `dist` directory. This is recommended before releasing the website.
 
     gulp cleanup
+
+Deploy website on live webserver. Copies everything from `dist` to `app`. 
+
+    gulp deploy
