@@ -218,3 +218,8 @@ label {
 .switchlink:active {
     color: #003171;
 }
+
+.supporters {
+    margin: 0% 5% 0% 5%;
+}
+}
